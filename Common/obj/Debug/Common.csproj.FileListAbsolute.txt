@@ -1,0 +1,4 @@
+E:\WORK\GITHUB\FootballFlick\Common\bin\Debug\Common.dll
+E:\WORK\GITHUB\FootballFlick\Common\bin\Debug\Common.pdb
+E:\WORK\GITHUB\FootballFlick\Common\obj\Debug\Common.dll
+E:\WORK\GITHUB\FootballFlick\Common\obj\Debug\Common.pdb

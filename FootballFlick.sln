@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballFlick", "FootballFlick\FootballFlick.csproj", "{6FE9B1CF-A524-4571-920C-34BA7C894835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{43BF05A8-6E2D-41F5-8F2F-FC0F4BD0885B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{970148C7-26FE-4F83-81FB-DDF247DB50F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FE9B1CF-A524-4571-920C-34BA7C894835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FE9B1CF-A524-4571-920C-34BA7C894835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FE9B1CF-A524-4571-920C-34BA7C894835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FE9B1CF-A524-4571-920C-34BA7C894835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43BF05A8-6E2D-41F5-8F2F-FC0F4BD0885B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43BF05A8-6E2D-41F5-8F2F-FC0F4BD0885B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43BF05A8-6E2D-41F5-8F2F-FC0F4BD0885B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43BF05A8-6E2D-41F5-8F2F-FC0F4BD0885B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{970148C7-26FE-4F83-81FB-DDF247DB50F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970148C7-26FE-4F83-81FB-DDF247DB50F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970148C7-26FE-4F83-81FB-DDF247DB50F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970148C7-26FE-4F83-81FB-DDF247DB50F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,16 @@
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\Model.dll
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\Model.pdb
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\Common.dll
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\PagedList.dll
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\PagedList.Mvc.dll
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\Common.pdb
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\PagedList.xml
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\PagedList.Mvc.xml
+E:\WORK\GITHUB\FootballFlick\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+E:\WORK\GITHUB\FootballFlick\Model\obj\Debug\Model.dll
+E:\WORK\GITHUB\FootballFlick\Model\obj\Debug\Model.pdb
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\Model.dll.config
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\EntityFramework.dll
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\EntityFramework.xml
+E:\WORK\GITHUB\FootballFlick\Model\bin\Debug\EntityFramework.SqlServer.xml
