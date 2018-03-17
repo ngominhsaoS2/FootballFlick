@@ -202,6 +202,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BannerController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContentCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\FeedbackController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -1282,6 +1283,38 @@
     <Content Include="Assets\Admin\js\validator.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Data\images\DSC00464.jpg" />
+    <Content Include="Data\images\DSC00474.jpg" />
+    <Content Include="Data\images\DSC00512.jpg" />
+    <Content Include="Data\images\DSC00566.jpg" />
+    <Content Include="Data\images\DSC00573.jpg" />
+    <Content Include="Data\images\DSC00577.jpg" />
+    <Content Include="Data\images\DSC00585.jpg" />
+    <Content Include="Data\images\DSC00604.jpg" />
+    <Content Include="Data\images\DSC00617.jpg" />
+    <Content Include="Data\images\DSC00636.jpg" />
+    <Content Include="Data\images\DSC00638.jpg" />
+    <Content Include="Data\images\DSC00639.jpg" />
+    <Content Include="Data\images\DSC00645.jpg" />
+    <Content Include="Data\images\DSC00675.jpg" />
+    <Content Include="Data\images\DSC00678.jpg" />
+    <Content Include="Data\images\DSC00684.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00464.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00474.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00512.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00566.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00573.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00577.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00585.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00604.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00617.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00636.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00638.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00639.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00645.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00675.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00678.jpg" />
+    <Content Include="Data\_thumbs\Images\DSC00684.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1348,6 +1381,9 @@
     <Content Include="Areas\Admin\Views\Slide\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ContentCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ContentCategory\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ContentCategory\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1399,7 +1435,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Assets\Client\" />
-    <Folder Include="Data\" />
+    <Folder Include="Data\files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

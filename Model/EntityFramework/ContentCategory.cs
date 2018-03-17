@@ -24,7 +24,7 @@ namespace Model.EntityFramework
         [StringLength(250)]
         public string SeoTitle { get; set; }
 
-        public bool? ShowInHome { get; set; }
+        public bool ShowInHome { get; set; }
 
         [StringLength(2)]
         public string Language { get; set; }

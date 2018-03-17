@@ -11,12 +11,11 @@ namespace FootballFlick.Areas.Admin.Controllers
 {
     public class ProductCategoryController : BaseController
     {
-        ////Display, create, edit, delete User
+        ////Display, create, edit, delete ProductCategory
         //Index page of ProductCategory management
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
             var dao = new ProductCategoryDao();
-
             var model = dao.ListAllPaging(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
             ViewBag.PageSize = pageSize;
