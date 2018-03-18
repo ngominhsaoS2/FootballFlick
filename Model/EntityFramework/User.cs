@@ -29,6 +29,8 @@ namespace Model.EntityFramework
         [StringLength(250)]
         public string Address { get; set; }
 
+        [Required(ErrorMessage = "Please enter Email")]
+        [EmailAddress(ErrorMessage = "Please use a real email")]
         [StringLength(250)]
         public string Email { get; set; }
 

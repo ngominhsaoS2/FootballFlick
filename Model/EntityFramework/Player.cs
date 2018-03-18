@@ -22,13 +22,15 @@ namespace Model.EntityFramework
         [StringLength(250)]
         public string Address { get; set; }
 
+        [Required(ErrorMessage = "Please enter Email")]
+        [EmailAddress(ErrorMessage = "Please use a real email")]
         [StringLength(250)]
         public string Email { get; set; }
 
         [StringLength(50)]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Please enter Image")]
+        [Required(ErrorMessage = "Please select Image")]
         [StringLength(500)]
         public string Image { get; set; }
 
