@@ -180,9 +180,9 @@ namespace FootballFlick.Areas.Admin.Controllers
 
         }
 
-        public JsonResult ListName(string q)
+        public JsonResult ListProduct(string q)
         {
-            var data = new ProductDao().ListName(q);
+            var data = new ProductDao().ListProduct(q);
             return Json(new
             {
                 data = data,

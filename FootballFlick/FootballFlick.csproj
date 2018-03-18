@@ -214,6 +214,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StadiumController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
@@ -288,6 +289,7 @@
     <Content Include="Assets\Admin\js\controller\orderController.js" />
     <Content Include="Assets\Admin\js\controller\productController.js" />
     <Content Include="Assets\Admin\js\controller\searchController.js" />
+    <Content Include="Assets\Admin\js\controller\stadiumController.js" />
     <Content Include="Assets\Admin\js\custom.js" />
     <Content Include="Assets\Admin\js\export.min.js" />
     <Content Include="Assets\Admin\js\images\dragIconRoundBig.svg" />
@@ -1397,6 +1399,9 @@
     <Content Include="Areas\Admin\Views\Player\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Player\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Player\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Stadium\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Stadium\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Stadium\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

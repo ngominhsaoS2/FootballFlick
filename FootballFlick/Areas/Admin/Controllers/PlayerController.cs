@@ -93,9 +93,17 @@ namespace FootballFlick.Areas.Admin.Controllers
 
 
 
+        ////Other methods
 
-
-
+        public JsonResult ListPlayer(string q)
+        {
+            var data = new PlayerDao().ListPlayer(q);
+            return Json(new
+            {
+                data = data,
+                status = true
+            }, JsonRequestBehavior.AllowGet);
+        }
 
 
 

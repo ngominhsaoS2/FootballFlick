@@ -106,6 +106,60 @@ namespace Model.Dao
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
+        /// <summary>
+        /// Get Player list when having a keyword
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        public List<Player> ListPlayer(string keyword)
+        {
+            var listPlayer =     (from a in db.Players
+                                 where a.Name.Contains(keyword)
+                                 select new
+                                 {
+                                     ID = a.ID,
+                                     Name = a.Name,
+                                     Identification = a.Identification,
+                                     Address = a.Address,
+                                     Email = a.Email,
+                                     Phone = a.Phone,
+                                     Image = a.Image,
+                                     CreatedDate = a.CreatedDate,
+                                     CreatedBy = a.CreatedBy,
+                                     ModifiedDate = a.ModifiedDate,
+                                     ModifiedBy = a.ModifiedBy,
+                                     Status = a.Status
+                                 }).AsEnumerable().Select(x => new Player()
+                                 {
+                                     ID = x.ID,
+                                     Name = x.Name,
+                                     Identification = x.Identification,
+                                     Address = x.Address,
+                                     Email = x.Email,
+                                     Phone = x.Phone,
+                                     Image = x.Image,
+                                     CreatedDate = x.CreatedDate,
+                                     CreatedBy = x.CreatedBy,
+                                     ModifiedDate = x.ModifiedDate,
+                                     ModifiedBy = x.ModifiedBy,
+                                     Status = x.Status
+                                 });
+            return listPlayer.ToList();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

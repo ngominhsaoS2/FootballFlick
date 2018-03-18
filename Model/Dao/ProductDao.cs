@@ -227,9 +227,62 @@ namespace Model.Dao
         /// </summary>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        public List<string> ListName(string keyword)
+        public List<Product> ListProduct(string keyword)
         {
-            return db.Products.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();
+            var listProduct = (from a in db.Products
+                               where a.Name.Contains(keyword)
+                              select new
+                              {
+                                  ID = a.ID,
+                                  Code = a.Code,
+                                  Name = a.Name,
+                                  MetaTitle = a.MetaTitle,
+                                  Description = a.Description,
+                                  Image = a.Image,
+                                  MoreImages = a.MoreImages,
+                                  Price = a.Price,
+                                  PromotionPrice = a.PromotionPrice,
+                                  IncludedVAT = a.IncludedVAT,
+                                  Quantity = a.Quantity,
+                                  ProductCategoryID = a.ProductCategoryID,
+                                  Detail = a.Detail,
+                                  Warranty = a.Warranty,
+                                  ViewCount = a.ViewCount,
+                                  TopHot = a.TopHot,
+                                  MetaKeywords = a.MetaKeywords,
+                                  MetaDescriptions = a.MetaDescriptions,
+                                  CreatedDate = a.CreatedDate,
+                                  CreatedBy = a.CreatedBy,
+                                  ModifiedDate = a.ModifiedDate,
+                                  ModifiedBy = a.ModifiedBy,
+                                  Status = a.Status
+                              }).AsEnumerable().Select(x => new Product()
+                              {
+                                  ID = x.ID,
+                                  Code = x.Code,
+                                  Name = x.Name,
+                                  MetaTitle = x.MetaTitle,
+                                  Description = x.Description,
+                                  Image = x.Image,
+                                  MoreImages = x.MoreImages,
+                                  Price = x.Price,
+                                  PromotionPrice = x.PromotionPrice,
+                                  IncludedVAT = x.IncludedVAT,
+                                  Quantity = x.Quantity,
+                                  ProductCategoryID = x.ProductCategoryID,
+                                  Detail = x.Detail,
+                                  Warranty = x.Warranty,
+                                  ViewCount = x.ViewCount,
+                                  TopHot = x.TopHot,
+                                  MetaKeywords = x.MetaKeywords,
+                                  MetaDescriptions = x.MetaDescriptions,
+                                  CreatedDate = x.CreatedDate,
+                                  CreatedBy = x.CreatedBy,
+                                  ModifiedDate = x.ModifiedDate,
+                                  ModifiedBy = x.ModifiedBy,
+                                  Status = x.Status
+                              });
+            return listProduct.ToList();
         }
 
         /// <summary>

@@ -41,7 +41,7 @@ namespace Model.EntityFramework
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
-        public virtual DbSet<Stadium> Stadia { get; set; }
+        public virtual DbSet<Stadium> Stadiums { get; set; }
         public virtual DbSet<StatusCategory> StatusCategories { get; set; }
         public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }

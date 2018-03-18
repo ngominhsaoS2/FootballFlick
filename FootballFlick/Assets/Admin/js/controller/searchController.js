@@ -7,7 +7,7 @@
             minLength: 0,
             source: function (request, response) {
                 $.ajax({
-                    url: "/Product/ListName",
+                    url: "/Product/ListProduct",
                     dataType: "json",
                     data: {
                         q: request.term
@@ -18,33 +18,33 @@
                 });
             },
             focus: function (event, ui) {
-                $("#txtProductID").val(ui.item.label);
+                $("#txtProductID").val(ui.item.Name);
                 return false;
             },
             select: function (event, ui) {
-                $("#txtProductID").val(ui.item.label);
+                $("#txtProductID").val(ui.item.ID);
                 return false;
             }
         })
      .autocomplete("instance")._renderItem = function (ul, item) {
          return $("<li>")
-           .append("<a>" + item.label + "</a>")
+           .append("<a>" + item.Name + "</a>")
            .appendTo(ul);
      };
     }
 }
 productSearch.init();
 
-var warehouseSearch = {
+var playerSearch = {
     init: function () {
-        warehouseSearch.registerEvent();
+        playerSearch.registerEvent();
     },
     registerEvent: function () {
-        $("#txtWarehouseID").autocomplete({
+        $("#txtPlayerID").autocomplete({
             minLength: 0,
             source: function (request, response) {
                 $.ajax({
-                    url: "/Warehouse/ListName",
+                    url: "/Player/ListPlayer",
                     dataType: "json",
                     data: {
                         q: request.term
@@ -55,19 +55,19 @@ var warehouseSearch = {
                 });
             },
             focus: function (event, ui) {
-                $("#txtWarehouseID").val(ui.item.label);
+                $("#txtPlayerID").val(ui.item.Name);
                 return false;
             },
             select: function (event, ui) {
-                $("#txtWarehouseID").val(ui.item.label);
+                $("#txtPlayerID").val(ui.item.ID);
                 return false;
             }
         })
      .autocomplete("instance")._renderItem = function (ul, item) {
          return $("<li>")
-           .append("<a>" + item.label + "</a>")
+           .append("<a>" + item.Name + "</a>")
            .appendTo(ul);
      };
     }
 }
-warehouseSearch.init();
+playerSearch.init();
