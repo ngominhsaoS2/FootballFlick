@@ -61,7 +61,7 @@ namespace Model.Dao
                 contentCategory.MetaDescriptions = entity.MetaDescriptions;
                 contentCategory.ShowInHome = entity.ShowInHome;
                 contentCategory.ModifiedDate = DateTime.Now;
-                contentCategory.Status = true;
+                contentCategory.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }

@@ -11,15 +11,18 @@ namespace Model.EntityFramework
     {
         public long ID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Name")]
         [StringLength(50)]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Please enter Address")]
         [StringLength(250)]
         public string Address { get; set; }
 
         [StringLength(250)]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Please enter Phone")]
         [StringLength(50)]
         public string Phone { get; set; }
 

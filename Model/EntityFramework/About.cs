@@ -11,6 +11,7 @@ namespace Model.EntityFramework
     {
         public int ID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Name")]
         [StringLength(250)]
         public string Name { get; set; }
 
@@ -23,6 +24,7 @@ namespace Model.EntityFramework
         [StringLength(250)]
         public string Image { get; set; }
 
+        [Required(ErrorMessage = "Please enter Detail")]
         [Column(TypeName = "ntext")]
         public string Detail { get; set; }
 

@@ -64,7 +64,7 @@ namespace Model.Dao
                 content.MetaKeywords = entity.MetaKeywords;
                 content.MetaDescriptions = entity.MetaDescriptions;
                 content.ModifiedDate = DateTime.Now;
-                content.Status = true;
+                content.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }

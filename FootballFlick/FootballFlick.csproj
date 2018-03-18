@@ -202,10 +202,12 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BannerController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClubController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\FeedbackController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LevelController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
@@ -281,6 +283,7 @@
     <Content Include="Assets\Admin\js\Chart.min.js" />
     <Content Include="Assets\Admin\js\chartinator.js" />
     <Content Include="Assets\Admin\js\classie.js" />
+    <Content Include="Assets\Admin\js\controller\clubController.js" />
     <Content Include="Assets\Admin\js\controller\orderController.js" />
     <Content Include="Assets\Admin\js\controller\productController.js" />
     <Content Include="Assets\Admin\js\controller\searchController.js" />
@@ -1384,6 +1387,12 @@
     <Content Include="Areas\Admin\Views\ContentCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ContentCategory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ContentCategory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Club\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Club\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Club\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Level\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Level\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Level\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

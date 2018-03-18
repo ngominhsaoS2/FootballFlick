@@ -127,7 +127,7 @@ namespace FootballFlick.Areas.Admin.Controllers
 
             foreach (var item in listImages)
             {
-                var subStringItem = item.Substring(21);
+                var subStringItem = item.Substring(22);
                 xElement.Add(new XElement("Image", subStringItem));
             }
             ProductDao dao = new ProductDao();

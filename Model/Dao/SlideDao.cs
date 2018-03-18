@@ -57,7 +57,7 @@ namespace Model.Dao
                 slide.Link = entity.Link;
                 slide.Description = entity.Description;
                 slide.ModifiedDate = DateTime.Now;
-                slide.Status = true;
+                slide.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }

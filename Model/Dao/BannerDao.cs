@@ -55,7 +55,7 @@ namespace Model.Dao
                 banner.Image = entity.Image;
                 banner.Description = entity.Description;
                 banner.ModifiedDate = DateTime.Now;
-                banner.Status = true;
+                banner.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }

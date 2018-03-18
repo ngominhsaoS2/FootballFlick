@@ -11,9 +11,11 @@ namespace Model.EntityFramework
     {
         public int ID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Code")]
         [StringLength(16)]
         public string Code { get; set; }
 
+        [Required(ErrorMessage = "Please enter Name")]
         [StringLength(250)]
         public string Name { get; set; }
 

@@ -74,7 +74,7 @@ namespace Model.Dao
                 productCategory.MetaDescriptions = entity.MetaDescriptions;
                 productCategory.ShowInHome = entity.ShowInHome;
                 productCategory.ModifiedDate = DateTime.Now;
-                productCategory.Status = true;
+                productCategory.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }

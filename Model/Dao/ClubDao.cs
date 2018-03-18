@@ -65,7 +65,7 @@ namespace Model.Dao
                 club.MetaKeywords = entity.MetaKeywords;
                 club.MetaDescriptions = entity.MetaDescriptions;
                 club.ModifiedDate = DateTime.Now;
-                club.Status = true;
+                club.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }
@@ -113,7 +113,17 @@ namespace Model.Dao
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
-
+        /// <summary>
+        /// Update MoreImages
+        /// </summary>
+        /// <param name="clubId"></param>
+        /// <param name="images"></param>
+        public void UpdateImages(long clubId, string images)
+        {
+            var club = db.Clubs.Find(clubId);
+            club.MoreImages = images;
+            db.SaveChanges();
+        }
 
 
 

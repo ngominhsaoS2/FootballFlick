@@ -74,7 +74,7 @@ namespace Model.Dao
                 user.Phone = entity.Phone;
                 user.ModifiedDate = DateTime.Now;
                 user.Image = entity.Image;
-                user.Status = true;
+                user.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }

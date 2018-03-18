@@ -66,6 +66,7 @@
     <Compile Include="Dao\ContentDao.cs" />
     <Compile Include="Dao\ContentTagDao.cs" />
     <Compile Include="Dao\FeedbackDao.cs" />
+    <Compile Include="Dao\LevelDao.cs" />
     <Compile Include="Dao\MenuDao.cs" />
     <Compile Include="Dao\OrderDao.cs" />
     <Compile Include="Dao\OrderDetailDao.cs" />

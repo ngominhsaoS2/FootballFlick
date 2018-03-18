@@ -52,8 +52,8 @@ namespace Model.Dao
             try
             {
                 var product = db.Products.Find(entity.ID);
-                product.Name = entity.Name;
                 product.Code = entity.Code;
+                product.Name = entity.Name;
                 product.MetaTitle = entity.MetaTitle;
                 product.Description = entity.Description;
                 product.Image = entity.Image;
@@ -67,7 +67,7 @@ namespace Model.Dao
                 product.MetaKeywords = entity.MetaKeywords;
                 product.MetaDescriptions = entity.MetaDescriptions;
                 product.ModifiedDate = DateTime.Now;
-                product.Status = true;
+                product.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }

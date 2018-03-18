@@ -11,12 +11,14 @@ namespace Model.EntityFramework
     {
         public long ID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Name")]
         [StringLength(250)]
         public string Name { get; set; }
 
         [StringLength(250)]
         public string MetaTitle { get; set; }
 
+        [Required(ErrorMessage = "Please enter Description")]
         [StringLength(250)]
         public string Description { get; set; }
 
@@ -25,6 +27,7 @@ namespace Model.EntityFramework
 
         public long? ContentCategoryID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Detail")]
         [Column(TypeName = "ntext")]
         public string Detail { get; set; }
 

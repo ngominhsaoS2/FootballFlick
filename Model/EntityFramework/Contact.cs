@@ -11,6 +11,7 @@ namespace Model.EntityFramework
     {
         public int ID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Content")]
         [Column(TypeName = "ntext")]
         public string Content { get; set; }
 
