@@ -209,6 +209,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LevelController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MatchController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\PlayerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
@@ -1402,6 +1403,9 @@
     <Content Include="Areas\Admin\Views\Stadium\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Stadium\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Stadium\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Match\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Match\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Match\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

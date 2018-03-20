@@ -16,6 +16,10 @@ namespace Model.EntityFramework
 
         [Key]
         [Column(Order = 1)]
+        public long ClubID { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long PlayerID { get; set; }
 

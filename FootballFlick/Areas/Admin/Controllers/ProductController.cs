@@ -39,7 +39,7 @@ namespace FootballFlick.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 //Xử lý MetaTitle
-                if (string.IsNullOrEmpty(product.MetaTitle))
+                if (!string.IsNullOrEmpty(product.MetaTitle))
                 {
                     product.MetaTitle = StringHelper.ToUnsignString(product.Name);
                 }
@@ -76,7 +76,10 @@ namespace FootballFlick.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                product.MetaTitle = StringHelper.ToUnsignString(product.Name);
+                if (!string.IsNullOrEmpty(product.MetaTitle))
+                {
+                    product.MetaTitle = StringHelper.ToUnsignString(product.Name);
+                }
 
                 var result = new ProductDao().Update(product);
                 if (result)

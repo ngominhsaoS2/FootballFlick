@@ -1,4 +1,5 @@
 ﻿using Model.EntityFramework;
+using Model.ViewModel;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -102,13 +103,13 @@ namespace Model.Dao
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public IEnumerable<Club> ListAllPaging(string searchString, int page, int pageSize)
+        public IEnumerable<ClubViewModel> ListAllPaging(string searchString, int page, int pageSize)
         {
-            IQueryable<Club> model = db.Clubs;
+            IQueryable<ClubViewModel> model = db.vClubs;
             if (!string.IsNullOrEmpty(searchString))
             {
                 model = model.Where(x => x.Code.Contains(searchString) || x.Name.Contains(searchString)
-                || x.Description.Contains(searchString) || x.Detail.Contains(searchString) || x.Phone.Contains(searchString));
+                || x.CaptainName.Contains(searchString) || x.Detail.Contains(searchString) || x.Phone.Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
@@ -124,6 +125,87 @@ namespace Model.Dao
             club.MoreImages = images;
             db.SaveChanges();
         }
+
+        /// <summary>
+        /// Check if a Code of Club already exists or not yet
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool CheckCode (string code)
+        {
+            int result = db.Clubs.Count(x => x.Code == code);
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Get Club list when having a keyword
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        public List<Club> ListClub(string keyword)
+        {
+            var listClub =    (from a in db.Clubs
+                              where a.Code.Contains(keyword) || a.Name.Contains(keyword)
+                              select new
+                              {
+                                  ID = a.ID,
+                                  Code = a.Code,
+                                  Name = a.Name,
+                                  MetaTitle = a.MetaTitle,
+                                  Description = a.Description,
+                                  Image = a.Image,
+                                  MoreImages = a.MoreImages,
+                                  Detail = a.Detail,
+                                  CaptainID = a.CaptainID,
+                                  Phone = a.Phone,
+                                  Address = a.Address,
+                                  MetaKeywords = a.MetaKeywords,
+                                  MetaDescriptions = a.MetaDescriptions,
+                                  CreatedDate = a.CreatedDate,
+                                  CreatedBy = a.CreatedBy,
+                                  ModifiedDate = a.ModifiedDate,
+                                  ModifiedBy = a.ModifiedBy,
+                                  Status = a.Status
+                              }).AsEnumerable().Select(x => new Club()
+                              {
+                                  ID = x.ID,
+                                  Code = x.Code,
+                                  Name = x.Name,
+                                  MetaTitle = x.MetaTitle,
+                                  Description = x.Description,
+                                  Image = x.Image,
+                                  MoreImages = x.MoreImages,
+                                  Detail = x.Detail,
+                                  CaptainID = x.CaptainID,
+                                  Phone = x.Phone,
+                                  Address = x.Address,
+                                  MetaKeywords = x.MetaKeywords,
+                                  MetaDescriptions = x.MetaDescriptions,
+                                  CreatedDate = x.CreatedDate,
+                                  CreatedBy = x.CreatedBy,
+                                  ModifiedDate = x.ModifiedDate,
+                                  ModifiedBy = x.ModifiedBy,
+                                  Status = x.Status
+                              });
+            return listClub.ToList();
+        }
+
+
+
+
+
+
+
+
+
+
 
 
 

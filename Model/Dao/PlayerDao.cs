@@ -114,8 +114,8 @@ namespace Model.Dao
         public List<Player> ListPlayer(string keyword)
         {
             var listPlayer =     (from a in db.Players
-                                 where a.Name.Contains(keyword)
-                                 select new
+                                 where a.Identification.Contains(keyword) || a.Name.Contains(keyword)
+                                  select new
                                  {
                                      ID = a.ID,
                                      Name = a.Name,
@@ -147,7 +147,23 @@ namespace Model.Dao
             return listPlayer.ToList();
         }
 
-
+        /// <summary>
+        /// Check if a Identification of Player already exists or not yet
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool CheckIdentification(string iden)
+        {
+            int result = db.Players.Count(x => x.Identification == iden);
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 

@@ -157,7 +157,15 @@ namespace FootballFlick.Areas.Admin.Controllers
 
         }
 
-
+        public JsonResult ListStadium(string q)
+        {
+            var data = new StadiumDao().ListStadium(q);
+            return Json(new
+            {
+                data = data,
+                status = true
+            }, JsonRequestBehavior.AllowGet);
+        }
 
 
 

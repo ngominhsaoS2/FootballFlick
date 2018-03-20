@@ -132,8 +132,8 @@ namespace Model.Dao
                          where a.ProductCategoryID == productCategoryID
                          select new
                          {
-                             CategoryMetaTitle = b.MetaTitle,
-                             CategoryName = b.Name,
+                             ProductCategoryMetaTitle = b.MetaTitle,
+                             ProductCategoryName = b.Name,
                              CreatedDate = a.CreatedDate,
                              ID = a.ID,
                              Image = a.Image,
@@ -142,8 +142,8 @@ namespace Model.Dao
                              Price = a.Price
                          }).AsEnumerable().Select(x => new ProductViewModel()
                          {
-                             CategoryMetaTitle = x.MetaTitle,
-                             CategoryName = x.Name,
+                             ProductCategoryMetaTitle = x.MetaTitle,
+                             ProductCategoryName = x.Name,
                              CreatedDate = x.CreatedDate,
                              ID = x.ID,
                              Image = x.Image,
@@ -179,8 +179,8 @@ namespace Model.Dao
                          where a.Status == true
                          select new
                          {
-                             CategoryMetaTitle = b.MetaTitle,
-                             CategoryName = b.Name,
+                             ProductCategoryMetaTitle = b.MetaTitle,
+                             ProductCategoryName = b.Name,
                              CreatedDate = a.CreatedDate,
                              ID = a.ID,
                              Image = a.Image,
@@ -189,8 +189,8 @@ namespace Model.Dao
                              Price = a.Price
                          }).AsEnumerable().Select(x => new ProductViewModel()
                          {
-                             CategoryMetaTitle = x.MetaTitle,
-                             CategoryName = x.Name,
+                             ProductCategoryMetaTitle = x.MetaTitle,
+                             ProductCategoryName = x.Name,
                              CreatedDate = x.CreatedDate,
                              ID = x.ID,
                              Image = x.Image,
@@ -230,7 +230,7 @@ namespace Model.Dao
         public List<Product> ListProduct(string keyword)
         {
             var listProduct = (from a in db.Products
-                               where a.Name.Contains(keyword)
+                               where a.Code.Contains(keyword) || a.Name.Contains(keyword)
                               select new
                               {
                                   ID = a.ID,
@@ -302,8 +302,8 @@ namespace Model.Dao
                          where a.Name.Contains(keyword)
                          select new
                          {
-                             CategoryMetaTitle = b.MetaTitle,
-                             CategoryName = b.Name,
+                             ProductCategoryMetaTitle = b.MetaTitle,
+                             ProductCategoryName = b.Name,
                              CreatedDate = a.CreatedDate,
                              ID = a.ID,
                              Image = a.Image,
@@ -312,8 +312,8 @@ namespace Model.Dao
                              Price = a.Price
                          }).AsEnumerable().Select(x => new ProductViewModel()
                          {
-                             CategoryMetaTitle = x.MetaTitle,
-                             CategoryName = x.Name,
+                             ProductCategoryMetaTitle = x.MetaTitle,
+                             ProductCategoryName = x.Name,
                              CreatedDate = x.CreatedDate,
                              ID = x.ID,
                              Image = x.Image,

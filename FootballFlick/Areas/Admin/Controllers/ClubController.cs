@@ -38,23 +38,30 @@ namespace FootballFlick.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 //Xử lý MetaTitle
-                if (string.IsNullOrEmpty(club.MetaTitle))
+                if (!string.IsNullOrEmpty(club.Name))
                 {
                     club.MetaTitle = StringHelper.ToUnsignString(club.Name);
                 }
 
                 var dao = new ClubDao();
-                long id = dao.Insert(club);
-                if (id > 0)
+                if (dao.CheckCode(club.Code) == false)
                 {
-                    SetAlert("Create a new club successfully.", "success");
-                    return RedirectToAction("Index", "Club");
+                    long id = dao.Insert(club);
+                    if (id > 0)
+                    {
+                        SetAlert("Create a new club successfully.", "success");
+                        return RedirectToAction("Index", "Club");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Create a new club failed.");
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Create a new club failed.");
-                    return RedirectToAction("Create", "Club");
+                    ModelState.AddModelError("", "The Code already exists. Please try another Code.");
                 }
+                
             }
             return View(club);
         }
@@ -73,7 +80,10 @@ namespace FootballFlick.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                club.MetaTitle = StringHelper.ToUnsignString(club.Name);
+                if (!string.IsNullOrEmpty(club.Name))
+                {
+                    club.MetaTitle = StringHelper.ToUnsignString(club.Name);
+                }
 
                 var result = new ClubDao().Update(club);
                 if (result)
@@ -165,7 +175,15 @@ namespace FootballFlick.Areas.Admin.Controllers
 
         }
 
-        
+        public JsonResult ListClub(string q)
+        {
+            var data = new ClubDao().ListClub(q);
+            return Json(new
+            {
+                data = data,
+                status = true
+            }, JsonRequestBehavior.AllowGet);
+        }
 
 
 

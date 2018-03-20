@@ -117,7 +117,50 @@ namespace Model.Dao
             db.SaveChanges();
         }
 
-
+        /// <summary>
+        /// Get Stadium list when having a keyword
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        public List<Stadium> ListStadium(string keyword)
+        {
+            var listStadium = (from a in db.Stadiums
+                               where a.Code.Contains(keyword) || a.Name.Contains(keyword)
+                              select new
+                              {
+                                  ID = a.ID,
+                                  Code = a.Code,
+                                  Name = a.Name,
+                                  Address = a.Address,
+                                  Email = a.Email,
+                                  Phone = a.Phone,
+                                  Image = a.Image,
+                                  Description = a.Description,
+                                  Detail = a.Detail,
+                                  CreatedDate = a.CreatedDate,
+                                  CreatedBy = a.CreatedBy,
+                                  ModifiedDate = a.ModifiedDate,
+                                  ModifiedBy = a.ModifiedBy,
+                                  Status = a.Status
+                              }).AsEnumerable().Select(x => new Stadium()
+                              {
+                                  ID = x.ID,
+                                  Code = x.Code,
+                                  Name = x.Name,
+                                  Address = x.Address,
+                                  Email = x.Email,
+                                  Phone = x.Phone,
+                                  Image = x.Image,
+                                  Description = x.Description,
+                                  Detail = x.Detail,
+                                  CreatedDate = x.CreatedDate,
+                                  CreatedBy = x.CreatedBy,
+                                  ModifiedDate = x.ModifiedDate,
+                                  ModifiedBy = x.ModifiedBy,
+                                  Status = x.Status
+                              });
+            return listStadium.ToList();
+        }
 
 
 

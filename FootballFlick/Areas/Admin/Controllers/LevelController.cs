@@ -36,7 +36,7 @@ namespace FootballFlick.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 //Xử lý MetaTitle
-                if (string.IsNullOrEmpty(level.MetaTitle))
+                if (!string.IsNullOrEmpty(level.Name))
                 {
                     level.MetaTitle = StringHelper.ToUnsignString(level.Name);
                 }
@@ -71,7 +71,10 @@ namespace FootballFlick.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                level.MetaTitle = StringHelper.ToUnsignString(level.Name);
+                if (!string.IsNullOrEmpty(level.Name))
+                {
+                    level.MetaTitle = StringHelper.ToUnsignString(level.Name);
+                }
 
                 var result = new LevelDao().Update(level);
                 if (result)

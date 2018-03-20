@@ -71,3 +71,110 @@ var playerSearch = {
     }
 }
 playerSearch.init();
+
+var clubSearch = {
+    init: function () {
+        clubSearch.registerEvent();
+    },
+    registerEvent: function () {
+        $("#txtHomeClubID").autocomplete({
+            minLength: 0,
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Club/ListClub",
+                    dataType: "json",
+                    data: {
+                        q: request.term
+                    },
+                    success: function (res) {
+                        response(res.data);
+                    }
+                });
+            },
+            focus: function (event, ui) {
+                $("#txtHomeClubID").val(ui.item.Code);
+                return false;
+            },
+            select: function (event, ui) {
+                $("#txtHomeClubID").val(ui.item.ID);
+                $("#txtHomeClubCode").val(ui.item.Code);
+                return false;
+            }
+        })
+     .autocomplete("instance")._renderItem = function (ul, item) {
+         return $("<li>")
+           .append("<a>" + item.Code + " - " + item.Name + "</a>")
+           .appendTo(ul);
+     };
+
+        $("#txtVisitingClubID").autocomplete({
+            minLength: 0,
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Club/ListClub",
+                    dataType: "json",
+                    data: {
+                        q: request.term
+                    },
+                    success: function (res) {
+                        response(res.data);
+                    }
+                });
+            },
+            focus: function (event, ui) {
+                $("#txtVisitingClubID").val(ui.item.Code);
+                return false;
+            },
+            select: function (event, ui) {
+                $("#txtVisitingClubID").val(ui.item.ID);
+                $("#txtVisitingClubCode").val(ui.item.Code);
+                return false;
+            }
+        })
+     .autocomplete("instance")._renderItem = function (ul, item) {
+         return $("<li>")
+           .append("<a>" + item.Code + " - " + item.Name + "</a>")
+           .appendTo(ul);
+     };
+    }
+}
+clubSearch.init();
+
+var stadiumSearch = {
+    init: function () {
+        stadiumSearch.registerEvent();
+    },
+    registerEvent: function () {
+        $("#txtStadiumID").autocomplete({
+            minLength: 0,
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Stadium/ListStadium",
+                    dataType: "json",
+                    data: {
+                        q: request.term
+                    },
+                    success: function (res) {
+                        response(res.data);
+                    }
+                });
+            },
+            focus: function (event, ui) {
+                $("#txtStadiumID").val(ui.item.Code);
+                return false;
+            },
+            select: function (event, ui) {
+                $("#txtStadiumID").val(ui.item.ID);
+                $("#txtStadiumCode").val(ui.item.Code);
+                $("#txtHoldAddress").val(ui.item.Address);
+                return false;
+            }
+        })
+     .autocomplete("instance")._renderItem = function (ul, item) {
+         return $("<li>")
+           .append("<a>" + item.Code + " - " + item.Name + "</a>")
+           .appendTo(ul);
+     };
+    }
+}
+stadiumSearch.init();

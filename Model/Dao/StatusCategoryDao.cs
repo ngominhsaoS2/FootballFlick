@@ -27,13 +27,13 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List all StatusCategory when having type - Lấy ra các StatusCategory khi có type
+        /// List all StatusCategory when having ForTable, Type
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public List<StatusCategory> ListStatus(int type)
+        public List<StatusCategory> ListStatus(string forTable, int type)
         {
-            return db.StatusCategories.Where(x => x.Type == type).OrderBy(x => x.ID).ToList();
+            return db.StatusCategories.Where(x => x.ForTable == forTable && x.Type == type).OrderBy(x => x.ID).ToList();
         }
 
 

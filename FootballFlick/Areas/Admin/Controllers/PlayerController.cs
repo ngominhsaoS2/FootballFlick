@@ -36,17 +36,24 @@ namespace FootballFlick.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new PlayerDao();
-                long id = dao.Insert(player);
-                if (id > 0)
+                if(dao.CheckIdentification(player.Identification) == false)
                 {
-                    SetAlert("Create a new player successfully.", "success");
-                    return RedirectToAction("Index", "player");
+                    long id = dao.Insert(player);
+                    if (id > 0)
+                    {
+                        SetAlert("Create a new player successfully.", "success");
+                        return RedirectToAction("Index", "player");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Create a new player failed.");
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Create a new player failed.");
-                    return RedirectToAction("Create", "Player");
+                    ModelState.AddModelError("", "The Identification already exists. Please try another Identification.");
                 }
+
             }
             return View(player);
         }
