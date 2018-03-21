@@ -62,6 +62,13 @@
                         <td>@item.Phone</td>
                         <td>@(item.Status ? "Active" : "Not available")</td>
                         <td>
+                            <a href="/Admin/ClubPlayer/Edit/@item.ID">Players</a>
+                            |
+                            <a href="/Admin/ClubStadium/Edit/@item.ID">Stadiums</a>
+                            |
+                            <a href="/Admin/ClubAvailableTime/Edit/@item.ID">Time</a>
+                            |
+                            <br />
                             <a href="#" data-id="@item.ID" class="btn-images">More images</a>
                             |
                             <a href="/Admin/Club/Edit/@item.ID">Edit</a>

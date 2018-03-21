@@ -122,7 +122,7 @@
             </div>
             @Html.LabelFor(model => model.ExpiredDateToSign, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                @Html.TextBoxFor(model => model.ExpiredDateToSign, new { @class = "form-control", type = "date" })
+                @Html.TextBoxFor(model => model.ExpiredDateToSign, new { @class = "form-control", type = "datetime" })
                 @Html.ValidationMessageFor(model => model.ExpiredDateToSign, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -34,6 +34,6 @@ namespace Model.ViewModel
         [Key]
         [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Status { get; set; }
+        public bool Status { get; set; }
     }
 }

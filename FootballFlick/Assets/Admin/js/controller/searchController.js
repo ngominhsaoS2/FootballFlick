@@ -23,6 +23,7 @@
             },
             select: function (event, ui) {
                 $("#txtProductID").val(ui.item.ID);
+                $("#txtPrice").val(ui.item.Price);
                 return false;
             }
         })
@@ -60,12 +61,14 @@ var playerSearch = {
             },
             select: function (event, ui) {
                 $("#txtPlayerID").val(ui.item.ID);
+                $("#txtPlayerName").val(ui.item.Name);
+                $("#txtPlayerIdentification").val(ui.item.Identification);
                 return false;
             }
         })
      .autocomplete("instance")._renderItem = function (ul, item) {
          return $("<li>")
-           .append("<a>" + item.Name + "</a>")
+           .append("<a>" + item.Identification + " - " + item.Name + "</a>")
            .appendTo(ul);
      };
     }
