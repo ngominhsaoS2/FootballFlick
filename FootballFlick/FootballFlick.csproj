@@ -204,6 +204,7 @@
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClubController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClubPlayerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClubStadiumController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\FeedbackController.cs" />
@@ -289,6 +290,7 @@
     <Content Include="Assets\Admin\js\classie.js" />
     <Content Include="Assets\Admin\js\controller\clubController.js" />
     <Content Include="Assets\Admin\js\controller\clubPlayerController.js" />
+    <Content Include="Assets\Admin\js\controller\clubStadiumController.js" />
     <Content Include="Assets\Admin\js\controller\orderController.js" />
     <Content Include="Assets\Admin\js\controller\productController.js" />
     <Content Include="Assets\Admin\js\controller\searchController.js" />
@@ -1409,6 +1411,7 @@
     <Content Include="Areas\Admin\Views\Match\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Match\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ClubPlayer\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ClubStadium\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

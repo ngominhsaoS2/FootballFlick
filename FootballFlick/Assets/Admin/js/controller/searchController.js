@@ -169,6 +169,7 @@ var stadiumSearch = {
             select: function (event, ui) {
                 $("#txtStadiumID").val(ui.item.ID);
                 $("#txtStadiumCode").val(ui.item.Code);
+                $("#txtStadiumName").val(ui.item.Name);
                 $("#txtHoldAddress").val(ui.item.Address);
                 return false;
             }

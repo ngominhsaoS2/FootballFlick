@@ -25,6 +25,9 @@ namespace Model.ViewModel
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long StadiumID { get; set; }
 
+        [StringLength(16)]
+        public string StadiumCode { get; set; }
+
         [StringLength(50)]
         public string StadiumName { get; set; }
 
