@@ -32,21 +32,31 @@ namespace FootballFlick.Areas.Admin.Controllers
 
         public JsonResult AddRow(string row)
         {
-            var json = new JavaScriptSerializer().Deserialize<ClubStadium>(row);
-            ClubStadium clubStadium = new ClubStadium();
-            clubStadium.ClubID = json.ClubID;
-            clubStadium.StadiumID = json.StadiumID;
-            clubStadium.Status = true;
-            var dao = new ClubStadiumDao();
-            if (dao.CheckExistRow(clubStadium.ClubID, clubStadium.StadiumID) == false)
+            try
             {
-                dao.Insert(clubStadium);
-                return Json(new
+                var json = new JavaScriptSerializer().Deserialize<ClubStadium>(row);
+                ClubStadium clubStadium = new ClubStadium();
+                clubStadium.ClubID = json.ClubID;
+                clubStadium.StadiumID = json.StadiumID;
+                clubStadium.Status = true;
+                var dao = new ClubStadiumDao();
+                if (dao.CheckExistRow(clubStadium.ClubID, clubStadium.StadiumID) == false)
                 {
-                    status = true
-                });
+                    dao.Insert(clubStadium);
+                    return Json(new
+                    {
+                        status = true
+                    });
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        status = false
+                    });
+                }
             }
-            else
+            catch (Exception ex)
             {
                 return Json(new
                 {

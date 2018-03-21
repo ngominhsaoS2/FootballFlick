@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\BannerDao.cs" />
+    <Compile Include="Dao\ClubAvailableTimeDao.cs" />
     <Compile Include="Dao\ClubDao.cs" />
     <Compile Include="Dao\ClubPlayerDao.cs" />
     <Compile Include="Dao\ClubStadiumDao.cs" />

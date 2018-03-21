@@ -91,28 +91,39 @@ namespace FootballFlick.Areas.Admin.Controllers
 
         public JsonResult AddRow(string row)
         {
-            var json = new JavaScriptSerializer().Deserialize<OrderDetail>(row);
-            OrderDetail orderDetail = new OrderDetail();
-            orderDetail.OrderID = json.OrderID;
-            orderDetail.ProductID = json.ProductID;
-            orderDetail.Price = json.Price;
-            orderDetail.Quantity = json.Quantity;
-            var dao = new OrderDetailDao();
-            if (dao.CheckExistRow(orderDetail.OrderID, orderDetail.ProductID) == false)
+            try
             {
-                dao.Insert(orderDetail);
-                return Json(new
+                var json = new JavaScriptSerializer().Deserialize<OrderDetail>(row);
+                OrderDetail orderDetail = new OrderDetail();
+                orderDetail.OrderID = json.OrderID;
+                orderDetail.ProductID = json.ProductID;
+                orderDetail.Price = json.Price;
+                orderDetail.Quantity = json.Quantity;
+                var dao = new OrderDetailDao();
+                if (dao.CheckExistRow(orderDetail.OrderID, orderDetail.ProductID) == false)
                 {
-                    status = true
-                });
+                    dao.Insert(orderDetail);
+                    return Json(new
+                    {
+                        status = true
+                    });
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        status = false
+                    });
+                }
             }
-            else
+            catch (Exception ex)
             {
                 return Json(new
                 {
                     status = false
                 });
             }
+            
         }
 
         public List<CartItem> ListCartItemByOrderId(long id)

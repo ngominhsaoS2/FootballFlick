@@ -202,6 +202,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BannerController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClubAvailableTimeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClubController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClubPlayerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClubStadiumController.cs" />
@@ -288,6 +289,7 @@
     <Content Include="Assets\Admin\js\Chart.min.js" />
     <Content Include="Assets\Admin\js\chartinator.js" />
     <Content Include="Assets\Admin\js\classie.js" />
+    <Content Include="Assets\Admin\js\controller\clubAvailableTimeController.js" />
     <Content Include="Assets\Admin\js\controller\clubController.js" />
     <Content Include="Assets\Admin\js\controller\clubPlayerController.js" />
     <Content Include="Assets\Admin\js\controller\clubStadiumController.js" />
@@ -1412,6 +1414,7 @@
     <Content Include="Areas\Admin\Views\Match\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ClubPlayer\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ClubStadium\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ClubAvailableTime\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

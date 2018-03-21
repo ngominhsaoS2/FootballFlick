@@ -16,6 +16,8 @@ namespace Model.EntityFramework
 
         [Key]
         [Column(Order = 1)]
+        public int Stt { get; set; }
+
         [StringLength(20)]
         public string Day { get; set; }
 

@@ -22,6 +22,8 @@ namespace Model.ViewModel
 
         [Key]
         [Column(Order = 1)]
+        public int Stt { get; set; }
+
         [StringLength(20)]
         public string Day { get; set; }
 
