@@ -1,0 +1,58 @@
+﻿@model FootballFlick.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header {
+    <section class="inner-w3ls">
+        <div class="container">
+            <h3 class="text-center" data-aos="zoom-in">Login</h3>
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb" data-aos="zoom-in">
+                        <li class="active"><a href="/Home">Home</a></li>
+                        <li class="active">Login</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>
+}
+
+<section class="contact-w3ls">
+    <!-- Contact Form -->
+    <div class="container">
+        <div class="col-md-8">
+            <h3 class="text-left" data-aos="flip-up">@Html.ValidationSummary(true, "", new { @class = "text-danger" })</h3>
+            
+            @using (Html.BeginForm("Login", "User", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="control-group form-group" data-aos="flip-up">
+                    <div class="controls">
+                        <label>UserName</label>
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+
+                <div class="control-group form-group" data-aos="flip-up">
+                    <div class="controls">
+                        <label>Password</label>
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                
+                <input class="btn btn-primary" data-aos="flip-up" type="submit" value="Login">
+
+            }
+        </div>
+    </div>
+</section>

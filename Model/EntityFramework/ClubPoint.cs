@@ -11,8 +11,7 @@ namespace Model.EntityFramework
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(16)]
-        public string MatchCode { get; set; }
+        public string MatchID { get; set; }
 
         [Key]
         [Column(Order = 1)]

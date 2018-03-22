@@ -31,6 +31,9 @@ namespace Model.EntityFramework
         [Column(TypeName = "ntext")]
         public string Detail { get; set; }
 
+        [StringLength(50)]
+        public string FontAwesome { get; set; }
+
         public int? Warranty { get; set; }
 
         public DateTime? TopHot { get; set; }

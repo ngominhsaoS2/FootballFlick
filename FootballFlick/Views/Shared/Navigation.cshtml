@@ -1,0 +1,62 @@
+﻿@model List<Model.EntityFramework.Menu>
+
+@{ 
+    var userSession = (UserLogin)Session[FootballFlick.Common.CommonConstants.USER_SESSION];
+
+}
+
+<nav class="navbar navbar-default navbar-fixed-top" data-aos="flip-up">
+    <div class="container">
+        <div class="search1">
+            <form action="#" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="search" id="search2" placeholder="Search" required />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/Home"><h1>Bike Race</h1></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav slide-nav">
+            @foreach (var item in Model)
+            {
+                <li><a href="@item.Link">@item.Text</a></li>
+            }
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Your Club <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Create new Club</a></li>
+                        <li><a href="#">General setting</a></li>
+                        <li><a href="#">Player</a></li>
+                        <li><a href="#">Stadium</a></li>
+                        <li><a href="#">Available time</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Register">Register</a></li>
+                        <li><a href="/Login">Login</a></li>
+                        <li><a href="/Logout">Logout</a></li>
+                        <li><a href="/ContactUs">Contact us</a></li>
+                        <li><a href="/AboutUs">About us</a></li>
+                    </ul>
+                </li>
+            @if (userSession != null)
+            {
+                <li><a href="#">Hello @userSession.UserName</a></li>
+            }    
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>

@@ -1,0 +1,117 @@
+﻿@model FootballFlick.Models.RegisterModel
+@using BotDetect.Web.Mvc;
+
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl"
+      rel="stylesheet" type="text/css" />
+
+@{ MvcCaptcha registerCapcha = new MvcCaptcha("registerCapcha"); }
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header {
+    <section class="inner-w3ls">
+        <div class="container">
+            <h3 class="text-center" data-aos="zoom-in">Register to join us</h3>
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb" data-aos="zoom-in">
+                        <li class="active"><a href="/Home">Home</a></li>
+                        <li class="active">Register</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>    
+}
+
+<section class="contact-w3ls">
+    <!-- Contact Form -->
+    <div class="container">
+        <div class="col-md-8">
+            @using (Html.BeginForm("Register", "User", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                if (ViewBag.Success != null)
+                {
+                    <div class="alert alert-success">@ViewBag.Success</div>
+                }
+
+                <div id="success">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="control-group form-group" data-aos="flip-up">
+                    <div class="controls">
+                        <label>UserName</label>
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+
+                    <div class="control-group form-group" data-aos="flip-up">
+                        <div class="controls">
+                            <label>Password</label>
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="control-group form-group" data-aos="flip-up">
+                        <div class="controls">
+                            <label>ConfirmPassword</label>
+                            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="control-group form-group" data-aos="flip-up">
+                        <div class="controls">
+                            <label>Name</label>
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="control-group form-group" data-aos="flip-up">
+                        <div class="controls">
+                            <label>Address</label>
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="control-group form-group" data-aos="flip-up">
+                        <div class="controls">
+                            <label>Email</label>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="control-group form-group" data-aos="flip-up">
+                        <div class="controls">
+                            <label>Phone</label>
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="control-group form-group" data-aos="flip-up">
+                        <div class="controls">
+                            <label>Capcha</label>
+                            @Html.Captcha(registerCapcha)
+                            @Html.TextBox("CaptchaCode")
+                        </div>
+                    </div>
+
+                    <input class="btn btn-primary" data-aos="flip-up" type="submit" value="Submit">
+            }
+        </div>
+    </div>
+</section>

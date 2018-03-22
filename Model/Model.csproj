@@ -124,6 +124,7 @@
     <Compile Include="ViewModel\ClubAreaViewModel.cs" />
     <Compile Include="ViewModel\ClubAvailableTimeViewModel.cs" />
     <Compile Include="ViewModel\ClubPlayerViewModel.cs" />
+    <Compile Include="ViewModel\ClubPointViewModel.cs" />
     <Compile Include="ViewModel\ClubStadiumViewModel.cs" />
     <Compile Include="ViewModel\ClubViewModel.cs" />
     <Compile Include="ViewModel\ContentViewModel.cs" />

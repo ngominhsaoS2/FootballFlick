@@ -60,6 +60,7 @@ namespace Model.EntityFramework
         public virtual DbSet<MatchViewModel> vMatches { get; set; }
         public virtual DbSet<OrderDetailViewModel> vOrderDetails { get; set; }
         public virtual DbSet<PlayerPointViewModel> vPlayerPoints { get; set; }
+        public virtual DbSet<ClubPointViewModel> vClubPoints { get; set; }
         public virtual DbSet<ProductViewModel> vProducts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -160,5 +161,7 @@ namespace Model.EntityFramework
                 .Property(e => e.PromotionPrice)
                 .HasPrecision(18, 0);
         }
+
+
     }
 }

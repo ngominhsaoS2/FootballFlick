@@ -39,7 +39,7 @@ namespace FootballFlick.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 //Xử lý MetaTitle
-                if (!string.IsNullOrEmpty(product.MetaTitle))
+                if (!string.IsNullOrEmpty(product.Name))
                 {
                     product.MetaTitle = StringHelper.ToUnsignString(product.Name);
                 }
