@@ -37,6 +37,7 @@ namespace FootballFlick.Controllers
                 }
                 else
                 {
+                    //Tạo User mới
                     var user = new User();
                     user.UserName = model.UserName;
                     user.Password = Encryptor.MD5Hash(model.Password);
@@ -47,9 +48,21 @@ namespace FootballFlick.Controllers
                     user.Phone = model.Phone;
                     user.CreatedDate = DateTime.Now;
                     user.Status = true;
-                    var result = dao.Insert(user);
+                    var resUser = dao.Insert(user);
 
-                    if (result > 0)
+                    //Tạo Player mới theo User
+                    var player = new Player();
+                    player.Name = model.UserName;
+                    player.Identification = model.Email;
+                    player.Address = model.Address;
+                    player.Email = model.Email;
+                    player.Phone = model.Phone;
+                    player.Image = model.Image;
+                    player.CreatedDate = DateTime.Now;
+                    player.Status = true;
+                    var resPlayer = new PlayerDao().Insert(player);
+
+                    if (resUser > 0)
                     {
                         ViewBag.Success = "Register successfully";
                         model = new RegisterModel();
@@ -58,6 +71,18 @@ namespace FootballFlick.Controllers
                     {
                         ModelState.AddModelError("", "Register failed");
                     }
+
+                    
+
+                    if (resPlayer > 0)
+                    {
+                        
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Create a new player failed");
+                    }
+
                 }
             }
 

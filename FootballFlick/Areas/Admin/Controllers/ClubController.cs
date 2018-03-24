@@ -85,7 +85,7 @@ namespace FootballFlick.Areas.Admin.Controllers
                     club.MetaTitle = StringHelper.ToUnsignString(club.Name);
                 }
 
-                var result = new ClubDao().Update(club);
+                var result = new ClubDao().Update(club, 1);
                 if (result)
                 {
                     SetAlert("Edit this club successfully.", "success");

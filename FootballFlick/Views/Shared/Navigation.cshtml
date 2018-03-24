@@ -2,7 +2,6 @@
 
 @{ 
     var userSession = (UserLogin)Session[FootballFlick.Common.CommonConstants.USER_SESSION];
-
 }
 
 <nav class="navbar navbar-default navbar-fixed-top" data-aos="flip-up">
@@ -24,7 +23,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/Home"><h1>Bike Race</h1></a>
+            <a class="navbar-brand" href="/Home"><h1>B.Flick</h1></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav slide-nav">
@@ -35,11 +34,17 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Your Club <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Create new Club</a></li>
-                        <li><a href="#">General setting</a></li>
-                        <li><a href="#">Player</a></li>
-                        <li><a href="#">Stadium</a></li>
-                        <li><a href="#">Available time</a></li>
+                        <li><a href="/Club/Create">Create new Club</a></li>
+                    @if (userSession != null)
+                    {
+                        var link = "/Club/" + userSession.UserName + "-" + userSession.UserID;
+                        <li><a href="@link">Manage your Clubs</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Login">Login to manage your Clubs</a></li>
+                    }
+
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -48,8 +53,8 @@
                         <li><a href="/Register">Register</a></li>
                         <li><a href="/Login">Login</a></li>
                         <li><a href="/Logout">Logout</a></li>
-                        <li><a href="/ContactUs">Contact us</a></li>
-                        <li><a href="/AboutUs">About us</a></li>
+                        <li><a href="/Contact">Contact</a></li>
+                        <li><a href="/About">About</a></li>
                     </ul>
                 </li>
             @if (userSession != null)

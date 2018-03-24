@@ -235,6 +235,7 @@
     <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClubController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1438,6 +1439,7 @@
     <Content Include="Assets\Client\js\bootstrap.min.js" />
     <Content Include="Assets\Client\js\colorfulTab.min.js" />
     <Content Include="Assets\Client\js\contact_me.js" />
+    <Content Include="Assets\Client\js\controller\contactController.js" />
     <Content Include="Assets\Client\js\index.js" />
     <Content Include="Assets\Client\js\jarallax.js" />
     <Content Include="Assets\Client\js\jqBootstrapValidation.js" />
@@ -1636,12 +1638,15 @@
     <Content Include="Views\Content\Tag.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Club\Create.cshtml" />
+    <Content Include="Views\Club\Index.cshtml" />
+    <Content Include="Views\Club\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Data\files\" />
-    <Folder Include="Views\Contact\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

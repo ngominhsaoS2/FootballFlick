@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Model.Dao;
+using Model.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,33 +18,22 @@ namespace FootballFlick.Controllers
         }
 
         [HttpPost]
-        public JsonResult Send(string name, string mobile, string address, string email, string content)
+        public ActionResult Index(Feedback feed)
         {
-            var feedback = new Feedback();
-            feedback.Name = name;
-            feedback.Phone = mobile;
-            feedback.Address = address;
-            feedback.Email = email;
-            feedback.Content = content;
-            feedback.CreatedDate = DateTime.Now;
-
-            var id = new FeedbackDao().Insert(feedback);
-            if (id > 0)
+            if (ModelState.IsValid)
             {
-                return Json(new
+                var dao = new FeedbackDao();
+                long result = dao.Insert(feed);
+                if (result > 0)
                 {
-                    status = true
-                    //Có thể send mail ở đây, làm tương tự như bài gửi mail
-                });
-            }
-            else
-            {
-                return Json(new
+                    ViewBag.Success = "Feedback sent successfully";
+                }
+                else
                 {
-                    status = false
-                });
+                    ModelState.AddModelError("", "Sending feedback failed");
+                }
             }
-
+            return View(feed);
         }
 
 

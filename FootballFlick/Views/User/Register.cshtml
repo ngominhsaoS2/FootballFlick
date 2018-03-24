@@ -26,13 +26,14 @@
             </div>
             <!-- /.row -->
         </div>
-    </section>    
+    </section>
 }
 
-<section class="contact-w3ls">
+<section class="news-w3layouts">
     <!-- Contact Form -->
     <div class="container">
         <div class="col-md-8">
+            <h3 class="text-left" data-aos="flip-up">@Html.ValidationSummary(true, "", new { @class = "text-danger" })</h3>
             @using (Html.BeginForm("Register", "User", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
@@ -40,10 +41,6 @@
                 {
                     <div class="alert alert-success">@ViewBag.Success</div>
                 }
-
-                <div id="success">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                </div>
 
                 <div class="control-group form-group" data-aos="flip-up">
                     <div class="controls">
@@ -54,64 +51,65 @@
                     </div>
                 </div>
 
-                    <div class="control-group form-group" data-aos="flip-up">
-                        <div class="controls">
-                            <label>Password</label>
-                            @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                        </div>
+                <div class="control-group form-group" data-aos="flip-up">
+                    <div class="controls">
+                        <label>Password</label>
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
+                </div>
 
-                    <div class="control-group form-group" data-aos="flip-up">
-                        <div class="controls">
-                            <label>ConfirmPassword</label>
-                            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-                        </div>
+                <div class="control-group form-group" data-aos="flip-up">
+                    <div class="controls">
+                        <label>ConfirmPassword</label>
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                     </div>
+                </div>
 
-                    <div class="control-group form-group" data-aos="flip-up">
-                        <div class="controls">
-                            <label>Name</label>
-                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                        </div>
+                <div class="control-group form-group" data-aos="flip-up">
+                    <div class="controls">
+                        <label>Name</label>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
+                </div>
 
-                    <div class="control-group form-group" data-aos="flip-up">
-                        <div class="controls">
-                            <label>Address</label>
-                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                        </div>
+                <div class="control-group form-group" data-aos="flip-up">
+                    <div class="controls">
+                        <label>Address</label>
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                     </div>
+                </div>
 
-                    <div class="control-group form-group" data-aos="flip-up">
-                        <div class="controls">
-                            <label>Email</label>
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                        </div>
+                <div class="control-group form-group" data-aos="flip-up">
+                    <div class="controls">
+                        <label>Email</label>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
+                </div>
 
-                    <div class="control-group form-group" data-aos="flip-up">
-                        <div class="controls">
-                            <label>Phone</label>
-                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                        </div>
+                <div class="control-group form-group" data-aos="flip-up">
+                    <div class="controls">
+                        <label>Phone</label>
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                     </div>
+                </div>
 
-                    <div class="control-group form-group" data-aos="flip-up">
-                        <div class="controls">
-                            <label>Capcha</label>
-                            @Html.Captcha(registerCapcha)
-                            @Html.TextBox("CaptchaCode")
-                        </div>
+                <div class="control-group form-group" data-aos="flip-up">
+                    <div class="controls">
+                        <label>Capcha</label>
+                        @Html.Captcha(registerCapcha)
+                        @Html.TextBox("CaptchaCode")
                     </div>
+                </div>
 
-                    <input class="btn btn-primary" data-aos="flip-up" type="submit" value="Submit">
+                <input class="btn btn-primary" data-aos="flip-up" type="submit" value="Submit">
             }
         </div>
     </div>
 </section>
+<br />

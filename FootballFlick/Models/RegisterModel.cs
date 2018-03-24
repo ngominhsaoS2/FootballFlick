@@ -32,7 +32,8 @@ namespace FootballFlick.Models
 
         public string Phone { get; set; }
 
-
+        [StringLength(500)]
+        public string Image { get; set; }
 
     }
 }

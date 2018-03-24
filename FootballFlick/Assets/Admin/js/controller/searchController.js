@@ -182,3 +182,41 @@ var stadiumSearch = {
     }
 }
 stadiumSearch.init();
+
+var userSearch = {
+    init: function () {
+        userSearch.registerEvent();
+    },
+    registerEvent: function () {
+        $("#txtUserID").autocomplete({
+            minLength: 0,
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Admin/User/ListUser",
+                    dataType: "json",
+                    data: {
+                        q: request.term
+                    },
+                    success: function (res) {
+                        response(res.data);
+                    }
+                });
+            },
+            focus: function (event, ui) {
+                $("#txtUserID").val(ui.item.Name);
+                return false;
+            },
+            select: function (event, ui) {
+                $("#txtUserID").val(ui.item.ID);
+                $("#txtUserName").val(ui.item.UserName);
+                return false;
+            }
+        })
+     .autocomplete("instance")._renderItem = function (ul, item) {
+         return $("<li>")
+           .append("<a>" + item.ID + " - " + item.UserName + "</a>")
+           .appendTo(ul);
+     };
+    }
+}
+userSearch.init();

@@ -30,7 +30,6 @@ namespace Model.EntityFramework
         [StringLength(50)]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Please select Image")]
         [StringLength(500)]
         public string Image { get; set; }
 

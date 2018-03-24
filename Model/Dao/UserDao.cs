@@ -235,11 +235,50 @@ namespace Model.Dao
                         });
 
             return data.Select(x => x.RoleID).ToList();
-
-
         }
 
-
+        /// <summary>
+        /// Get User list when having a keyword
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        public List<User> ListUser(string keyword)
+        {
+            var listUser = (from a in db.Users
+                            where a.UserName.Contains(keyword) || a.Name.Contains(keyword) || a.Phone.Contains(keyword) || a.Email.Contains(keyword)
+                            select new
+                              {
+                                  ID = a.ID,
+                                  UserName = a.UserName,
+                                  GroupID = a.GroupID,
+                                  Name = a.Name,
+                                  Address = a.Address,
+                                  Email = a.Email,
+                                  Phone = a.Phone,
+                                  Image = a.Image,
+                                  CreatedDate = a.CreatedDate,
+                                  CreatedBy = a.CreatedBy,
+                                  ModifiedDate = a.ModifiedDate,
+                                  ModifiedBy = a.ModifiedBy,
+                                  Status = a.Status
+                              }).AsEnumerable().Select(x => new User()
+                              {
+                                  ID = x.ID,
+                                  UserName = x.UserName,
+                                  GroupID = x.GroupID,
+                                  Name = x.Name,
+                                  Address = x.Address,
+                                  Email = x.Email,
+                                  Phone = x.Phone,
+                                  Image = x.Image,
+                                  CreatedDate = x.CreatedDate,
+                                  CreatedBy = x.CreatedBy,
+                                  ModifiedDate = x.ModifiedDate,
+                                  ModifiedBy = x.ModifiedBy,
+                                  Status = x.Status
+                              });
+            return listUser.ToList();
+        }
 
 
 

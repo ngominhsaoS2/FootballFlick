@@ -47,33 +47,53 @@ namespace Model.Dao
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public bool Update(Club entity)
+        public bool Update(Club entity, int typeUpdate)
         {
             try
             {
-                var club = db.Clubs.Find(entity.ID);
-                club.Code = entity.Code;
-                club.Name = entity.Name;
-                club.MetaTitle = entity.MetaTitle;
-                club.Description = entity.Description;
-                club.Image = entity.Image;
-                club.MoreImages = entity.MoreImages;
-                club.Detail = entity.Detail;
-                club.CaptainID = entity.CaptainID;
-                club.Phone = entity.Phone;
-                club.Address = entity.Address;
-                club.Detail = entity.Detail;
-                club.MetaKeywords = entity.MetaKeywords;
-                club.MetaDescriptions = entity.MetaDescriptions;
-                club.ModifiedDate = DateTime.Now;
-                club.Status = entity.Status;
-                db.SaveChanges();
-                return true;
+                if (typeUpdate == 1)
+                {
+                    var club = db.Clubs.Find(entity.ID);
+                    club.Code = entity.Code;
+                    club.Name = entity.Name;
+                    club.MetaTitle = entity.MetaTitle;
+                    club.Description = entity.Description;
+                    club.Image = entity.Image;
+                    club.MoreImages = entity.MoreImages;
+                    club.Detail = entity.Detail;
+                    club.CaptainID = entity.CaptainID;
+                    club.Phone = entity.Phone;
+                    club.Address = entity.Address;
+                    club.Detail = entity.Detail;
+                    club.MetaKeywords = entity.MetaKeywords;
+                    club.MetaDescriptions = entity.MetaDescriptions;
+                    club.ModifiedDate = DateTime.Now;
+                    club.Status = entity.Status;
+                    db.SaveChanges();
+                    return true;
+                }
+                else if (typeUpdate == 2)
+                {
+                    var club = db.Clubs.Find(entity.ID);
+                    club.Code = entity.Code;
+                    club.Name = entity.Name;
+                    club.Description = entity.Description;
+                    club.Phone = entity.Phone;
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                    
             }
             catch (Exception ex)
             {
                 return false;
             }
+            
+            
         }
 
         /// <summary>
@@ -197,7 +217,20 @@ namespace Model.Dao
             return listClub.ToList();
         }
 
-
+        /// <summary>
+        /// List all Clubs when having OwnerID
+        /// </summary>
+        /// <param name="productCategoryID"></param>
+        /// <param name="totalRecord"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public List<Club> ListAllByOwnerID(long ownerID, ref int totalRecord, int pageIndex = 1, int pageSize = 9)
+        {
+            totalRecord = db.Clubs.Count(x => x.OwnerID == ownerID && x.Status == true);
+            var model = db.Clubs.Where(x => x.OwnerID == ownerID && x.Status == true).OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return model.ToList();
+        }
 
 
 

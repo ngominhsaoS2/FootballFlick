@@ -58,6 +58,37 @@ namespace FootballFlick
                 namespaces: new[] { "FootballFlick.Controllers" }
             );
 
+            routes.MapRoute(
+                name: "Contact",
+                url: "Contact",
+                defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Create a new Club",
+                url: "Club/Create",
+                defaults: new { controller = "Club", action = "Create", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Clubs of the User",
+                url: "Club/{UserName}-{ownerID}",
+                defaults: new { controller = "Club", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Edit a Club",
+                url: "Club/Edit/{MetaTitle}-{id}",
+                defaults: new { controller = "Club", action = "Edit", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
+
+
+
+
 
 
 

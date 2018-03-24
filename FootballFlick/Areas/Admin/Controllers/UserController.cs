@@ -121,8 +121,20 @@ namespace FootballFlick.Areas.Admin.Controllers
             ViewBag.GroupID = new SelectList(dao.ListAll(), "ID", "Name", selectId);
         }
 
-
-
+        /// <summary>
+        /// List all User when having a keyword q
+        /// </summary>
+        /// <param name="q"></param>
+        /// <returns></returns>
+        public JsonResult ListUser(string q)
+        {
+            var data = new UserDao().ListUser(q);
+            return Json(new
+            {
+                data = data,
+                status = true
+            }, JsonRequestBehavior.AllowGet);
+        }
 
 
 

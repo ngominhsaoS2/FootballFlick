@@ -43,6 +43,8 @@ namespace Model.EntityFramework
         [StringLength(250)]
         public string Address { get; set; }
 
+        public long? OwnerID { get; set; }
+
         [StringLength(250)]
         public string MetaKeywords { get; set; }
 
