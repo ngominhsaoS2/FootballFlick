@@ -29,8 +29,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ClubID</th>
-                        <th>ClubCode</th>
+                        <th>PlayerID</th>
                         <th>PlayerIdentification</th>
                         <th>PlayerName</th>
                         <th>Status</th>
@@ -41,8 +40,7 @@
                     @foreach (var item in listPlayer)
             {
                     <tr id="row_@item.PlayerID">
-                        <td>@item.ClubID</td>
-                        <td>@item.ClubCode</td>
+                        <td>@item.PlayerID</td>
                         <td>@item.PlayerIdentification</td>
                         <td>@item.PlayerName</td>
                         <td>@(item.Status ? "Active" : "Not available")</td>

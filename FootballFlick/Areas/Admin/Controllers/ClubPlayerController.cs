@@ -24,7 +24,7 @@ namespace FootballFlick.Areas.Admin.Controllers
 
         //Delete an ClubPlayer
         [HttpDelete]
-        public ActionResult Delete(long clubId, long playerId)
+        public ActionResult Delete(long clubId, int playerId)
         {
             new ClubPlayerDao().Delete(clubId, playerId);
             return RedirectToAction("Index");

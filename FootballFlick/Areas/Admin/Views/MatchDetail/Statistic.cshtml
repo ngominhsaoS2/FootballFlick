@@ -1,0 +1,122 @@
+﻿@model List<Model.ViewModel.MatchDetailViewModel>
+
+@{
+    ViewBag.Title = "Statistic";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var match = (Model.EntityFramework.Match)ViewBag.Match;
+}
+
+@section jsFooter{
+    <script src="/Assets/Admin/js/controller/searchController.js"></script>
+    <script src="/Assets/Admin/js/controller/matchDetailController.js"></script>
+}
+
+<div class="tables">
+    <div class="row form-group">
+        <div class="col-lg-12">
+            <div class="col-md-2">
+                <h1 class="title1">Statistic</h1>
+            </div>
+            <div class="col-md-2">
+                <button id="btnAddRow" type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-1">
+            <label class="control-label">MatchID</label>
+        </div>
+        <div class="col-md-1">
+            <input type="text" class="form-control" id="txtMatchID" placeholder="ID" value="@match.ID" readonly />
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" id="txtMatchCode" placeholder="Code" value="@match.Code" readonly />
+        </div>
+
+        <div class="col-md-1">
+            <label class="control-label">ClubID</label>
+        </div>
+        <div class="col-md-1">
+            <input type="text" class="form-control" id="txtHomeClubID" placeholder="ID" />
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" id="txtHomeClubCode" placeholder="Code" />
+        </div>
+
+        <div class="col-md-1">
+            <label class="control-label">PlayerID</label>
+        </div>
+        <div class="col-md-1">
+            <input type="text" class="form-control" id="txtPlayerID" placeholder="ID" />
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" id="txtPlayerIdentification" placeholder="Identification" />
+        </div>
+    </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-1">
+            <label class="control-label">Goal</label>
+        </div>
+        <div class="col-md-3">
+            <input type="number" class="form-control" id="txtGoal" placeholder="Goal" />
+        </div>
+
+        <div class="col-md-1">
+            <label class="control-label">Assist</label>
+        </div>
+        <div class="col-md-3">
+            <input type="number" class="form-control" id="txtAssist" placeholder="Assist" />
+        </div>
+
+        <div class="col-md-1">
+            <label class="control-label">Card</label>
+        </div>
+        <div class="col-md-1">
+            <input type="number" class="form-control" id="txtRedCard" placeholder="Red" />
+        </div>
+        <div class="col-md-2">
+            <input type="number" class="form-control" id="txtYellowCard" placeholder="Yellow" />
+        </div>
+    </div>
+
+    <div class="table-responsive bs-example widget-shadow">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Match</th>
+                    <th>Club</th>
+                    <th>Player</th>
+                    <th>Goal</th>
+                    <th>Assist</th>
+                    <th>YellowCard</th>
+                    <th>RedCard</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="row_@item.PlayerID">
+                        <td>@(item.MatchID + " - " + item.MatchCode)</td>
+                        <td>@(item.ClubID + " - " + item.ClubCode)</td>
+                        <td>@(item.PlayerID + " - " + item.PlayerName)</td>
+                        <td>@item.Goal</td>
+                        <td>@item.Assist</td>
+                        <td>@item.YellowCard</td>
+                        <td>@item.RedCard</td>
+                        <td>
+                            @Ajax.ActionLink("Delete", "Delete", new { @matchId = @item.MatchID, @clubId = @item.ClubID, @playerId = @item.PlayerID }, new AjaxOptions
+                       {
+                           Confirm = "Do you really want to delete this row?",
+                           OnComplete = "$('#row_" + @item.PlayerID + "').remove()",
+                           HttpMethod = "Delete"
+                       })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

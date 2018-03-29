@@ -11,6 +11,8 @@ namespace Model.ViewModel
     {
         [Key]
         [Column(Order = 0)]
+        public long MatchID { get; set; }
+
         [StringLength(16)]
         public string MatchCode { get; set; }
 

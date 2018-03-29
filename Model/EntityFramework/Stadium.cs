@@ -11,6 +11,9 @@ namespace Model.EntityFramework
     {
         public long ID { get; set; }
 
+        [StringLength(250)]
+        public string MetaTitle { get; set; }
+
         [Required(ErrorMessage = "Please enter Code")]
         [StringLength(16)]
         public string Code { get; set; }

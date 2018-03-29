@@ -20,16 +20,43 @@ namespace Model.ViewModel
         [StringLength(250)]
         public string ClubName { get; set; }
 
+        public long? OwnerID { get; set; }
+
         [Key]
         [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long PlayerID { get; set; }
 
+        public long? UserID { get; set; }
+
+        [Required(ErrorMessage = "Please enter PlayerName")]
         [StringLength(50)]
         public string PlayerName { get; set; }
 
         [StringLength(30)]
         public string PlayerIdentification { get; set; }
+
+        [StringLength(250)]
+        public string PlayerAddress { get; set; }
+
+        [EmailAddress(ErrorMessage = "Please use a real email")]
+        [StringLength(250)]
+        public string PlayerEmail { get; set; }
+
+        [StringLength(50)]
+        public string PlayerPhone { get; set; }
+
+        [StringLength(500)]
+        public string PlayerImage { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        [StringLength(50)]
+        public string CreatedBy { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
+
+        [StringLength(50)]
+        public string ModifiedBy { get; set; }
 
         [Key]
         [Column(Order = 2)]

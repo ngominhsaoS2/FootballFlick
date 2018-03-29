@@ -7,7 +7,7 @@
             minLength: 0,
             source: function (request, response) {
                 $.ajax({
-                    url: "/Product/ListProduct",
+                    url: "/Admin/Product/ListProduct",
                     dataType: "json",
                     data: {
                         q: request.term
@@ -45,7 +45,7 @@ var playerSearch = {
             minLength: 0,
             source: function (request, response) {
                 $.ajax({
-                    url: "/Player/ListPlayer",
+                    url: "/Admin/Player/ListPlayer",
                     dataType: "json",
                     data: {
                         q: request.term
@@ -84,7 +84,7 @@ var clubSearch = {
             minLength: 0,
             source: function (request, response) {
                 $.ajax({
-                    url: "/Club/ListClub",
+                    url: "/Admin/Club/ListClub",
                     dataType: "json",
                     data: {
                         q: request.term
@@ -114,7 +114,7 @@ var clubSearch = {
             minLength: 0,
             source: function (request, response) {
                 $.ajax({
-                    url: "/Club/ListClub",
+                    url: "/Admin/Club/ListClub",
                     dataType: "json",
                     data: {
                         q: request.term
@@ -152,7 +152,7 @@ var stadiumSearch = {
             minLength: 0,
             source: function (request, response) {
                 $.ajax({
-                    url: "/Stadium/ListStadium",
+                    url: "/Admin/Stadium/ListStadium",
                     dataType: "json",
                     data: {
                         q: request.term

@@ -13,7 +13,7 @@
             //Update vào database
             var row = { "ClubID": clubId, "Stt": stt, "Day": day, "StartTime": startTime, "EndTime": endTime };
             $.ajax({
-                url: '/ClubAvailableTime/AddRow',
+                url: '/Admin/ClubAvailableTime/AddRow',
                 data: { row: JSON.stringify(row) },
                 dataType: 'json',
                 type: 'POST',

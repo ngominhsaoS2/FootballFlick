@@ -1,4 +1,5 @@
 ﻿using Model.EntityFramework;
+using Model.ViewModel;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,10 @@ namespace Model.Dao
         {
             entity.CreatedDate = entity.ModifiedDate = DateTime.Now;
             entity.Status = true;
+            if (entity.UserID == null)
+            {
+                entity.UserID = 0;
+            }
             db.Players.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -51,6 +56,11 @@ namespace Model.Dao
             try
             {
                 var player = db.Players.Find(entity.ID);
+                if (entity.UserID == null)
+                {
+                    entity.UserID = 0;
+                }
+                player.UserID = entity.UserID;
                 player.Name = entity.Name;
                 player.Identification = entity.Identification;
                 player.Address = entity.Address;
@@ -95,9 +105,9 @@ namespace Model.Dao
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public IEnumerable<Player> ListAllPaging(string searchString, int page, int pageSize)
+        public IEnumerable<PlayerViewModel> ListAllPaging(string searchString, int page, int pageSize)
         {
-            IQueryable<Player> model = db.Players;
+            IQueryable<PlayerViewModel> model = db.vPlayers;
             if (!string.IsNullOrEmpty(searchString))
             {
                 model = model.Where(x => x.Name.Contains(searchString) || x.Identification.Contains(searchString)

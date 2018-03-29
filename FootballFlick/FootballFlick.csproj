@@ -221,6 +221,7 @@
     <Compile Include="Areas\Admin\Controllers\LevelController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MatchController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MatchDetailController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\PlayerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
@@ -236,10 +237,13 @@
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClubController.cs" />
+    <Compile Include="Controllers\ClubPlayerController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MatchController.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -306,6 +310,7 @@
     <Content Include="Assets\Admin\js\controller\clubController.js" />
     <Content Include="Assets\Admin\js\controller\clubPlayerController.js" />
     <Content Include="Assets\Admin\js\controller\clubStadiumController.js" />
+    <Content Include="Assets\Admin\js\controller\matchDetailController.js" />
     <Content Include="Assets\Admin\js\controller\orderController.js" />
     <Content Include="Assets\Admin\js\controller\productController.js" />
     <Content Include="Assets\Admin\js\controller\searchController.js" />
@@ -1439,6 +1444,7 @@
     <Content Include="Assets\Client\js\bootstrap.min.js" />
     <Content Include="Assets\Client\js\colorfulTab.min.js" />
     <Content Include="Assets\Client\js\contact_me.js" />
+    <Content Include="Assets\Client\js\controller\clubPlayerController.js" />
     <Content Include="Assets\Client\js\controller\contactController.js" />
     <Content Include="Assets\Client\js\index.js" />
     <Content Include="Assets\Client\js\jarallax.js" />
@@ -1590,6 +1596,8 @@
     <Content Include="Assets\Client\fonts\thumbgallery.eot" />
     <Content Include="Assets\Client\fonts\thumbgallery.ttf" />
     <Content Include="Assets\Client\fonts\thumbgallery.woff" />
+    <Content Include="Areas\Admin\Views\Match\Result.cshtml" />
+    <Content Include="Areas\Admin\Views\MatchDetail\Statistic.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1642,11 +1650,15 @@
     <Content Include="Views\Club\Create.cshtml" />
     <Content Include="Views\Club\Index.cshtml" />
     <Content Include="Views\Club\Edit.cshtml" />
+    <Content Include="Views\ClubPlayer\Index.cshtml" />
+    <Content Include="Views\Match\Index.cshtml" />
+    <Content Include="Views\Match\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Data\files\" />
+    <Folder Include="Views\Player\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

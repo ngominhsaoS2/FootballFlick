@@ -35,6 +35,14 @@ namespace Model.ViewModel
         [Column(TypeName = "ntext")]
         public string Detail { get; set; }
 
+        public long? OwnerID { get; set; }
+
+        [StringLength(50)]
+        public string OwnerName { get; set; }
+
+        [StringLength(50)]
+        public string NameOfOwner { get; set; }
+
         public long? CaptainID { get; set; }
 
         [StringLength(50)]

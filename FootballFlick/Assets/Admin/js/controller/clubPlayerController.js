@@ -10,7 +10,7 @@
             //Update vào database
             var row = { "ClubID": clubId, "PlayerId": playerId };
             $.ajax({
-                url: '/ClubPlayer/AddRow',
+                url: '/Admin/ClubPlayer/AddRow',
                 data: { row: JSON.stringify(row) },
                 dataType: 'json',
                 type: 'POST',

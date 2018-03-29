@@ -11,11 +11,12 @@ namespace Model.EntityFramework
     {
         public long ID { get; set; }
 
+        public long? UserID { get; set; }
+
         [Required(ErrorMessage = "Please enter Name")]
         [StringLength(50)]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Please enter Identification")]
         [StringLength(30)]
         public string Identification { get; set; }
 

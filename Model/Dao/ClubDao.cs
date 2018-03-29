@@ -65,6 +65,7 @@ namespace Model.Dao
                     club.Phone = entity.Phone;
                     club.Address = entity.Address;
                     club.Detail = entity.Detail;
+                    club.OwnerID = entity.OwnerID;
                     club.MetaKeywords = entity.MetaKeywords;
                     club.MetaDescriptions = entity.MetaDescriptions;
                     club.ModifiedDate = DateTime.Now;

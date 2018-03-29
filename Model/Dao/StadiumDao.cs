@@ -51,6 +51,7 @@ namespace Model.Dao
             try
             {
                 var stadium = db.Stadiums.Find(entity.ID);
+                stadium.MetaTitle = entity.MetaTitle;
                 stadium.Name = entity.Name;
                 stadium.Address = entity.Address;
                 stadium.Email = entity.Email;

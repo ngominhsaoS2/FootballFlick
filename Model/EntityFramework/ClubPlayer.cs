@@ -16,7 +16,6 @@ namespace Model.EntityFramework
 
         [Key]
         [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long PlayerID { get; set; }
 
         public bool Status { get; set; }

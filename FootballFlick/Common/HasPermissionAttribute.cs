@@ -38,7 +38,7 @@ namespace FootballFlick
         }
         private List<string> GetPermissionByLoggedInUser(string userName)
         {
-            var permissions = (List<string>)HttpContext.Current.Session[Common.CommonConstants.SESSION_PERMISSIONS];
+            var permissions = (List<string>)HttpContext.Current.Session[Common.CommonConstants.PERMISSIONS_SESSION];
             return permissions;
         }
     }

@@ -102,7 +102,7 @@ namespace FootballFlick.Controllers
             {
                 var dao = new UserDao();
 
-                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password), false);
+                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password));
                 if (result == 1)
                 {
                     var user = dao.GetByUserName(model.UserName);
@@ -110,7 +110,14 @@ namespace FootballFlick.Controllers
                     var userSession = new UserLogin();
                     userSession.UserName = user.UserName;
                     userSession.UserID = user.ID;
+                    userSession.GroupID = user.GroupID;
+                    userSession.Image = user.Image;
+                    //Add vào User Session
                     Session.Add(FootballFlick.Common.CommonConstants.USER_SESSION, userSession);
+
+                    //Add vào Permission Session
+                    var listPermission = dao.GetListPermission(user.UserName);
+                    Session.Add(CommonConstants.PERMISSIONS_SESSION, listPermission);
 
                     return RedirectToAction("Index", "Home");
                 }

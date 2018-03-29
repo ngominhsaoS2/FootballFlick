@@ -74,7 +74,7 @@ namespace FootballFlick
 
             routes.MapRoute(
                 name: "Clubs of the User",
-                url: "Club/{UserName}-{ownerID}",
+                url: "Club/Owner/{UserName}-{ownerID}",
                 defaults: new { controller = "Club", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "FootballFlick.Controllers" }
             );
@@ -86,6 +86,26 @@ namespace FootballFlick
                 namespaces: new[] { "FootballFlick.Controllers" }
             );
 
+            routes.MapRoute(
+                name: "Players of the Club",
+                url: "ClubPlayer/{MetaTitle}-{clubId}",
+                defaults: new { controller = "ClubPlayer", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Match",
+                url: "Match",
+                defaults: new { controller = "Match", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Match detail",
+                url: "Match/Detail/{MetaTitle}-{id}",
+                defaults: new { controller = "Match", action = "Detail", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
 
 
 

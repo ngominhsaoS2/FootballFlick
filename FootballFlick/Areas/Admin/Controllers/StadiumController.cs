@@ -1,4 +1,5 @@
-﻿using Model.Dao;
+﻿using FootballFlick.Common;
+using Model.Dao;
 using Model.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,11 @@ namespace FootballFlick.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Xử lý MetaTitle
+                if (!string.IsNullOrEmpty(stadium.Name))
+                {
+                    stadium.MetaTitle = StringHelper.ToUnsignString(stadium.Name);
+                }
                 var dao = new StadiumDao();
                 long id = dao.Insert(stadium);
                 if (id > 0)
@@ -66,6 +72,11 @@ namespace FootballFlick.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Xử lý MetaTitle
+                if (!string.IsNullOrEmpty(stadium.Name))
+                {
+                    stadium.MetaTitle = StringHelper.ToUnsignString(stadium.Name);
+                }
                 var result = new StadiumDao().Update(stadium);
                 if (result)
                 {

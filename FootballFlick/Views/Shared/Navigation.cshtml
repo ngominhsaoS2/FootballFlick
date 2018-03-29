@@ -32,12 +32,20 @@
                 <li><a href="@item.Link">@item.Text</a></li>
             }
                 <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Match <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Match/Create">Create a Match</a></li>
+                        <li><a href="/Match/Index">Matches</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Your Club <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/Club/Create">Create new Club</a></li>
                     @if (userSession != null)
                     {
-                        var link = "/Club/" + userSession.UserName + "-" + userSession.UserID;
+                        var link = "/Club/Owner/" + userSession.UserName + "-" + userSession.UserID;
                         <li><a href="@link">Manage your Clubs</a></li>
                     }
                     else
@@ -47,6 +55,7 @@
 
                     </ul>
                 </li>
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact <b class="caret"></b></a>
                     <ul class="dropdown-menu">

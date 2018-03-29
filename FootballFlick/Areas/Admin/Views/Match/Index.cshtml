@@ -53,12 +53,14 @@
                     <tr id="row_@item.ID">
                         <td>@item.Code</td>
                         <td>@item.HomeClubCode</td>
-                        <td>@item.VisitingClubCode</td>
+                        <td>@(item.VisitingClubCode == null ? "Waiting..." : item.VisitingClubCode)</td>
                         <td>@item.StadiumName</td>
                         <td>@item.Date</td>
                         <td>@item.StatusCode</td>
                         <td>
-                            <a href="/Admin/Match/Manage/@item.ID">Manage</a>
+                            <a href="/Admin/Match/Result/@item.ID">Result</a>
+                            |
+                            <a href="/Admin/MatchDetail/Statistic/@item.ID">Statistic</a>
                             |
                             <a href="/Admin/Match/Edit/@item.ID">Edit</a>
                             |

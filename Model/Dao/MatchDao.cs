@@ -135,6 +135,32 @@ namespace Model.Dao
         }
 
 
+        /// <summary>
+        /// List all MatchViewModel
+        /// </summary>
+        /// <param name="productCategoryID"></param>
+        /// <param name="totalRecord"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public List<MatchViewModel> ListAll(ref int totalRecord, int pageIndex = 1, int pageSize = 9)
+        {
+            totalRecord = db.vMatches.Count();
+            var model = db.vMatches.OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return model.ToList();
+        }
+
+        /// <summary>
+        /// List top recetn matches
+        /// </summary>
+        /// <param name="top"></param>
+        /// <returns></returns>
+        public List<MatchViewModel> ListRecentMatch(int top)
+        {
+            return db.vMatches.OrderByDescending(x => x.ID).Take(top).ToList();
+        }
+
+
 
 
 

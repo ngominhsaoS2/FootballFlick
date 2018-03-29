@@ -129,9 +129,19 @@ namespace Model.Dao
         /// <param name="passWord"></param>
         /// <param name="isLoginAdmin"></param>
         /// <returns></returns>
-        public int Login(string userName, string passWord, bool isLoginAdmin = false)
+        public int Login(string userName, string passWord)
         {
             var result = db.Users.SingleOrDefault(x => x.UserName == userName);
+            var isLoginAdmin = false;
+            if (result.GroupID == CommonConstants.MEMBER_GROUP)
+            {
+                isLoginAdmin = false;
+            }
+            else
+            {
+                isLoginAdmin = true;
+            }
+
             if (result == null)
             {
                 return 0;

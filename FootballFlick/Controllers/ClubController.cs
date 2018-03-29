@@ -12,13 +12,13 @@ namespace FootballFlick.Controllers
     public class ClubController : Controller
     {
         // GET: Club
-        public ActionResult Index(long ownerID, int pageIndex = 1, int pageSize = 10)
+        public ActionResult Index(long ownerId, int pageIndex = 1, int pageSize = 10)
         {
             int totalRecord = 0;
-            var model = new ClubDao().ListAllByOwnerID(ownerID, ref totalRecord, pageIndex, pageSize);
+            var model = new ClubDao().ListAllByOwnerID(ownerId, ref totalRecord, pageIndex, pageSize);
             ViewBag.Total = totalRecord;
             ViewBag.Page = pageIndex;
-            ViewBag.OwnerID = ownerID;
+            ViewBag.OwnerID = ownerId;
 
             int maxPage = 5;
             int totalPage = 0;

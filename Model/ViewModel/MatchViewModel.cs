@@ -41,6 +41,9 @@ namespace Model.ViewModel
         [StringLength(250)]
         public string HomeClubName { get; set; }
 
+        [StringLength(250)]
+        public string HomeClubMetaTitle { get; set; }
+
         public long? VisitingClubID { get; set; }
 
         [StringLength(16)]
@@ -49,7 +52,13 @@ namespace Model.ViewModel
         [StringLength(250)]
         public string VisitingClubName { get; set; }
 
+        [StringLength(250)]
+        public string VisitingClubMetaTitle { get; set; }
+
         public long? StadiumID { get; set; }
+
+        [StringLength(250)]
+        public string StadiumMetaTitle { get; set; }
 
         [StringLength(16)]
         public string StadiumCode { get; set; }
@@ -114,5 +123,7 @@ namespace Model.ViewModel
 
         [StringLength(250)]
         public string StatusName { get; set; }
+
+        public int? Stt { get; set; }
     }
 }
