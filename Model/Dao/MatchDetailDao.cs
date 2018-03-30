@@ -38,7 +38,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one MatchDetail to database -  Thêm mới một MatchDetail vào cơ sở dữ liệu
+        /// Insert one MatchDetail to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>

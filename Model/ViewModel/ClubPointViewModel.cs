@@ -11,7 +11,7 @@ namespace Model.ViewModel
     {
         [Key]
         [Column(Order = 0)]
-        public string MatchID { get; set; }
+        public long MatchID { get; set; }
 
         [StringLength(16)]
         public string MatchCode { get; set; }
@@ -26,11 +26,15 @@ namespace Model.ViewModel
         [StringLength(50)]
         public string ClubName { get; set; }
 
+        public int? JoinPoint { get; set; }
+
         public int? WinPoint { get; set; }
 
         public int? DrawPoint { get; set; }
 
         public int? GoalPoint { get; set; }
+
+        public int? RivalLevel { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 

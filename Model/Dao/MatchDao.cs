@@ -19,7 +19,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Match when having ID - Lấy ra Match khi có ID
+        /// Get Match when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -39,7 +39,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Match to database -  Thêm mới một Match vào cơ sở dữ liệu
+        /// Insert one Match to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -53,7 +53,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Match in the database -  Cập nhật một Match trong cơ sở dữ liệu
+        /// Update one Match in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -96,7 +96,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Match in the database - Xóa một Match khỏi cơ sở dữ liệu
+        /// Delete one Match in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -116,7 +116,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Match into a table with search string - Liệt kê danh sách Match có thể sử dụng tìm kiếm search
+        /// List Match into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>
@@ -151,7 +151,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List top recetn matches
+        /// List top recent matches
         /// </summary>
         /// <param name="top"></param>
         /// <returns></returns>

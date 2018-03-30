@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Stadium when having ID - Lấy ra Stadium khi có ID
+        /// Get Stadium when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -28,7 +28,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Stadium to database -  Thêm mới một Stadium vào cơ sở dữ liệu
+        /// Insert one Stadium to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -42,7 +42,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Stadium in the database -  Cập nhật một Stadium trong cơ sở dữ liệu
+        /// Update one Stadium in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -69,7 +69,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Stadium in the database - Xóa một Stadium khỏi cơ sở dữ liệu
+        /// Delete one Stadium in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -89,7 +89,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Stadium into a table with search string - Liệt kê danh sách Stadium có thể sử dụng tìm kiếm search
+        /// List Stadium into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>

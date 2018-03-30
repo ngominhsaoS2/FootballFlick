@@ -137,6 +137,7 @@ namespace FootballFlick.Areas.Admin.Controllers
             Match match = new Match();
             if (ModelState.IsValid)
             {
+                //Update kết quả của Match
                 match.ID = matchViewModel.ID;
                 match.Code = matchViewModel.Code;
                 match.Name = matchViewModel.Name;
@@ -175,7 +176,51 @@ namespace FootballFlick.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Result this match failed.");
                 }
 
+                //Update ClubPoint cho cả hai đội
+                ClubPoint homePoint = new ClubPoint();
+                homePoint.MatchID = match.ID;
+                homePoint.ClubID = (long)match.HomeClubID;
+                homePoint.JoinPoint = CommonConstants.JoinPoint;
+                homePoint.WinPoint = (match.HomeClubGoal > match.VisitingClubGoal == true ? CommonConstants.WinPoint : 0);
+                homePoint.DrawPoint = (match.HomeClubGoal == match.VisitingClubGoal == true ? CommonConstants.DrawPoint : 0);
+                homePoint.Status = true;
+
+                ClubPoint visitingPoint = new ClubPoint();
+                visitingPoint.MatchID = match.ID;
+                visitingPoint.ClubID = (long)match.VisitingClubID;
+                visitingPoint.JoinPoint = CommonConstants.JoinPoint;
+                visitingPoint.WinPoint = (match.VisitingClubGoal > match.HomeClubGoal == true ? CommonConstants.WinPoint : 0);
+                visitingPoint.DrawPoint = (match.VisitingClubGoal == match.HomeClubGoal == true ? CommonConstants.DrawPoint : 0);
+                visitingPoint.Status = true;
+
+                var homeLevel = new ClubLevelDao().GetBeforeDate(homePoint.ClubID, (DateTime)match.Date);
+                var visitingLevel = new ClubLevelDao().GetBeforeDate(visitingPoint.ClubID, (DateTime)match.Date);
+                homePoint.RivalLevelID = visitingLevel.LevelID;
+                visitingPoint.RivalLevelID = homeLevel.LevelID;
+
+                var dao = new ClubPointDao();
+
+                if (dao.CheckExist(homePoint.MatchID, homePoint.ClubID) == true)
+                {
+                    dao.Update(homePoint);
+                }
+                else
+                {
+                    dao.Insert(homePoint);
+                }
+
+                if (dao.CheckExist(visitingPoint.MatchID, visitingPoint.ClubID) == true)
+                {
+                    dao.Update(visitingPoint);
+                }
+                else
+                {
+                    dao.Insert(visitingPoint);
+                }
+
+
             }
+            
             SetStatusViewBag(matchViewModel.Status);
             return View(matchViewModel);
         }

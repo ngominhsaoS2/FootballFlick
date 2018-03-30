@@ -39,7 +39,7 @@ namespace Model.EntityFramework
 
         public int? Quantity { get; set; }
 
-        public long? ProductCategoryID { get; set; }
+        public int? ProductCategoryID { get; set; }
 
         [Column(TypeName = "ntext")]
         public string Detail { get; set; }

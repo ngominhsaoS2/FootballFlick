@@ -16,6 +16,10 @@ namespace Model.Dao
             db = new FootballFlickDbContext();
         }
 
+        /// <summary>
+        /// List all UserGroup
+        /// </summary>
+        /// <returns></returns>
         public List<UserGroup> ListAll()
         {
             return db.UserGroups.ToList();

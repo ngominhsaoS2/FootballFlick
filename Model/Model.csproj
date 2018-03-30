@@ -62,7 +62,9 @@
     <Compile Include="Dao\BannerDao.cs" />
     <Compile Include="Dao\ClubAvailableTimeDao.cs" />
     <Compile Include="Dao\ClubDao.cs" />
+    <Compile Include="Dao\ClubLevelDao.cs" />
     <Compile Include="Dao\ClubPlayerDao.cs" />
+    <Compile Include="Dao\ClubPointDao.cs" />
     <Compile Include="Dao\ClubStadiumDao.cs" />
     <Compile Include="Dao\ContactDao.cs" />
     <Compile Include="Dao\ContentCategoryDao.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="EntityFramework\Club.cs" />
     <Compile Include="EntityFramework\ClubArea.cs" />
     <Compile Include="EntityFramework\ClubAvailableTime.cs" />
+    <Compile Include="EntityFramework\ClubLevel.cs" />
     <Compile Include="EntityFramework\ClubPlayer.cs" />
     <Compile Include="EntityFramework\ClubPoint.cs" />
     <Compile Include="EntityFramework\ClubStadium.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\ClubAreaViewModel.cs" />
     <Compile Include="ViewModel\ClubAvailableTimeViewModel.cs" />
+    <Compile Include="ViewModel\ClubLevelViewModel.cs" />
     <Compile Include="ViewModel\ClubPlayerViewModel.cs" />
     <Compile Include="ViewModel\ClubPointViewModel.cs" />
     <Compile Include="ViewModel\ClubStadiumViewModel.cs" />

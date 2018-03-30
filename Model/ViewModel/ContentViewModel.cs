@@ -26,7 +26,7 @@ namespace Model.ViewModel
         [StringLength(500)]
         public string Image { get; set; }
 
-        public long? ContentCategoryID { get; set; }
+        public int? ContentCategoryID { get; set; }
 
         [StringLength(250)]
         public string ContentCategoryName { get; set; }

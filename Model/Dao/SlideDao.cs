@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Slide when having ID - Lấy ra Slide khi có ID
+        /// Get Slide when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -28,7 +28,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Slide to database -  Thêm mới một Slide vào cơ sở dữ liệu
+        /// Insert one Slide to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -42,7 +42,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Slide in the database -  Cập nhật một Slide trong cơ sở dữ liệu
+        /// Update one Slide in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -68,7 +68,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Slide in the database - Xóa một Slide khỏi cơ sở dữ liệu
+        /// Delete one Slide in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -88,7 +88,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Slide into a table with search string - Liệt kê danh sách Slide có thể sử dụng tìm kiếm search
+        /// List Slide into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>

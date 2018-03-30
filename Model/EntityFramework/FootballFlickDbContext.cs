@@ -48,6 +48,7 @@ namespace Model.EntityFramework
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
+        public virtual DbSet<ClubLevel> ClubLevels { get; set; }
 
         //ViewModel
         public virtual DbSet<ClubAreaViewModel> vClubAreas { get; set; }
@@ -63,6 +64,7 @@ namespace Model.EntityFramework
         public virtual DbSet<ClubPointViewModel> vClubPoints { get; set; }
         public virtual DbSet<ProductViewModel> vProducts { get; set; }
         public virtual DbSet<PlayerViewModel> vPlayers { get; set; }
+        public virtual DbSet<ClubLevelViewModel> vClubLevels { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

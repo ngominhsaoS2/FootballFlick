@@ -19,7 +19,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one ClubPlayer to database -  Thêm mới một ClubPlayer vào cơ sở dữ liệu
+        /// Insert one ClubPlayer to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -39,7 +39,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one ClubPlayer in the database -  Cập nhật một ClubPlayer trong cơ sở dữ liệu
+        /// Update one ClubPlayer in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -59,7 +59,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one ClubPlayer in the database - Xóa một ClubPlayer khỏi cơ sở dữ liệu
+        /// Delete one ClubPlayer in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>

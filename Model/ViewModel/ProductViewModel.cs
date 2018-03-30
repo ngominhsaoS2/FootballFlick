@@ -42,7 +42,7 @@ namespace Model.ViewModel
 
         public int? Quantity { get; set; }
 
-        public long? ProductCategoryID { get; set; }
+        public int? ProductCategoryID { get; set; }
 
         [StringLength(250)]
         public string ProductCategoryName { get; set; }

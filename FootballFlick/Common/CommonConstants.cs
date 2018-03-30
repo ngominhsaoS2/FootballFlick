@@ -11,5 +11,10 @@ namespace FootballFlick.Common
         public static string CartSession = "CartSession";
         public static string PERMISSIONS_SESSION = "PERMISSIONS_SESSION";
         public static string CurrentCulture { set; get; }
+
+        public static int JoinPoint = 10;
+        public static int WinPoint = 50;
+        public static int DrawPoint = 20;
+        public static int GoalPoint = 10;
     }
 }

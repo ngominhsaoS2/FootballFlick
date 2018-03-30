@@ -19,7 +19,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get User when having ID - Lấy ra User khi có ID
+        /// Get User when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -29,7 +29,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get User when having UserName - Lấy ra User khi có UserName
+        /// Get User when having UserName
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -39,7 +39,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one User to database -  Thêm mới một User vào cơ sở dữ liệu
+        /// Insert one User to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -53,7 +53,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one User in the database -  Cập nhật một User trong cơ sở dữ liệu
+        /// Update one User in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -85,7 +85,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one User in the database - Xóa một User khỏi cơ sở dữ liệu
+        /// Delete one User in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -105,7 +105,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List User into a table with search string - Liệt kê danh sách User có thể sử dụng tìm kiếm search
+        /// List User into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>

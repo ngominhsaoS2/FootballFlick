@@ -25,7 +25,7 @@ namespace Model.EntityFramework
         [StringLength(500)]
         public string Image { get; set; }
 
-        public long? ContentCategoryID { get; set; }
+        public int? ContentCategoryID { get; set; }
 
         [Required(ErrorMessage = "Please enter Detail")]
         [Column(TypeName = "ntext")]

@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Level when having ID - Lấy ra Level khi có ID
+        /// Get Level when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -28,7 +28,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Level to database -  Thêm mới một Level vào cơ sở dữ liệu
+        /// Insert one Level to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -42,7 +42,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Level in the database -  Cập nhật một Level trong cơ sở dữ liệu
+        /// Update one Level in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -53,6 +53,7 @@ namespace Model.Dao
                 var level = db.Levels.Find(entity.ID);
                 level.Code = entity.Code;
                 level.Name = entity.Name;
+                level.Multiplier = entity.Multiplier;
                 level.ModifiedDate = DateTime.Now;
                 level.Status = entity.Status;
                 db.SaveChanges();
@@ -65,7 +66,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Level in the database - Xóa một Level khỏi cơ sở dữ liệu
+        /// Delete one Level in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -85,7 +86,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Level into a table with search string - Liệt kê danh sách Level có thể sử dụng tìm kiếm search
+        /// List Level into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>

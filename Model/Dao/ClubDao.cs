@@ -19,7 +19,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Club when having ID - Lấy ra Club khi có ID
+        /// Get Club when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -29,7 +29,17 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Club to database -  Thêm mới một Club vào cơ sở dữ liệu
+        /// Get ClubViewModel when having ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ClubViewModel GetViewModelByID(long id)
+        {
+            return db.vClubs.Find(id);
+        }
+
+        /// <summary>
+        /// Insert one Club to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -43,7 +53,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Club in the database -  Cập nhật một Club trong cơ sở dữ liệu
+        /// Update one Club in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -98,7 +108,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Club in the database - Xóa một Club khỏi cơ sở dữ liệu
+        /// Delete one Club in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -118,7 +128,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Club into a table with search string - Liệt kê danh sách Club có thể sử dụng tìm kiếm search
+        /// List Club into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>
@@ -232,13 +242,6 @@ namespace Model.Dao
             var model = db.Clubs.Where(x => x.OwnerID == ownerID && x.Status == true).OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return model.ToList();
         }
-
-
-
-
-
-
-
 
 
 

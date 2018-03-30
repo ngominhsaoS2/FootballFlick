@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Feedback when having ID - Lấy ra Feedback khi có ID
+        /// Get Feedback when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -28,7 +28,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Feedback to database -  Thêm mới một Feedback vào cơ sở dữ liệu
+        /// Insert one Feedback to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -42,7 +42,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Feedback in the database - Xóa một Feedback khỏi cơ sở dữ liệu
+        /// Delete one Feedback in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -62,7 +62,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Feedback into a table with search string - Liệt kê danh sách Feedback có thể sử dụng tìm kiếm search
+        /// List Feedback into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>

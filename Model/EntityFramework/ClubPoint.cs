@@ -11,18 +11,22 @@ namespace Model.EntityFramework
     {
         [Key]
         [Column(Order = 0)]
-        public string MatchID { get; set; }
+        public long MatchID { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ClubID { get; set; }
 
+        public int? JoinPoint { get; set; }
+
         public int? WinPoint { get; set; }
 
         public int? DrawPoint { get; set; }
 
         public int? GoalPoint { get; set; }
+
+        public int? RivalLevelID { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 

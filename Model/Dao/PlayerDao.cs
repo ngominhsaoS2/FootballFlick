@@ -19,7 +19,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Player when having ID - Lấy ra Player khi có ID
+        /// Get Player when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -29,7 +29,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Player to database -  Thêm mới một Player vào cơ sở dữ liệu
+        /// Insert one Player to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -47,7 +47,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Player in the database -  Cập nhật một Player trong cơ sở dữ liệu
+        /// Update one Player in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -79,7 +79,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Player in the database - Xóa một Player khỏi cơ sở dữ liệu
+        /// Delete one Player in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -99,7 +99,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Player into a table with search string - Liệt kê danh sách Player có thể sử dụng tìm kiếm search
+        /// List Player into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>

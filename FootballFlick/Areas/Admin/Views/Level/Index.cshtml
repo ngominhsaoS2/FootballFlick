@@ -41,6 +41,7 @@
                     <th>ID</th>
                     <th>Code</th>
                     <th>Name</th>
+                    <th>Multiplier</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -52,6 +53,7 @@
                         <td>@item.ID</td>
                         <td>@item.Code</td>
                         <td>@item.Name</td>
+                        <td>@item.Multiplier</td>
                         <td>@(item.Status ? "Active" : "Not available")</td>
                         <td>
                             <a href="/Admin/Level/Edit/@item.ID">Edit</a>

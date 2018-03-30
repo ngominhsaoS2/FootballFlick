@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one ClubStadium to database -  Thêm mới một ClubStadium vào cơ sở dữ liệu
+        /// Insert one ClubStadium to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -38,7 +38,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one ClubStadium in the database -  Cập nhật một ClubStadium trong cơ sở dữ liệu
+        /// Update one ClubStadium in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -58,7 +58,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one ClubStadium in the database - Xóa một ClubStadium khỏi cơ sở dữ liệu
+        /// Delete one ClubStadium in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -87,6 +87,12 @@ namespace Model.Dao
             return db.vClubStadiums.Where(x => x.ClubID == clubId && x.Status == true).ToList();
         }
 
+        /// <summary>
+        /// Check if a ClubStadium row already exists of not yet
+        /// </summary>
+        /// <param name="clubId"></param>
+        /// <param name="stadiumId"></param>
+        /// <returns></returns>
         public bool CheckExistRow(long clubId, long stadiumId)
         {
             var count = db.ClubStadiums.Where(x => x.ClubID == clubId && x.StadiumID == stadiumId).Count();

@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one ClubAvailableTime to database -  Thêm mới một ClubAvailableTime vào cơ sở dữ liệu
+        /// Insert one ClubAvailableTime to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -38,7 +38,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one ClubAvailableTime in the database - Xóa một ClubAvailableTime khỏi cơ sở dữ liệu
+        /// Delete one ClubAvailableTime in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -67,6 +67,15 @@ namespace Model.Dao
             return db.vClubAvailableTimes.Where(x => x.ClubID == clubId && x.Status == true).ToList();
         }
 
+
+        /// <summary>
+        /// Check if a ClubAvailableTime row already exists or not
+        /// </summary>
+        /// <param name="clubId"></param>
+        /// <param name="day"></param>
+        /// <param name="startTime"></param>
+        /// <param name="endTime"></param>
+        /// <returns></returns>
         public bool CheckExistRow(long clubId, string day, TimeSpan startTime, TimeSpan endTime)
         {
             var count = db.ClubAvailableTimes.Where(x => x.ClubID == clubId && x.Day == day && x.StartTime == startTime && x.EndTime == endTime).Count();

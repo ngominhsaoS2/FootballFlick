@@ -19,7 +19,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Product when having ID - Lấy ra Product khi có ID
+        /// Get Product when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -29,7 +29,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Product to database -  Thêm mới một Product vào cơ sở dữ liệu
+        /// Insert one Product to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -43,7 +43,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Product in the database -  Cập nhật một Product trong cơ sở dữ liệu
+        /// Update one Product in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -78,7 +78,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Product in the database - Xóa một Product khỏi cơ sở dữ liệu
+        /// Delete one Product in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -98,7 +98,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Product into a table with search string - Liệt kê danh sách Product có thể sử dụng tìm kiếm search
+        /// List Product into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>

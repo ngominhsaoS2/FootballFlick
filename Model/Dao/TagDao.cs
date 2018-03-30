@@ -17,7 +17,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Tag when having ID - Lấy ra Tag khi có ID
+        /// Get Tag when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -27,7 +27,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Tag to database -  Thêm mới một Tag vào cơ sở dữ liệu
+        /// Insert one Tag to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -41,7 +41,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Tag in the database -  Cập nhật một Tag trong cơ sở dữ liệu
+        /// Update one Tag in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -62,7 +62,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Tag in the database - Xóa một Tag khỏi cơ sở dữ liệu
+        /// Delete one Tag in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>

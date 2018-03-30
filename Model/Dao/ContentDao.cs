@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Content when having ID - Lấy ra Content khi có ID
+        /// Get Content when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -28,7 +28,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Content to database -  Thêm mới một Content vào cơ sở dữ liệu
+        /// Insert one Content to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -42,7 +42,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Content in the database -  Cập nhật một Content trong cơ sở dữ liệu
+        /// Update one Content in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -75,7 +75,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Content in the database - Xóa một Content khỏi cơ sở dữ liệu
+        /// Delete one Content in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -95,7 +95,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Content into a table with search string - Liệt kê danh sách Content có thể sử dụng tìm kiếm search
+        /// List Content into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>

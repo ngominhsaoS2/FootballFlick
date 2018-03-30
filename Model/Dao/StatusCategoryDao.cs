@@ -17,7 +17,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get StatusCategory when having ID - Lấy ra StatusCategory khi có ID
+        /// Get StatusCategory when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

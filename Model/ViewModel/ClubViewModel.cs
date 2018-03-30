@@ -57,6 +57,14 @@ namespace Model.ViewModel
         [StringLength(250)]
         public string Address { get; set; }
 
+        public int LevelID { get; set; }
+
+        [StringLength(16)]
+        public string LevelCode { get; set; }
+
+        [StringLength(250)]
+        public string LevelName { get; set; }
+
         [StringLength(250)]
         public string MetaKeywords { get; set; }
 
