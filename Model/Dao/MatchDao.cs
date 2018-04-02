@@ -160,6 +160,24 @@ namespace Model.Dao
             return db.vMatches.OrderByDescending(x => x.ID).Take(top).ToList();
         }
 
+        /// <summary>
+        /// List all Matches of the Club when having ClubID
+        /// </summary>
+        /// <param name="clubId"></param>
+        /// <returns></returns>
+        public List<MatchViewModel> ListMatchesOftheClub(long clubId, ref int totalRecord, int pageIndex = 1, int pageSize = 9)
+        {
+            totalRecord = db.vRanks.Count(x => x.TotalPoint > 0);
+            var model = db.vMatches.Where(x => x.HomeClubID == clubId || x.VisitingClubID == clubId).OrderByDescending(x => x.ID).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return model.ToList();
+        }
+
+
+
+
+
+
+
 
 
 

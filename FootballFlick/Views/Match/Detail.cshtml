@@ -66,7 +66,7 @@
                             <h2>Price: <b>@Model.PromotionPrice.GetValueOrDefault(0).ToString("N0") VNĐ</b> - <del>@Model.Price.GetValueOrDefault(0).ToString("N0") VNĐ</del></h2>
                             <br />
                             
-                            <h2>Status: <span class="badge badge-pill badge-success" style="background-color:green">@Model.StatusName</span></h2>
+                            <h2>Status: <span class="badge badge-pill badge-success" style="background-color:@Model.StatusColor">@Model.StatusName</span></h2>
                             <br />
                             <h2>Join match: <a href="#" class="btn btn-primary">Join</a></h2>
                         </div>

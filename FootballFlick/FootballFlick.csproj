@@ -1653,6 +1653,8 @@
     <Content Include="Views\ClubPlayer\Index.cshtml" />
     <Content Include="Views\Match\Index.cshtml" />
     <Content Include="Views\Match\Detail.cshtml" />
+    <Content Include="Views\Club\Rank.cshtml" />
+    <Content Include="Views\Club\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

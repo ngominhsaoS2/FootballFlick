@@ -29,7 +29,25 @@ namespace Model.Dao
             return list.FirstOrDefault();
         }
 
-
+        /// <summary>
+        /// Insert a ClubLevel to the database
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool Insert (ClubLevel entity)
+        {
+            try
+            {
+                db.ClubLevels.Add(entity);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            
+        }
 
 
 

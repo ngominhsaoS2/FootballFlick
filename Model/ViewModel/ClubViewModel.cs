@@ -81,8 +81,6 @@ namespace Model.ViewModel
         [StringLength(50)]
         public string ModifiedBy { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
         public bool Status { get; set; }
     }
 }

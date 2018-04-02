@@ -245,7 +245,7 @@ namespace FootballFlick.Areas.Admin.Controllers
         public void SetStatusViewBag(long? selectedId = null)
         {
             var dao = new StatusCategoryDao();
-            ViewBag.Status = new SelectList(dao.ListStatus("Match", 1), "ID", "Name");
+            ViewBag.Status = new SelectList(dao.ListStatus("Match", 1), "Stt", "Name");
         }
 
         

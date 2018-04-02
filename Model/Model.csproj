@@ -138,6 +138,7 @@
     <Compile Include="ViewModel\PlayerPointViewModel.cs" />
     <Compile Include="ViewModel\PlayerViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\RankViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

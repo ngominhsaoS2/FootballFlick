@@ -46,9 +46,19 @@ namespace FootballFlick.Areas.Admin.Controllers
                 var dao = new ClubDao();
                 if (dao.CheckCode(club.Code) == false)
                 {
+                    //Insert Club vào database
                     long id = dao.Insert(club);
                     if (id > 0)
                     {
+                        //Tự động Insert level của Club vào ClubLevel
+                        ClubLevel clubLevel = new ClubLevel() { ClubID = id, LevelID = 1, Date = DateTime.Now};
+                        bool resLv = new ClubLevelDao().Insert(clubLevel);
+                        if (resLv == false)
+                        {
+                            ModelState.AddModelError("", "Automatically create ClubLevel failed.");
+                        }
+
+                        //Thông báo tạo mới thành công
                         SetAlert("Create a new club successfully.", "success");
                         return RedirectToAction("Index", "Club");
                     }
@@ -56,6 +66,8 @@ namespace FootballFlick.Areas.Admin.Controllers
                     {
                         ModelState.AddModelError("", "Create a new club failed.");
                     }
+
+                    
                 }
                 else
                 {
@@ -113,6 +125,7 @@ namespace FootballFlick.Areas.Admin.Controllers
 
 
         ////Other methods
+        //Save MoreImages
         public JsonResult SaveImages(long id, string images)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -144,6 +157,7 @@ namespace FootballFlick.Areas.Admin.Controllers
 
         }
 
+        //Load MoreImages
         public JsonResult LoadImages(long id)
         {
             ClubDao dao = new ClubDao();
@@ -175,6 +189,7 @@ namespace FootballFlick.Areas.Admin.Controllers
 
         }
 
+        //List all Club when having a keyword
         public JsonResult ListClub(string q)
         {
             var data = new ClubDao().ListClub(q);

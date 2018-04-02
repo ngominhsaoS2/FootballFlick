@@ -47,6 +47,7 @@
                     <th>OwnerName</th>
                     <th>Image</th>
                     <th>Phone</th>
+                    <th>LevelCode</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -60,6 +61,7 @@
                         <td>@item.OwnerName</td>
                         <td><img class="img-responsive" width="150" height="auto" src="@item.Image" alt=""></td>
                         <td>@item.Phone</td>
+                        <td>@item.LevelCode</td>
                         <td>@(item.Status ? "Active" : "Not available")</td>
                         <td>
                             <a href="/Admin/ClubPlayer/Edit/@item.ID">Players</a>

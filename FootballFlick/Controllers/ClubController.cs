@@ -1,6 +1,8 @@
 ﻿using FootballFlick.Common;
+using FootballFlick.Models;
 using Model.Dao;
 using Model.EntityFramework;
+using Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,7 @@ namespace FootballFlick.Controllers
         {
             int totalRecord = 0;
             var model = new ClubDao().ListAllByOwnerID(ownerId, ref totalRecord, pageIndex, pageSize);
+
             ViewBag.Total = totalRecord;
             ViewBag.Page = pageIndex;
             ViewBag.OwnerID = ownerId;
@@ -68,6 +71,14 @@ namespace FootballFlick.Controllers
                     long id = dao.Insert(club);
                     if (id > 0)
                     {
+                        //Tự động Insert level của Club vào ClubLevel
+                        ClubLevel clubLevel = new ClubLevel() { ClubID = id, LevelID = 1, Date = DateTime.Now };
+                        bool resLv = new ClubLevelDao().Insert(clubLevel);
+                        if (resLv == false)
+                        {
+                            ModelState.AddModelError("", "Automatically create ClubLevel failed.");
+                        }
+
                         ViewBag.Success = "Create your Club successfully";
                     }
                     else
@@ -124,10 +135,73 @@ namespace FootballFlick.Controllers
             return View(club);
         }
 
+        //Rank all Clubs of the system
+        public ActionResult Rank(int pageIndex = 1, int pageSize = 10)
+        {
+            int totalRecord = 0;
+            var model = new ClubDao().DisplayListRankedClub(ref totalRecord, pageIndex, pageSize);
 
+            ViewBag.Total = totalRecord;
+            ViewBag.Page = pageIndex;
 
+            int maxPage = 5;
+            int totalPage = 0;
+            if (totalRecord % pageSize != 0)
+            {
+                totalPage = (int)(totalRecord / pageSize) + 1;
+            }
+            else
+            {
+                totalPage = (int)(totalRecord / pageSize);
+            }
 
+            ViewBag.TotalPage = totalPage;
+            ViewBag.MaxPage = maxPage;
+            ViewBag.First = 1;
+            ViewBag.Last = totalPage;
+            ViewBag.Next = pageIndex + 1;
+            ViewBag.Prev = pageIndex - 1;
 
+            return View(model);
+        }
+
+        //Dislay all information about the Club
+        public ActionResult Detail(long id, int pageIndex = 1, int pageSize = 10)
+        {
+            var club = new ClubDao().GetViewModelByID(id);
+            var rankInfor = new ClubDao().DisplayRankedClub(id);
+            ViewBag.RankInfor = rankInfor;
+
+            //Liệt kê danh sách các Player của Club
+            var listPlayer = new ClubPlayerDao().ListClubPlayer(id);
+            ViewBag.ListPlayer = listPlayer;
+
+            //Phân trang cho bảng liệt kê các Matches
+            int totalRecord = 0;
+            var listMatch = new MatchDao().ListMatchesOftheClub(id, ref totalRecord, pageIndex, pageSize);
+            ViewBag.ListMatch = listMatch;
+            ViewBag.Total = totalRecord;
+            ViewBag.Page = pageIndex;
+            int maxPage = 5;
+            int totalPage = 0;
+            if (totalRecord % pageSize != 0)
+            {
+                totalPage = (int)(totalRecord / pageSize) + 1;
+            }
+            else
+            {
+                totalPage = (int)(totalRecord / pageSize);
+            }
+
+            ViewBag.TotalPage = totalPage;
+            ViewBag.MaxPage = maxPage;
+            ViewBag.First = 1;
+            ViewBag.Last = totalPage;
+            ViewBag.Next = pageIndex + 1;
+            ViewBag.Prev = pageIndex - 1;
+
+            return View(club);
+        }
 
 
 

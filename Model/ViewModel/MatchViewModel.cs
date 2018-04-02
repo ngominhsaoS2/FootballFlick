@@ -124,6 +124,9 @@ namespace Model.ViewModel
         [StringLength(250)]
         public string StatusName { get; set; }
 
+        [StringLength(50)]
+        public string StatusColor { get; set; }
+
         public int? Stt { get; set; }
     }
 }

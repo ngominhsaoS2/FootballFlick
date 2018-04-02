@@ -243,6 +243,33 @@ namespace Model.Dao
             return model.ToList();
         }
 
+        /// <summary>
+        /// Rank all Clubs
+        /// </summary>
+        /// <param name="totalRecord"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public List<RankViewModel> DisplayListRankedClub (ref int totalRecord, int pageIndex = 1, int pageSize = 10)
+        {
+            totalRecord = db.vRanks.Count(x => x.TotalPoint > 0);
+            var model = db.vRanks.Where(x => x.TotalPoint > 0).OrderByDescending(x => x.TotalPoint).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return model.ToList();
+        }
+
+        /// <summary>
+        /// Display the Club in rank
+        /// </summary>
+        /// <param name="clubId"></param>
+        /// <returns></returns>
+        public RankViewModel DisplayRankedClub(long clubId)
+        {
+            return db.vRanks.SingleOrDefault(x => x.ClubID == clubId);
+        }
+
+
+
+
 
 
 

@@ -1,0 +1,152 @@
+﻿@model List<Model.ViewModel.RankViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userSession = (UserLogin)Session[FootballFlick.Common.CommonConstants.USER_SESSION];
+}
+
+@section jsFooter{
+    <script type="text/javascript" src="/Assets/Client/js/colorfulTab.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#colorful").colorfulTab();
+        });
+    </script>
+}
+
+@section header {
+    <section class="inner-w3ls">
+        <div class="container">
+            <h3 class="text-center" data-aos="zoom-in">Rank</h3>
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb" data-aos="zoom-in">
+                        <li>
+                            <a href="/Home">Home</a>
+                        </li>
+                        <li class="active">Rank</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>
+}
+
+<section class="schedule-w3layouts" style="padding-top:0px">
+    <div class="container">
+        <div class="table-responsive" data-aos="flip-down">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><h4>Rank</h4></th>
+                        <th><h4>Club</h4></th>
+                        <th><h4>Level</h4></th>
+                        <th><h4>P</h4></th>
+                        <th><h4>W</h4></th>
+                        <th><h4>D</h4></th>
+                        <th><h4>L</h4></th>
+                        <th><h4>F</h4></th>
+                        <th><h4>A</h4></th>
+                        <th><h4>Pts</h4></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var linkClub = "/Club/Detail/" + item.ClubMetaTitle + "-" + item.ClubID;
+                        var linkLevel = "/Club/Level/" + item.LevelMetaTitle + "-" + item.LevelID;
+                        <tr>
+                            <td style="font-weight:bold; font-size:25px">@item.RankNumber</td>
+                            <td>
+                                <a href="@linkClub">
+                                    <img src="@item.ClubImage" alt="@item.ClubName" class="img-responsive" width="50" height="50" /><p class="event-agileits">@item.ClubName</p>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@linkLevel">
+                                    <span class="badge badge-pill badge-success" style="background-color:@item.LevelColor">@item.LevelName</span>
+                                </a>
+                            </td>
+                            <td>@item.Joined</td>
+                            <td>@item.Win</td>
+                            <td>@item.Draw</td>
+                            <td>@item.Lose</td>
+                            <td>@item.TotalGoalFor</td>
+                            <td>@item.TotalGoalAgainst</td>
+                            <td style="font-weight:bold; font-size:25px">@item.TotalPoint</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!--Phân trang-->
+        @if (ViewBag.TotalPage > 0)
+        {
+            var pageDisplay = (int)ViewBag.MaxPage;
+            int totalPage = (int)ViewBag.TotalPage;
+            int currentPage = (int)ViewBag.Page;
+
+            //Create numeric links
+            var startPageIndex = 0;
+            var endPageIndex = 0;
+            if (totalPage > pageDisplay)
+            {
+                startPageIndex = Math.Max(1, currentPage - (pageDisplay / 2));
+                if (startPageIndex < pageDisplay / 2)
+                {
+                    endPageIndex = pageDisplay;
+                }
+                else
+                {
+                    endPageIndex = Math.Min(totalPage, currentPage + (pageDisplay / 2));
+                    startPageIndex = endPageIndex - pageDisplay;
+                }
+
+            }
+            else
+            {
+                startPageIndex = 1;
+                endPageIndex = totalPage;
+            }
+
+            <nav>
+                <ul class="pagination">
+                    @if (currentPage > ViewBag.First)
+                    {
+                        <li><a href="/Club/Rank?pageIndex=@ViewBag.First" title="First page" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                        <li>
+                            <a href="/Club/Rank?pageIndex=@ViewBag.Prev" title="Previous page" class="prev"><i class="fa fa-angle-left"></i></a>
+                        </li>
+
+                    }
+
+                    @for (int i = startPageIndex; i <= endPageIndex; i++)
+                    {
+                    if (currentPage == i)
+                    {
+                            <li><a href="/Club/Rank?pageIndex=@i" class="active" title="Page @i">@i</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/Club/Rank?pageIndex=@i" title="Page @i" class="pos">@i</a></li>
+                        }
+                    }
+
+                    @if (currentPage < totalPage)
+                    {
+                        <li><a href="/Club/Rank?pageIndex=@ViewBag.Next" class="next" title="Next page"><i class="fa fa-angle-right"></i></a></li>
+                        <li> <a href="/Club/Rank?pageIndex=@ViewBag.Last" class="last" title="Last page"><i class="fa fa-angle-double-right"></i></a></li>
+                    }
+                </ul>
+            </nav>
+        }
+        else
+        {
+            <span>No records</span>
+        }
+    </div>
+</section>
+<br />

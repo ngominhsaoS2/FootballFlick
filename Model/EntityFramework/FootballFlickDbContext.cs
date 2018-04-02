@@ -65,6 +65,7 @@ namespace Model.EntityFramework
         public virtual DbSet<ProductViewModel> vProducts { get; set; }
         public virtual DbSet<PlayerViewModel> vPlayers { get; set; }
         public virtual DbSet<ClubLevelViewModel> vClubLevels { get; set; }
+        public virtual DbSet<RankViewModel> vRanks { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

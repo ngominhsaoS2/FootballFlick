@@ -80,6 +80,20 @@ namespace FootballFlick
             );
 
             routes.MapRoute(
+                name: "Rank of all Clubs",
+                url: "Club/Rank",
+                defaults: new { controller = "Club", action = "Rank", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Club detail",
+                url: "Club/Detail/{MetaTitle}-{id}",
+                defaults: new { controller = "Club", action = "Detail", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Edit a Club",
                 url: "Club/Edit/{MetaTitle}-{id}",
                 defaults: new { controller = "Club", action = "Edit", id = UrlParameter.Optional },

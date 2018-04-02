@@ -34,7 +34,9 @@ namespace Model.ViewModel
 
         public int? GoalPoint { get; set; }
 
-        public int? RivalLevel { get; set; }
+        public int? RivalLevelID { get; set; }
+
+        public double? Multiplier { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 

@@ -11,7 +11,7 @@ namespace Model.ViewModel
     {
         [Key]
         [Column(Order = 0)]
-        public string MatchID { get; set; }
+        public long MatchID { get; set; }
 
         [Key]
         [Column(Order = 1)]

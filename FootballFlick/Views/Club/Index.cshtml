@@ -36,7 +36,7 @@
                 foreach (var item in Model)
                 {
                 <!-- Blog Post Row -->
-                    var link = "/Club/Edit/" + item.MetaTitle + "-" + item.ID;
+                    var link = "/Club/Detail/" + item.MetaTitle + "-" + item.ID;
                     <div class="news-w3ls">
                         <div class="col-md-1 text-center" data-aos="zoom-in">
                             <p class="news-agileits1"><i class="fa fa-tachometer"></i></p>
@@ -56,7 +56,7 @@
                                 <a href="@link">@item.Name</a>
                             </h3>
                             <p class="news-agileits3">@item.Description</p>
-                            <a class="btn btn-primary" href="@link">General</a>
+                            <a class="btn btn-primary" href="/Club/Edit/@item.MetaTitle-@item.ID">General</a>
                             <a class="btn btn-primary" href="/ClubPlayer/@(item.MetaTitle + "-" + item.ID)">Player</a>
                             <a class="btn btn-primary" href="#">Time</a>
                             <a class="btn btn-primary" href="#">Stadium</a>

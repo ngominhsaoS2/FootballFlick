@@ -1,0 +1,233 @@
+﻿@model Model.ViewModel.ClubViewModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var rankInfor = (Model.ViewModel.RankViewModel)ViewBag.RankInfor;
+    var listMatch = (List<Model.ViewModel.MatchViewModel>)ViewBag.ListMatch;
+    var listPlayer = (List<Model.ViewModel.ClubPlayerViewModel>)ViewBag.ListPlayer;
+}
+
+@section jsFooter{
+    <script src="/Assets/Client/js/toucheffects.js"></script>
+    <script src="/Assets/Client/js/jquery.pogo-slider.min.js"></script>
+    <script src="/Assets/Client/js/main.js"></script>
+}
+
+@section header {
+    <section class="inner-w3ls">
+        <div class="container">
+            <h3 class="text-center" data-aos="zoom-in">@Model.Name</h3>
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb" data-aos="zoom-in">
+                        <li class="active"><a href="/Home">Home</a></li>
+                        <li class="active">ClubDetail</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>
+}
+
+<section class="news-w3layouts">
+    <div class="container">
+        <div class="news-w3ls">
+            <div class="col-md-1 text-center" data-aos="zoom-in">
+                <p class="news-agileits1"><i class="fa fa-tachometer"></i></p>
+                <p class="news-agileits2">@Model.Code</p>
+            </div>
+            <div class="col-md-3" data-aos="flip-left">
+                <a href="#">
+                    <div class="hover01 column">
+                        <div>
+                            <figure><img class="img-responsive img-hover" src="@Model.Image" alt="@Model.Name"></figure>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6" data-aos="flip-right">
+                <h3><a href="#">@Model.Name</a></h3>
+                <p>Point @rankInfor.TotalPoint - Win @rankInfor.Win - Draw @rankInfor.Draw - Lose @rankInfor.Lose</p><br />
+                <p>Goals for @rankInfor.TotalGoalFor - Goals against @rankInfor.TotalGoalAgainst</p><br />
+                <p>Cancel times @(rankInfor.HomeCancel + rankInfor.VisitingCancel)</p><br />
+                <p>Level <span class="badge badge-pill badge-success" style="background-color:@rankInfor.LevelColor">@rankInfor.LevelName</span></p><br />
+                <p><a href="#" class="btn btn-success">Challenge</a></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+
+<section class="schedule-w3layouts" style="padding-top:0px">
+    <div class="container">
+        <h3 class="text-center" data-aos="flip-up">Matches</h3>
+        <div class="table-responsive" data-aos="flip-down">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><h4>ID</h4></th>
+                        <th><h4>Home</h4></th>
+                        <th><h4>Visiting</h4></th>
+                        <th><h4>Goal</h4></th>
+                        <th><h4>Status</h4></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in listMatch)
+                    {
+                        var linkMatch = "/Match/Detail/" + item.MetaTitle + "-" + item.ID;
+                        var linkHomeClub = "/Club/Detail/" + item.HomeClubMetaTitle + "-" + item.HomeClubID;
+                        var linkVisitingClub = "/Club/Detail/" + item.VisitingClubMetaTitle + "-" + item.VisitingClubID;
+                        <tr>
+                            <td><a href="@linkMatch">@item.ID</a></td>
+                            <td><a href="@linkHomeClub">@item.HomeClubName</a></td>
+                            <td><a href="@linkVisitingClub">@item.VisitingClubName</a></td>
+                            <td><a href="@linkMatch">@(item.HomeClubGoal + " - " + item.VisitingClubGoal)</a></td>
+                            <td><span class="badge badge-pill badge-success" style="background-color:@item.StatusColor">@item.StatusName</span></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!--Phân trang-->
+        @if (ViewBag.TotalPage > 0)
+        {
+            var pageDisplay = (int)ViewBag.MaxPage;
+            int totalPage = (int)ViewBag.TotalPage;
+            int currentPage = (int)ViewBag.Page;
+
+            //Create numeric links
+            var startPageIndex = 0;
+            var endPageIndex = 0;
+            if (totalPage > pageDisplay)
+            {
+                startPageIndex = Math.Max(1, currentPage - (pageDisplay / 2));
+                if (startPageIndex < pageDisplay / 2)
+                {
+                    endPageIndex = pageDisplay;
+                }
+                else
+                {
+                    endPageIndex = Math.Min(totalPage, currentPage + (pageDisplay / 2));
+                    startPageIndex = endPageIndex - pageDisplay;
+                }
+
+            }
+            else
+            {
+                startPageIndex = 1;
+                endPageIndex = totalPage;
+            }
+
+            <nav>
+                <ul class="pagination">
+                    @if (currentPage > ViewBag.First)
+                    {
+                        var link = "/Club/Detail/" + Model.MetaTitle + "-" + Model.ID;
+                        <li><a href="@link?pageIndex=@ViewBag.First" title="First page" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                        <li>
+                            <a href="@link?pageIndex=@ViewBag.Prev" title="Previous page" class="prev"><i class="fa fa-angle-left"></i></a>
+                        </li>
+
+                    }
+
+                    @for (int i = startPageIndex; i <= endPageIndex; i++)
+                    {
+                        var link = "/Club/Detail/" + Model.MetaTitle + "-" + Model.ID;
+                        if (currentPage == i)
+                        {
+                            <li><a href="@link?pageIndex=@i" class="active" title="Page @i">@i</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@link?pageIndex=@i" title="Page @i" class="pos">@i</a></li>
+                        }
+                    }
+
+                    @if (currentPage < totalPage)
+                    {
+                        var link = "/Club/Detail/" + Model.MetaTitle + "-" + Model.ID;
+                        <li><a href="@link?pageIndex=@ViewBag.Next" class="next" title="Next page"><i class="fa fa-angle-right"></i></a></li>
+                        <li> <a href="@link?pageIndex=@ViewBag.Last" class="last" title="Last page"><i class="fa fa-angle-double-right"></i></a></li>
+                    }
+                </ul>
+            </nav>
+        }
+        else
+        {
+            <span>No records</span>
+        }
+    </div>
+</section>
+<br />
+<br />
+
+<section class="team-w3layouts">
+    <div class="container">
+        <!-- Team Members -->
+        <h3 class="text-center" data-aos="flip-up">Players</h3>
+        @foreach (var item in listPlayer)
+        {
+            <div class="col-md-4 col-sm-6 col-xs-6 text-center team-wthree" data-aos="zoom-in">
+                <div class="grid cs-style-4">
+                    <div>
+                        <figure>
+                            <div><img src="@item.PlayerImage" alt="img05"></div>
+                            <figcaption>
+                                <h4>@item.PlayerName</h4>
+                                <p>@item.PlayerEmail</p>
+                                <a data-toggle="modal" href="#team1" class="team-link" title="Click">Read More</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        }  
+    </div>
+
+    @foreach (var item in listPlayer)
+    {
+        <div class="modal fade" id="team1" tabindex="-1" role="dialog" aria-labelledby="team1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Elizabeth</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="hover01 column">
+                                <div>
+                                    <figure><img class="img-responsive" src="/Assets/Client/images/team-pic1.jpg" alt="w3layouts"></figure>
+                                    <span>Founder</span>
+                                </div>
+                            </div>
+                            <ul class="social-icons2">
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec elementum diam. Etiam tempus sit amet mauris in molestie. Ut lorem nunc, ultricies eu diam et, egestas sagittis nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>Phasellus ac velit quis nunc tempus iaculis. Etiam ac lectus ullamcorper massa luctus gravida. </p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    }
+    
+</section>
+<br />
+<br />
