@@ -143,11 +143,23 @@ namespace Model.Dao
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public List<MatchViewModel> ListAll(ref int totalRecord, int pageIndex = 1, int pageSize = 9)
+        public List<MatchViewModel> ListAll(int? matchStatus, string searchString, ref int totalRecord, int pageIndex = 1, int pageSize = 9)
         {
             totalRecord = db.vMatches.Count();
-            var model = db.vMatches.OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
-            return model.ToList();
+            IQueryable<MatchViewModel> model = db.vMatches;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Code.Contains(searchString) || x.Name.Contains(searchString) ||
+                x.HomeClubCode.Contains(searchString) || x.HomeClubName.Contains(searchString) ||
+                x.VisitingClubCode.Contains(searchString) || x.VisitingClubName.Contains(searchString) ||
+                x.StadiumName.Contains(searchString));
+            }
+            if (matchStatus != null)
+            {
+                model = model.Where(x => x.Status == matchStatus);
+            }
+            return model.OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            
         }
 
         /// <summary>
@@ -172,7 +184,23 @@ namespace Model.Dao
             return model.ToList();
         }
 
-
+        /// <summary>
+        /// Check if a Code of Match already exists or not yet
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool CheckCode(string code)
+        {
+            int result = db.Matches.Count(x => x.Code == code);
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 

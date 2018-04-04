@@ -250,11 +250,20 @@ namespace Model.Dao
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public List<RankViewModel> DisplayListRankedClub (ref int totalRecord, int pageIndex = 1, int pageSize = 10)
+        public List<RankViewModel> DisplayListRankedClub (int? levelId, string searchString, ref int totalRecord, int pageIndex = 1, int pageSize = 10)
         {
-            totalRecord = db.vRanks.Count(x => x.TotalPoint > 0);
-            var model = db.vRanks.Where(x => x.TotalPoint > 0).OrderByDescending(x => x.TotalPoint).Skip((pageIndex - 1) * pageSize).Take(pageSize);
-            return model.ToList();
+            totalRecord = db.vRanks.Count();
+            IQueryable<RankViewModel> model = db.vRanks;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.ClubName.Contains(searchString));
+            }
+            if(levelId != null)
+            {
+                model = model.Where(x => x.LevelID == levelId);
+            }
+            
+            return model.OrderByDescending(x => x.TotalPoint).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
         }
 
         /// <summary>

@@ -1,5 +1,4 @@
-﻿//copy nguyên từ bản master
-var clubPlayer = {
+﻿var clubPlayer = {
     init: function () {
         clubPlayer.registerEvents();
     },

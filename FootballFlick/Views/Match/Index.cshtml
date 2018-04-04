@@ -3,10 +3,19 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var selectedMatchStatus = new Model.EntityFramework.StatusCategory() { Stt = 0, Name = "---Select one---" };
+    if (ViewBag.SelectedMatchStatus != null)
+    {
+        selectedMatchStatus = (Model.EntityFramework.StatusCategory)ViewBag.SelectedMatchStatus;
+    }
+}
+
+@section jsFooter{
+    <script src="/Assets/Client/js/controller/selectListController.js"></script>    
 }
 
 @section header {
-    <section class="inner-w3ls">
+    <section class="inner-w3ls" style="padding-bottom:10px">
         <div class="container">
             <h3 class="text-center" data-aos="zoom-in">Match</h3>
             <!-- Page Heading/Breadcrumbs -->
@@ -27,7 +36,30 @@
     </section>
 }
 
-<section class="news-w3layouts">
+<section class="news-w3ls">
+    @using (Html.BeginForm("Index", "Match", FormMethod.Get))
+    {
+        <div class="container" data-aos="flip-down">
+            <div class="col-md-2">
+                Status
+                <select class="form-control" id="slMatchStatus" name="matchStatus">
+                    <option id="selectedMatchStatus" value="@selectedMatchStatus.Stt" selected >@selectedMatchStatus.Name</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                Search
+                <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" />
+            </div>
+            <div class="col-md-3">
+                <br />
+                <input type="submit" class="btn btn-success" value="Search" />
+                <a type="submit" class="btn btn-success" href="/Match/Index">Clear</a>
+            </div>
+        </div>
+    }
+</section>
+
+<section class="news-w3layouts" style="padding-top:10px">
     <div class="container">
         @foreach (var item in Model)
         {

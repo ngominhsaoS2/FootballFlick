@@ -22,7 +22,7 @@ namespace Model.Dao
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Level GetByID(long id)
+        public Level GetByID(int id)
         {
             return db.Levels.Find(id);
         }
@@ -102,8 +102,14 @@ namespace Model.Dao
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
-
-
+        /// <summary>
+        /// List all Levels for Level select option
+        /// </summary>
+        /// <returns></returns>
+        public List<Level> ListAllForOption()
+        {
+            return db.Levels.Where(x => x.Status == true).OrderBy(x => x.Multiplier).ToList();
+        }
 
 
 

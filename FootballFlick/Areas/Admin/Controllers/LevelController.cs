@@ -59,7 +59,7 @@ namespace FootballFlick.Areas.Admin.Controllers
 
         //Edit an Level
         [HttpGet]
-        public ActionResult Edit(long id)
+        public ActionResult Edit(int id)
         {
             var level = new LevelDao().GetByID(id);
             return View(level);
@@ -99,8 +99,7 @@ namespace FootballFlick.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-
-
+        
 
 
 

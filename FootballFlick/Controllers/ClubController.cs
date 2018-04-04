@@ -136,10 +136,18 @@ namespace FootballFlick.Controllers
         }
 
         //Rank all Clubs of the system
-        public ActionResult Rank(int pageIndex = 1, int pageSize = 10)
+        public ActionResult Rank(int? levelId, string searchString, int pageIndex = 1, int pageSize = 10)
         {
             int totalRecord = 0;
-            var model = new ClubDao().DisplayListRankedClub(ref totalRecord, pageIndex, pageSize);
+            var model = new ClubDao().DisplayListRankedClub(levelId, searchString, ref totalRecord, pageIndex, pageSize);
+            ViewBag.SearchString = searchString;
+
+            Level selectedLevel = new Level();
+            if(levelId != null)
+            {
+                selectedLevel = new LevelDao().GetByID((int)levelId);
+            }
+            ViewBag.SelectedLevel = selectedLevel;
 
             ViewBag.Total = totalRecord;
             ViewBag.Page = pageIndex;
@@ -203,7 +211,7 @@ namespace FootballFlick.Controllers
             return View(club);
         }
 
-
+        
 
 
 

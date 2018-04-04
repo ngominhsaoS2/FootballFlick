@@ -241,9 +241,11 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LevelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MatchController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Controllers\StatusCategoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1319,6 +1321,7 @@
     <Content Include="Assets\Client\css\font-awesome.min.css" />
     <Content Include="Assets\Client\css\icons.css" />
     <Content Include="Assets\Client\css\info.css" />
+    <Content Include="Assets\Client\css\jquery-ui.css" />
     <Content Include="Assets\Client\css\jquery.mb.thumbgallery.min.css" />
     <Content Include="Assets\Client\css\pogo-slider.min.css" />
     <Content Include="Assets\Client\css\simplelightbox.min.css" />
@@ -1446,9 +1449,11 @@
     <Content Include="Assets\Client\js\contact_me.js" />
     <Content Include="Assets\Client\js\controller\clubPlayerController.js" />
     <Content Include="Assets\Client\js\controller\contactController.js" />
+    <Content Include="Assets\Client\js\controller\selectListController.js" />
     <Content Include="Assets\Client\js\index.js" />
     <Content Include="Assets\Client\js\jarallax.js" />
     <Content Include="Assets\Client\js\jqBootstrapValidation.js" />
+    <Content Include="Assets\Client\js\jquery-ui.js" />
     <Content Include="Assets\Client\js\jquery.ba-cond.min.js" />
     <Content Include="Assets\Client\js\jquery.hover3d.js" />
     <Content Include="Assets\Client\js\jquery.hoverCarousel.js" />
@@ -1655,12 +1660,15 @@
     <Content Include="Views\Match\Detail.cshtml" />
     <Content Include="Views\Club\Rank.cshtml" />
     <Content Include="Views\Club\Detail.cshtml" />
+    <Content Include="Views\Match\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Data\files\" />
+    <Folder Include="Views\Level\" />
     <Folder Include="Views\Player\" />
+    <Folder Include="Views\StatusCategory\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
