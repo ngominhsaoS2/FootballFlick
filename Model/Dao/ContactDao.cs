@@ -16,6 +16,10 @@ namespace Model.Dao
             db = new FootballFlickDbContext();
         }
 
+        /// <summary>
+        /// Get one active content int Contact table
+        /// </summary>
+        /// <returns></returns>
         public Contact GetActiveContent()
         {
             return db.Contacts.SingleOrDefault(x => x.Status == true);

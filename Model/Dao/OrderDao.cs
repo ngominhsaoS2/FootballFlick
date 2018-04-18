@@ -19,7 +19,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Order when having ID - Lấy ra Order khi có ID
+        /// Get Order when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -29,7 +29,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Order to database -  Thêm mới một Order vào cơ sở dữ liệu
+        /// Insert one Order to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -43,7 +43,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Order in the database -  Cập nhật một Order trong cơ sở dữ liệu
+        /// Update one Order in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -68,7 +68,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Order in the database - Xóa một Order khỏi cơ sở dữ liệu
+        /// Delete one Order in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -103,7 +103,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Order into a table with search string - Liệt kê danh sách Order có thể sử dụng tìm kiếm search
+        /// List Order into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>

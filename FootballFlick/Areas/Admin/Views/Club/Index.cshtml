@@ -1,0 +1,117 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Model.ViewModel.ClubViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter {
+    <script src="/Assets/Admin/js/controller/clubController.js"></script>
+}
+
+<div class="tables">
+    @using (Html.BeginForm("Index", "Club", FormMethod.Get))
+    {
+        <div class="row form-group">
+            <div class="col-lg-12">
+                <div class="col-md-4">
+                    <h1 class="title1">List of Clubs</h1>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success">Search</button>
+                    <a type="submit" class="btn btn-success" href="/Admin/Club/Index">Clear</a>
+                    <a type="submit" class="btn btn-primary" href="/Admin/Club/Create">Create</a>
+                </div>
+                <div class="col-md-1">
+                    <select class="form-control" name="">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="table-responsive bs-example widget-shadow">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>OwnerName</th>
+                    <th>Image</th>
+                    <th>Phone</th>
+                    <th>LevelCode</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="row_@item.ID">
+                        <td>@item.Code</td>
+                        <td>@item.Name</td>
+                        <td>@item.OwnerName</td>
+                        <td><img class="img-responsive" width="150" height="auto" src="@item.Image" alt=""></td>
+                        <td>@item.Phone</td>
+                        <td>@item.LevelCode</td>
+                        <td>@(item.Status ? "Active" : "Not available")</td>
+                        <td>
+                            <a href="/Admin/ClubPlayer/Edit/@item.ID">Players</a>
+                            |
+                            <a href="/Admin/ClubStadium/Edit/@item.ID">Stadiums</a>
+                            |
+                            <a href="/Admin/ClubAvailableTime/Edit/@item.ID">Time</a>
+                            |
+                            <br />
+                            <a href="#" data-id="@item.ID" class="btn-images">More images</a>
+                            |
+                            <a href="/Admin/Club/Edit/@item.ID">Edit</a>
+                            |
+                            @Ajax.ActionLink("Delete", "Delete", new { @id = @item.ID }, new AjaxOptions
+                       {
+                           Confirm = "Do you really want to delete this row?",
+                           OnComplete = "$('#row_" + @item.ID + "').remove()",
+                           HttpMethod = "Delete"
+                       })
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="imagesManage" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">More images</h4>
+            </div>
+            <div class="modal-body">
+                <div id="imageList" style="margin:5px;">
+                </div>
+                <div class="clear"></div>
+                <input type="button" id="btnChooseImages" class="btn btn-primary" value="Select images" />
+                <input type="hidden" id="hidClubID" value="0" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnSaveImages">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

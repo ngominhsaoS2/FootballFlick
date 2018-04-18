@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Dao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,18 +14,24 @@ namespace FootballFlick.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [ChildActionOnly]
+        public ActionResult Navigation()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            var model = new MenuDao().ListMenu(0, 1);
+            return PartialView(model);
         }
 
-        public ActionResult Contact()
+        [ChildActionOnly]
+        public ActionResult Footer()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return PartialView();
         }
+
+
+
+
+
+
+
     }
 }

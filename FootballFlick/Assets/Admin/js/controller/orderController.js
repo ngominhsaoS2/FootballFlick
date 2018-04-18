@@ -17,7 +17,7 @@
             });
 
             $.ajax({
-                url: '/Order/UpdateQuantity',
+                url: '/Admin/Order/UpdateQuantity',
                 data: { cartModel: JSON.stringify(cartList), orderId: orderId },
                 dataType: 'json',
                 type: 'POST',
@@ -55,7 +55,7 @@
             });
 
             $.ajax({
-                url: '/Order/UpdateWarehouseID',
+                url: '/Admin/Order/UpdateWarehouseID',
                 data: { list: JSON.stringify(list) },
                 dataType: 'json',
                 type: 'POST',
@@ -78,7 +78,7 @@
             var row = {"OrderID": orderId, "ProductID": productId, "Quantity": quantity, "Price": price};
 
             $.ajax({
-                url: '/Order/AddRow',
+                url: '/Admin/Order/AddRow',
                 data: { row: JSON.stringify(row) },
                 dataType: 'json',
                 type: 'POST',

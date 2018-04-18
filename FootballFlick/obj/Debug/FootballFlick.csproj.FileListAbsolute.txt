@@ -88,3 +88,5 @@ E:\WORK\GITHUB\FootballFlick\FootballFlick\bin\PagedList.dll
 E:\WORK\GITHUB\FootballFlick\FootballFlick\bin\PagedList.xml
 E:\WORK\GITHUB\FootballFlick\FootballFlick\bin\CKFinder.dll
 E:\WORK\GITHUB\FootballFlick\FootballFlick\bin\CKFinder.pdb
+E:\WORK\GITHUB\FootballFlick\FootballFlick\bin\BotDetect.dll
+E:\WORK\GITHUB\FootballFlick\FootballFlick\bin\BotDetect.Web.Mvc.dll

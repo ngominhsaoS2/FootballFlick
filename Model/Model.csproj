@@ -60,18 +60,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\BannerDao.cs" />
+    <Compile Include="Dao\ClubAvailableTimeDao.cs" />
     <Compile Include="Dao\ClubDao.cs" />
+    <Compile Include="Dao\ClubLevelDao.cs" />
+    <Compile Include="Dao\ClubPlayerDao.cs" />
+    <Compile Include="Dao\ClubPointDao.cs" />
+    <Compile Include="Dao\ClubStadiumDao.cs" />
     <Compile Include="Dao\ContactDao.cs" />
     <Compile Include="Dao\ContentCategoryDao.cs" />
     <Compile Include="Dao\ContentDao.cs" />
     <Compile Include="Dao\ContentTagDao.cs" />
     <Compile Include="Dao\FeedbackDao.cs" />
+    <Compile Include="Dao\LevelDao.cs" />
+    <Compile Include="Dao\MatchDao.cs" />
+    <Compile Include="Dao\MatchDetailDao.cs" />
     <Compile Include="Dao\MenuDao.cs" />
     <Compile Include="Dao\OrderDao.cs" />
     <Compile Include="Dao\OrderDetailDao.cs" />
+    <Compile Include="Dao\PlayerDao.cs" />
     <Compile Include="Dao\ProductCategoryDao.cs" />
     <Compile Include="Dao\ProductDao.cs" />
     <Compile Include="Dao\SlideDao.cs" />
+    <Compile Include="Dao\StadiumDao.cs" />
     <Compile Include="Dao\StatusCategoryDao.cs" />
     <Compile Include="Dao\TagDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
@@ -81,6 +91,7 @@
     <Compile Include="EntityFramework\Club.cs" />
     <Compile Include="EntityFramework\ClubArea.cs" />
     <Compile Include="EntityFramework\ClubAvailableTime.cs" />
+    <Compile Include="EntityFramework\ClubLevel.cs" />
     <Compile Include="EntityFramework\ClubPlayer.cs" />
     <Compile Include="EntityFramework\ClubPoint.cs" />
     <Compile Include="EntityFramework\ClubStadium.cs" />
@@ -113,9 +124,21 @@
     <Compile Include="EntityFramework\User.cs" />
     <Compile Include="EntityFramework\UserGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ClubAreaViewModel.cs" />
+    <Compile Include="ViewModel\ClubAvailableTimeViewModel.cs" />
+    <Compile Include="ViewModel\ClubLevelViewModel.cs" />
+    <Compile Include="ViewModel\ClubPlayerViewModel.cs" />
+    <Compile Include="ViewModel\ClubPointViewModel.cs" />
+    <Compile Include="ViewModel\ClubStadiumViewModel.cs" />
+    <Compile Include="ViewModel\ClubViewModel.cs" />
     <Compile Include="ViewModel\ContentViewModel.cs" />
+    <Compile Include="ViewModel\MatchDetailViewModel.cs" />
+    <Compile Include="ViewModel\MatchViewModel.cs" />
     <Compile Include="ViewModel\OrderDetailViewModel.cs" />
+    <Compile Include="ViewModel\PlayerPointViewModel.cs" />
+    <Compile Include="ViewModel\PlayerViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\RankViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

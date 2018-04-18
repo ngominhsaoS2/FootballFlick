@@ -9,6 +9,7 @@ namespace FootballFlick.Areas.Admin.Controllers
     public class HomeController : BaseController
     {
         // GET: Admin/Home
+        [HasPermission(RoleID = "VIEW_ADMINHOME")]
         public ActionResult Index()
         {
             return View();

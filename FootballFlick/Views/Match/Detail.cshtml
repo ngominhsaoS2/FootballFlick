@@ -1,0 +1,227 @@
+﻿@model Model.ViewModel.MatchViewModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listDetail = (List<Model.ViewModel.MatchDetailViewModel>)ViewBag.ListDetail;
+    var recentMatches = (List<Model.ViewModel.MatchViewModel>)ViewBag.RecentMatches;
+}
+
+@section header {
+    <section class="inner-w3ls">
+        <div class="container">
+            <h3 class="text-center" data-aos="zoom-in">@Model.Code</h3>
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb" data-aos="zoom-in">
+                        <li class="active"><a href="/Home">Home</a></li>
+                        <li class="active">MatchInfor</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>
+}
+
+<section class="blogpost-w3layouts">
+    <div class="container">
+        <! -- SINGLE POST -->
+        <div class="col-lg-8" data-aos="flip-left">
+            <! -- Blog Post 1 -->
+            <p class="blogpost-p1">
+                <div class="hover01 column">
+                    <div>
+                        <figure><img class="img-responsive" src="@Model.Image" data-aos="zoom-in"></figure>
+                    </div>
+                </div>
+            </p>
+            <a href="blogpost.html" class="blogpost-w3ls" data-aos="flip-up"><h3>@Model.Code</h3></a>
+            <p class="blogpost-p2" data-aos="flip-up">Posted: @Model.CreatedDate</p>
+            
+            <div class="grid_3 grid_5">
+                <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                    <ul id="myTab" class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#infor" id="infor-tab" role="tab" data-toggle="tab" aria-controls="infor" aria-expanded="true">Infor</a></li>
+                        <li role="presentation"><a href="#result" role="tab" id="result-tab" data-toggle="tab" aria-controls="result">Result</a></li>
+                        <li role="presentation"><a href="#statistic" role="tab" id="statistic-tab" data-toggle="tab" aria-controls="statistic">Statistic</a></li>
+                        <li role="presentation"><a href="#point" role="tab" id="point-tab" data-toggle="tab" aria-controls="point">Point</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="infor" aria-labelledby="infor-tab">
+                            <br />
+                            <h2>Home club: <a href="/Club/Detail/@(Model.HomeClubMetaTitle + "-" + Model.HomeClubID)">@Model.HomeClubName</a></h2>
+                            <br />
+                            <h2>Visiting club: <a href="/Club/Detail/@(Model.VisitingClubMetaTitle + "-" + Model.VisitingClubID)">@Model.VisitingClubName</a></h2>
+                            <br />
+                            <h2>Stadium: <a href="/Stadium/Detail/@(Model.StadiumMetaTitle + "-" + Model.StadiumID)">@(Model.StadiumName + " - " + Model.HoldAddress)</a></h2>
+                            <br />
+                            <h2>Date: @Model.Date</h2>
+                            <br />
+                            <h2>Exprire: @Model.ExpiredDateToSign</h2>
+                            <br />
+                            <h2>Time: @(Model.ExpectedStartTime + " - " + Model.ExpectedEndTime)</h2>
+                            <br />
+                            <h2>Price: <b>@Model.PromotionPrice.GetValueOrDefault(0).ToString("N0") VNĐ</b> - <del>@Model.Price.GetValueOrDefault(0).ToString("N0") VNĐ</del></h2>
+                            <br />
+                            
+                            <h2>Status: <span class="badge badge-pill badge-success" style="background-color:@Model.StatusColor">@Model.StatusName</span></h2>
+                            <br />
+                            <h2>Join match: <a href="#" class="btn btn-primary">Join</a></h2>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="result" aria-labelledby="result-tab">
+                            <br />
+                            <h2>Goal:
+                                <a href="/Club/Detail/@(Model.HomeClubMetaTitle + "-" + Model.HomeClubID)">@Model.HomeClubName</a> @Model.HomeClubGoal
+                                 - 
+                                @Model.VisitingClubGoal <a href="/Club/Detail/@(Model.VisitingClubMetaTitle + "-" + Model.VisitingClubID)">@Model.VisitingClubName</a>
+                            </h2>
+                            <br />
+                            <h2>Played time: @(Model.RealStartTime + " - " + Model.RealEndTime)</h2>
+                            <p class="blogpost-p3" data-aos="flip-up">@Html.Raw(Model.Detail)</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="statistic" aria-labelledby="statistic-tab">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Player</th>
+                                        <th>Goal</th>
+                                        <th>Assist</th>
+                                        <th>YellowCard</th>
+                                        <th>RedCard</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var item in listDetail)
+                                {
+                                    <tr>
+                                        <th>@(item.PlayerID + " - " + item.PlayerName)</th>
+                                        <th>@item.Goal</th>
+                                        <th>@item.Assist</th>
+                                        <th>@item.YellowCard</th>
+                                        <th>@item.RedCard</th>
+                                    </tr>
+                                }    
+                                </tbody>
+                            </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="point" aria-labelledby="point-tab">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+
+            <div class="hline"></div>
+            <h3 class="blogpost-agileits" data-aos="flip-up">Share It on social media:</h3>
+            <ul class="social-icons1" data-aos="flip-up">
+                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+            </ul>
+            <!-- Blog Comments -->
+            <div class="hline"></div>
+            <!-- Comments Form -->
+            <div class="well">
+                <h4 data-aos="flip-up">Leave a Comment:</h4>
+                <form action="#" method="post" role="form">
+                    <div class="form-group" data-aos="flip-up">
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-aos="flip-up">Submit</button>
+                </form>
+            </div>
+            <div class="hline"></div>
+            <!-- Posted Comments -->
+            <!-- Comment -->
+            <div class="media">
+                <a class="pull-left" href="#" data-aos="flip-up">
+                    <div class="hover01 column">
+                        <div>
+                            <figure><img class="media-object" src="/Assets/Client/images/blogpost-pic1.jpg" alt="w3layouts"></figure>
+                        </div>
+                    </div>
+                </a>
+                <div class="media-body" data-aos="flip-up">
+                    <h4 class="media-heading">
+                        Lady Gaga
+                        <small>July 10, 2017 at 7:30 AM</small>
+                    </h4>
+                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.</p>
+                </div>
+            </div>
+
+            <!-- Comment -->
+            <div class="media">
+                <a class="pull-left" href="#" data-aos="flip-up">
+                    <div class="hover01 column">
+                        <div>
+                            <figure><img class="media-object" src="/Assets/Client/images/blogpost-pic2.jpg" alt="w3layouts"></figure>
+                        </div>
+                    </div>
+                </a>
+                <div class="media-body" data-aos="flip-up">
+                    <h4 class="media-heading">
+                        Britney Spears
+                        <small>July 10, 2017 at 9:30 AM</small>
+                    </h4>
+                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.</p>
+                    <!-- Nested Comment -->
+                    <div class="media">
+                        <a class="pull-left" href="#" data-aos="flip-up">
+                            <div class="hover01 column">
+                                <div>
+                                    <figure><img class="media-object" src="/Assets/Client/images/blogpost-pic3.jpg" alt="w3layouts"></figure>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="media-body" data-aos="flip-up">
+                            <h4 class="media-heading">
+                                Monica Belucci
+                                <small>July 10, 2017 at 10:30 AM</small>
+                            </h4>
+                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.</p>
+                        </div>
+                    </div>
+                    <!-- End Nested Comment -->
+                </div>
+            </div>
+            <div class="hline"></div>
+        </div><! --/col-lg-8 -->
+        <! -- SIDEBAR -->
+        <div class="col-lg-4" data-aos="flip-right">
+            <h4 class="post-w3ls">Recent Posts</h4>
+            <div class="hline"></div>
+            <ul class="popular-posts">
+            @foreach (var item in recentMatches)
+            {
+                var link = "/Match/Detail/" + item.MetaTitle + "-" + item.ID;
+                <li data-aos="flip-up">
+                    <div class="postimg-agile">
+                        <a href="@link">
+                            <div class="hover15 column">
+                                <div>
+                                    <figure><img class="img-responsive" src="@item.Image" alt="@item.Name"></figure>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="postinfo-agile">
+                        <p><a href="@link">@item.Name</a></p>
+                        <em>Posted on @item.CreatedDate</em>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+            }
+            </ul>
+            <div class="hline"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div><! --/container -->
+</section>
+
+

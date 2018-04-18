@@ -11,9 +11,11 @@ namespace Model.EntityFramework
     {
         public long ID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Code")]
         [StringLength(16)]
         public string Code { get; set; }
 
+        [Required(ErrorMessage = "Please enter Name")]
         [StringLength(250)]
         public string Name { get; set; }
 
@@ -37,7 +39,7 @@ namespace Model.EntityFramework
 
         public int? Quantity { get; set; }
 
-        public long? ProductCategoryID { get; set; }
+        public int? ProductCategoryID { get; set; }
 
         [Column(TypeName = "ntext")]
         public string Detail { get; set; }

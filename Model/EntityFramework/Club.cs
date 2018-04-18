@@ -11,9 +11,11 @@ namespace Model.EntityFramework
     {
         public long ID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Code")]
         [StringLength(16)]
         public string Code { get; set; }
 
+        [Required(ErrorMessage = "Please enter Name")]
         [StringLength(250)]
         public string Name { get; set; }
 
@@ -34,11 +36,14 @@ namespace Model.EntityFramework
 
         public long? CaptainID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Phone")]
         [StringLength(20)]
         public string Phone { get; set; }
 
         [StringLength(250)]
         public string Address { get; set; }
+
+        public long? OwnerID { get; set; }
 
         [StringLength(250)]
         public string MetaKeywords { get; set; }

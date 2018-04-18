@@ -23,7 +23,7 @@ namespace FootballFlick.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password), true);
+                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password));
                 if (result == 1)
                 {
                     var user = dao.GetByUserName(model.UserName);
@@ -34,11 +34,13 @@ namespace FootballFlick.Areas.Admin.Controllers
                     userSession.UserID = user.ID;
                     userSession.GroupID = user.GroupID;
                     userSession.Image = user.Image;
+                    //Add vào User session
+                    Session.Add(CommonConstants.USER_SESSION, userSession);
+
                     //Phần này là xử lý cho phân quyền bài 52
                     var listPermission = dao.GetListPermission(user.UserName);
-                    Session.Add(CommonConstants.SESSION_PERMISSIONS, listPermission);
-                    //Add login session
-                    Session.Add(CommonConstants.USER_SESSION, userSession);
+                    Session.Add(CommonConstants.PERMISSIONS_SESSION, listPermission);
+                    
 
                     //Cuối cùng là trả về trang home: Index là action, Home là controller
                     return RedirectToAction("Index", "Home");

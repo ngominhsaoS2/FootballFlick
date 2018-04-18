@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get OrderDetail when having orderID and productID - Lấy ra OrderDetail khi có orderID và productID
+        /// Get OrderDetail when having orderID and productID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -28,7 +28,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one OrderDetail in the database -  Thêm mới một OrderDetail trong cơ sở dữ liệu
+        /// Insert one OrderDetail in the database
         /// </summary>
         /// <param name="detail"></param>
         /// <returns></returns>
@@ -48,7 +48,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one OrderDetail in the database -  Cập nhật một OrderDetail trong cơ sở dữ liệu
+        /// Update one OrderDetail in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -69,7 +69,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get list of OrderDetail when having OrderID - Lấy danh sách OrderDetail khi có OrderID
+        /// Get list of OrderDetail when having OrderID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -101,7 +101,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one OrderDetail in the database - Xóa một OrderDetail khỏi cơ sở dữ liệu
+        /// Delete one OrderDetail in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -120,7 +120,12 @@ namespace Model.Dao
             }
         }
 
-
+        /// <summary>
+        /// Check if an OrderDetail row already exists or not yet
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         public bool CheckExistRow(long orderId, long productId)
         {
             var count = db.OrderDetails.Where(x => x.OrderID == orderId && x.ProductID == productId).Count();

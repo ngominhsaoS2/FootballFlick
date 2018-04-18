@@ -1,0 +1,139 @@
+﻿@model List<Model.EntityFramework.Content>
+
+@{
+    ViewBag.Title = "Tag";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tagId = ViewBag.TagId;
+}
+
+@section header {
+    <section class="inner-w3ls">
+        <div class="container">
+            <h3 class="text-center" data-aos="zoom-in">News</h3>
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb" data-aos="zoom-in">
+                        <li class="active">Tag </li>
+                        <li class="active">@tagId</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>
+}
+
+<section class="news-w3layouts">
+    <div class="container">
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+            <!-- Blog Post Row -->
+                var link = "/News/" + item.MetaTitle + "-" + item.ID;
+                <div class="news-w3ls">
+                    <div class="col-md-1 text-center" data-aos="zoom-in">
+                        <p class="news-agileits1"><i class="fa fa-tachometer"></i></p>
+                        <p class="news-agileits2">@item.CreatedDate</p>
+                    </div>
+                    <div class="col-md-5" data-aos="flip-left">
+                        <a href="@link">
+                            <div class="hover01 column">
+                                <div>
+                                    <figure><img class="img-responsive img-hover" src="@item.Image" alt="@item.Name"></figure>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6" data-aos="flip-right">
+                        <h3>
+                            <a href="@link">@item.Name</a>
+                        </h3>
+                        <p class="news-agileits3">@item.Description</p>
+                        <a class="btn btn-primary" href="@link">Read More <i class="fa fa-angle-right"></i></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <!-- /.row -->
+                <hr>
+            }
+
+            <!--Phân trang-->
+            if (ViewBag.TotalPage > 0)
+            {
+                var pageDisplay = (int)ViewBag.MaxPage;
+                int totalPage = (int)ViewBag.TotalPage;
+                int currentPage = (int)ViewBag.Page;
+
+                //Create numeric links
+                var startPageIndex = 0;
+                var endPageIndex = 0;
+                if (totalPage > pageDisplay)
+                {
+                    startPageIndex = Math.Max(1, currentPage - (pageDisplay / 2));
+                    if (startPageIndex < pageDisplay / 2)
+                    {
+                        endPageIndex = pageDisplay;
+                    }
+                    else
+                    {
+                        endPageIndex = Math.Min(totalPage, currentPage + (pageDisplay / 2));
+                        startPageIndex = endPageIndex - pageDisplay;
+                    }
+
+                }
+                else
+                {
+                    startPageIndex = 1;
+                    endPageIndex = totalPage;
+                }
+
+
+                //var link = "/News/" + productCategory.MetaTitle + "-" + productCategory.ID;
+                <nav>
+                    <ul class="pagination">
+                        @if (currentPage > ViewBag.First)
+                    {
+                            <li><a href="/News?pageIndex=@ViewBag.First" title="First page" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li>
+                                <a href="/News?pageIndex=@ViewBag.Prev" title="Previous page" class="prev"><i class="fa fa-angle-left"></i></a>
+                            </li>
+
+                        }
+                        @for (int i = startPageIndex; i <= endPageIndex; i++)
+                    {
+                        if (currentPage == i)
+                        {
+                                <li><a href="/News?pageIndex=@i" class="active" title="Page @i">@i</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/News?pageIndex=@i" title="Page @i" class="pos">@i</a></li>
+                            }
+                        }
+                        @if (currentPage < totalPage)
+                    {
+                            <li><a href="/News?pageIndex=@ViewBag.Next" class="next" title="Next page"><i class="fa fa-angle-right"></i></a></li>
+                            <li> <a href="/News?pageIndex=@ViewBag.Last" class="last" title="Last page"><i class="fa fa-angle-double-right"></i></a></li>
+                        }
+                    </ul>
+                </nav>
+            }
+        }
+
+        else
+        {
+            <span>No records</span>
+        }
+
+        <hr>
+    </div>
+</section>
+
+
+
+
+
+
+

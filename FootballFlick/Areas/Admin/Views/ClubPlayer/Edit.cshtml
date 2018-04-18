@@ -1,0 +1,62 @@
+﻿@model Model.EntityFramework.Club
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var listPlayer = (List<Model.ViewModel.ClubPlayerViewModel>)ViewBag.ListPlayer;
+}
+
+@section jsFooter{
+    <script src="/Assets/Admin/js/controller/searchController.js"></script>
+    <script src="/Assets/Admin/js/controller/clubPlayerController.js"></script>
+}
+
+<h1>Edit players</h1>
+</br>
+<div class="form-horizontal">
+    <div class="form-group form-inline col-md-12">
+        <label class="control-label">ClubID</label>
+        <input type="text" class="form-control" id="txtHomeClubID" placeholder="ID" value="@Model.ID" readonly />
+        <input type="text" class="form-control" id="txtHomeClubCode" placeholder="Code" value="@Model.Code" readonly />
+        <label class="control-label">PlayerID</label>
+        <input type="search" class="form-control" id="txtPlayerID" placeholder="ID" />
+        <input type="search" class="form-control" id="txtPlayerName" placeholder="Name" />
+        <button type="button" class="btn btn-success" id="btnAddRow">Add row</button>    
+    </div>
+
+    <div class="tables">
+        <div class="table-responsive bs-example widget-shadow">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>PlayerID</th>
+                        <th>PlayerIdentification</th>
+                        <th>PlayerName</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in listPlayer)
+            {
+                    <tr id="row_@item.PlayerID">
+                        <td>@item.PlayerID</td>
+                        <td>@item.PlayerIdentification</td>
+                        <td>@item.PlayerName</td>
+                        <td>@(item.Status ? "Active" : "Not available")</td>
+                        <td>
+                            @Ajax.ActionLink("Delete", "Delete", new { @clubId = @item.ClubID, @playerId = @item.PlayerID }, new AjaxOptions
+                       {
+                           Confirm = "Do you really want to delete this row?",
+                           OnComplete = "$('#row_" + @item.PlayerID + "').remove()",
+                           HttpMethod = "Delete"
+                       })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

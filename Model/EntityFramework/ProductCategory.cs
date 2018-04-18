@@ -9,8 +9,9 @@ namespace Model.EntityFramework
     [Table("ProductCategory")]
     public partial class ProductCategory
     {
-        public long ID { get; set; }
+        public int ID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Name")]
         [StringLength(250)]
         public string Name { get; set; }
 

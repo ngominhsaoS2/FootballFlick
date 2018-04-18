@@ -11,11 +11,14 @@ namespace Model.EntityFramework
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(16)]
-        public string MatchCode { get; set; }
+        public long MatchID { get; set; }
 
         [Key]
         [Column(Order = 1)]
+        public long ClubID { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long PlayerID { get; set; }
 

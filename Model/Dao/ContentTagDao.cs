@@ -17,7 +17,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get ContentTag when having contentID and tagID - Lấy ra ContentTag khi có contentID và tagID
+        /// Get ContentTag when having contentID and tagID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

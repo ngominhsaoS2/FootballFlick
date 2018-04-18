@@ -11,6 +11,9 @@ namespace Model.EntityFramework
     {
         public long ID { get; set; }
 
+        public long? UserID { get; set; }
+
+        [Required(ErrorMessage = "Please enter Name")]
         [StringLength(50)]
         public string Name { get; set; }
 
@@ -20,6 +23,8 @@ namespace Model.EntityFramework
         [StringLength(250)]
         public string Address { get; set; }
 
+        [Required(ErrorMessage = "Please enter Email")]
+        [EmailAddress(ErrorMessage = "Please use a real email")]
         [StringLength(250)]
         public string Email { get; set; }
 

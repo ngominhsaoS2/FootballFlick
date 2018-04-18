@@ -16,9 +16,15 @@ namespace Model.Dao
             db = new FootballFlickDbContext();
         }
 
-        public List<Menu> ListByTypeId(int typeId)
+        /// <summary>
+        /// Get list Menu with ParentID and typeID
+        /// </summary>
+        /// <param name="parentId"></param>
+        /// <param name="typeId"></param>
+        /// <returns></returns>
+        public List<Menu> ListMenu(int parentId, int typeId)
         {
-            return db.Menus.Where(x => x.TypeID == typeId && x.Status == true).OrderBy(x => x.DisplayOrder).ToList();
+            return db.Menus.Where(x => x.ParentID == parentId && x.TypeID == typeId && x.Status == true).OrderBy(x => x.DisplayOrder).ToList();
         }
 
     }

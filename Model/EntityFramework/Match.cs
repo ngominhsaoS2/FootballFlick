@@ -29,17 +29,21 @@ namespace Model.EntityFramework
         [Column(TypeName = "xml")]
         public string MoreImages { get; set; }
 
+        [Required(ErrorMessage = "Please enter HomeClubID")]
         public long? HomeClubID { get; set; }
 
         public long? VisitingClubID { get; set; }
 
         public long? StadiumID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Date")]
         [Column(TypeName = "date")]
         public DateTime? Date { get; set; }
 
+        [Required(ErrorMessage = "Please enter ExpectedStartTime")]
         public TimeSpan? ExpectedStartTime { get; set; }
 
+        [Required(ErrorMessage = "Please enter ExpectedEndTime")]
         public TimeSpan? ExpectedEndTime { get; set; }
 
         [StringLength(250)]
@@ -78,6 +82,7 @@ namespace Model.EntityFramework
         [StringLength(50)]
         public string ModifiedBy { get; set; }
 
-        public bool Status { get; set; }
+        [Required(ErrorMessage = "Please enter Status")]
+        public int Status { get; set; }
     }
 }

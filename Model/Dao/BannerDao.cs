@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Banner when having ID - Lấy ra Banner khi có ID
+        /// Get Banner when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -28,7 +28,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Banner to database -  Thêm mới một Banner vào cơ sở dữ liệu
+        /// Insert one Banner to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -42,7 +42,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Banner in the database -  Cập nhật một Banner trong cơ sở dữ liệu
+        /// Update one Banner in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -55,7 +55,7 @@ namespace Model.Dao
                 banner.Image = entity.Image;
                 banner.Description = entity.Description;
                 banner.ModifiedDate = DateTime.Now;
-                banner.Status = true;
+                banner.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }
@@ -66,7 +66,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Banner in the database - Xóa một Banner khỏi cơ sở dữ liệu
+        /// Delete one Banner in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -86,7 +86,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Banner into a table with search string - Liệt kê danh sách Banner có thể sử dụng tìm kiếm search
+        /// List Banner into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>
@@ -102,6 +102,11 @@ namespace Model.Dao
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
+
+        /// <summary>
+        /// Get the newest Banner
+        /// </summary>
+        /// <returns></returns>
         public Banner GetNewestBanner()
         {
             return db.Banners.OrderByDescending(x=>x.CreatedDate).FirstOrDefault(x => x.Status == true);

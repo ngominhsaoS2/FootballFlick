@@ -19,7 +19,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get User when having ID - Lấy ra User khi có ID
+        /// Get User when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -29,7 +29,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get User when having UserName - Lấy ra User khi có UserName
+        /// Get User when having UserName
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -39,7 +39,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one User to database -  Thêm mới một User vào cơ sở dữ liệu
+        /// Insert one User to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -53,7 +53,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one User in the database -  Cập nhật một User trong cơ sở dữ liệu
+        /// Update one User in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace Model.Dao
                 user.Phone = entity.Phone;
                 user.ModifiedDate = DateTime.Now;
                 user.Image = entity.Image;
-                user.Status = true;
+                user.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }
@@ -85,7 +85,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one User in the database - Xóa một User khỏi cơ sở dữ liệu
+        /// Delete one User in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -105,7 +105,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List User into a table with search string - Liệt kê danh sách User có thể sử dụng tìm kiếm search
+        /// List User into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>
@@ -129,9 +129,19 @@ namespace Model.Dao
         /// <param name="passWord"></param>
         /// <param name="isLoginAdmin"></param>
         /// <returns></returns>
-        public int Login(string userName, string passWord, bool isLoginAdmin = false)
+        public int Login(string userName, string passWord)
         {
             var result = db.Users.SingleOrDefault(x => x.UserName == userName);
+            var isLoginAdmin = false;
+            if (result.GroupID == CommonConstants.MEMBER_GROUP)
+            {
+                isLoginAdmin = false;
+            }
+            else
+            {
+                isLoginAdmin = true;
+            }
+
             if (result == null)
             {
                 return 0;
@@ -235,11 +245,50 @@ namespace Model.Dao
                         });
 
             return data.Select(x => x.RoleID).ToList();
-
-
         }
 
-
+        /// <summary>
+        /// Get User list when having a keyword
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        public List<User> ListUser(string keyword)
+        {
+            var listUser = (from a in db.Users
+                            where a.UserName.Contains(keyword) || a.Name.Contains(keyword) || a.Phone.Contains(keyword) || a.Email.Contains(keyword)
+                            select new
+                              {
+                                  ID = a.ID,
+                                  UserName = a.UserName,
+                                  GroupID = a.GroupID,
+                                  Name = a.Name,
+                                  Address = a.Address,
+                                  Email = a.Email,
+                                  Phone = a.Phone,
+                                  Image = a.Image,
+                                  CreatedDate = a.CreatedDate,
+                                  CreatedBy = a.CreatedBy,
+                                  ModifiedDate = a.ModifiedDate,
+                                  ModifiedBy = a.ModifiedBy,
+                                  Status = a.Status
+                              }).AsEnumerable().Select(x => new User()
+                              {
+                                  ID = x.ID,
+                                  UserName = x.UserName,
+                                  GroupID = x.GroupID,
+                                  Name = x.Name,
+                                  Address = x.Address,
+                                  Email = x.Email,
+                                  Phone = x.Phone,
+                                  Image = x.Image,
+                                  CreatedDate = x.CreatedDate,
+                                  CreatedBy = x.CreatedBy,
+                                  ModifiedDate = x.ModifiedDate,
+                                  ModifiedBy = x.ModifiedBy,
+                                  Status = x.Status
+                              });
+            return listUser.ToList();
+        }
 
 
 

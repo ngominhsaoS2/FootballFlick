@@ -39,7 +39,7 @@ namespace FootballFlick.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 //Xử lý MetaTitle
-                if (string.IsNullOrEmpty(product.MetaTitle))
+                if (!string.IsNullOrEmpty(product.Name))
                 {
                     product.MetaTitle = StringHelper.ToUnsignString(product.Name);
                 }
@@ -76,7 +76,10 @@ namespace FootballFlick.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                product.MetaTitle = StringHelper.ToUnsignString(product.Name);
+                if (!string.IsNullOrEmpty(product.MetaTitle))
+                {
+                    product.MetaTitle = StringHelper.ToUnsignString(product.Name);
+                }
 
                 var result = new ProductDao().Update(product);
                 if (result)
@@ -127,7 +130,7 @@ namespace FootballFlick.Areas.Admin.Controllers
 
             foreach (var item in listImages)
             {
-                var subStringItem = item.Substring(21);
+                var subStringItem = item.Substring(22);
                 xElement.Add(new XElement("Image", subStringItem));
             }
             ProductDao dao = new ProductDao();
@@ -180,9 +183,9 @@ namespace FootballFlick.Areas.Admin.Controllers
 
         }
 
-        public JsonResult ListName(string q)
+        public JsonResult ListProduct(string q)
         {
-            var data = new ProductDao().ListName(q);
+            var data = new ProductDao().ListProduct(q);
             return Json(new
             {
                 data = data,

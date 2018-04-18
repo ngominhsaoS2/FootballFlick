@@ -1,0 +1,79 @@
+﻿@model Model.EntityFramework.Club
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var listAvailableTime = (List<Model.ViewModel.ClubAvailableTimeViewModel>)ViewBag.ListAvailableTime;
+}
+
+@section jsFooter{
+    <script src="/Assets/Admin/js/controller/searchController.js"></script>
+    <script src="/Assets/Admin/js/controller/clubAvailableTimeController.js"></script>
+}
+
+<h1>Edit AvailableTimes</h1>
+</br>
+<div class="form-horizontal">
+    <div class="form-group form-inline col-md-12">
+        <label class="control-label">ClubID</label>
+        <input type="text" class="form-control" id="txtHomeClubID" value="@Model.ID" readonly />
+        <input type="text" class="form-control" id="txtHomeClubCode" value="@Model.Code" readonly />
+        <label class="control-label">Stt</label>
+        <input type="number" class="form-control" id="txtStt" placeholder="Stt" required />
+        <label class="control-label">Time</label>
+        <select id="txtDay" class="form-control">
+            <option value="Mo">Monday</option>
+            <option value="Tu">Tuesday</option>
+            <option value="We">Wednesday</option>
+            <option value="Th">Thirsday</option>
+            <option value="Fr">Friday</option>
+            <option value="Sa">Saturday</option>
+            <option value="Su">Sunday</option>
+        </select>
+        <input type="time" class="form-control" id="txtStartTime" placeholder="Start" />
+        <input type="time" class="form-control" id="txtEndTime" placeholder="End" />
+        <button type="button" class="btn btn-success" id="btnAddRow">Add</button>
+    </div>
+
+    <div class="tables">
+        <div class="table-responsive bs-example widget-shadow">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ClubID</th>
+                        <th>ClubCode</th>
+                        <th>Stt</th>
+                        <th>Day</th>
+                        <th>StartTime</th>
+                        <th>EndTime</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in listAvailableTime)
+            {
+                        <tr id="row_@item.Stt">
+                            <td>@item.ClubID</td>
+                            <td>@item.ClubCode</td>
+                            <td>@item.Stt</td>
+                            <td>@item.Day</td>
+                            <td>@item.StartTime</td>
+                            <td>@item.EndTime</td>
+                            <td>@(item.Status ? "Active" : "Not available")</td>
+                            <td>
+                                @Ajax.ActionLink("Delete", "Delete", new { @clubId = @item.ClubID, @stt = @item.Stt }, new AjaxOptions
+                       {
+                           Confirm = "Do you really want to delete this row?",
+                           OnComplete = "$('#row_" + @item.Stt + "').remove()",
+                           HttpMethod = "Delete"
+                       })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

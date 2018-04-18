@@ -11,20 +11,40 @@ namespace Model.EntityFramework
     {
         public long ID { get; set; }
 
+        [StringLength(250)]
+        public string MetaTitle { get; set; }
+
+        [Required(ErrorMessage = "Please enter Code")]
+        [StringLength(16)]
+        public string Code { get; set; }
+
+        [Required(ErrorMessage = "Please enter Name")]
         [StringLength(50)]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Please enter Address")]
         [StringLength(250)]
         public string Address { get; set; }
 
         [StringLength(250)]
+        [EmailAddress(ErrorMessage = "Please user your real Email")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Please enter Phone")]
         [StringLength(50)]
         public string Phone { get; set; }
 
         [StringLength(500)]
         public string Image { get; set; }
+
+        [StringLength(250)]
+        public string Description { get; set; }
+
+        [Column(TypeName = "xml")]
+        public string MoreImages { get; set; }
+
+        [Column(TypeName = "ntext")]
+        public string Detail { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 

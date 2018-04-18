@@ -37,7 +37,7 @@ namespace FootballFlick.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 //Xử lý MetaTitle, sau đó insert content đã được xử lý vào database
-                if (string.IsNullOrEmpty(content.MetaTitle))
+                if (!string.IsNullOrEmpty(content.Name))
                 {
                     content.MetaTitle = StringHelper.ToUnsignString(content.Name);
                 }
@@ -98,7 +98,10 @@ namespace FootballFlick.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 //Xử lý MetaTitle, sau đó update content đã được xử lý vào database
-                content.MetaTitle = StringHelper.ToUnsignString(content.Name);
+                if (!string.IsNullOrEmpty(content.Name))
+                {
+                    content.MetaTitle = StringHelper.ToUnsignString(content.Name);
+                }
                 var result = new ContentDao().Update(content);
 
                 //Xử lý bảng Tag, ContentTag

@@ -17,23 +17,24 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get StatusCategory when having ID - Lấy ra StatusCategory khi có ID
+        /// Get StatusCategory when having ForTable and Stt
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="forTable"></param>
+        /// <param name="stt"></param>
         /// <returns></returns>
-        public StatusCategory GetByID(long id)
+        public StatusCategory GetByStt(string forTable, int stt)
         {
-            return db.StatusCategories.Find(id);
+            return db.StatusCategories.SingleOrDefault(x => x.ForTable == forTable && x.Stt == stt);
         }
 
         /// <summary>
-        /// List all StatusCategory when having type - Lấy ra các StatusCategory khi có type
+        /// List all StatusCategory when having ForTable, Type
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public List<StatusCategory> ListStatus(int type)
+        public List<StatusCategory> ListStatus(string forTable, int type)
         {
-            return db.StatusCategories.Where(x => x.Type == type).OrderBy(x => x.ID).ToList();
+            return db.StatusCategories.Where(x => x.ForTable == forTable && x.Type == type).OrderBy(x => x.Stt).ToList();
         }
 
 

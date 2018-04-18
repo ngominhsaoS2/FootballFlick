@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get ProductCategory when having ID - Lấy ra ProductCategory khi có ID
+        /// Get ProductCategory when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -41,7 +41,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one ProductCategory to database -  Thêm mới một ProductCategory vào cơ sở dữ liệu
+        /// Insert one ProductCategory to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -55,7 +55,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one ProductCategory in the database -  Cập nhật một ProductCategory trong cơ sở dữ liệu
+        /// Update one ProductCategory in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace Model.Dao
                 productCategory.MetaDescriptions = entity.MetaDescriptions;
                 productCategory.ShowInHome = entity.ShowInHome;
                 productCategory.ModifiedDate = DateTime.Now;
-                productCategory.Status = true;
+                productCategory.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }
@@ -85,7 +85,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one ProductCategory in the database - Xóa một ProductCategory khỏi cơ sở dữ liệu
+        /// Delete one ProductCategory in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -105,7 +105,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List ProductCategory into a table with search string - Liệt kê danh sách ProductCategory có thể sử dụng tìm kiếm search
+        /// List ProductCategory into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>

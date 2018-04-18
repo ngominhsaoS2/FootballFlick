@@ -11,12 +11,15 @@ namespace Model.EntityFramework
     {
         public int ID { get; set; }
 
+        [Required(ErrorMessage = "Please enter Name")]
         [StringLength(100)]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Please select Image")]
         [StringLength(250)]
         public string Image { get; set; }
 
+        [Required(ErrorMessage = "Please enter DisplayOrder")]
         public int? DisplayOrder { get; set; }
 
         [StringLength(500)]

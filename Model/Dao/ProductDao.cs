@@ -19,7 +19,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get Product when having ID - Lấy ra Product khi có ID
+        /// Get Product when having ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -29,7 +29,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Insert one Product to database -  Thêm mới một Product vào cơ sở dữ liệu
+        /// Insert one Product to database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -43,7 +43,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Update one Product in the database -  Cập nhật một Product trong cơ sở dữ liệu
+        /// Update one Product in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -52,8 +52,8 @@ namespace Model.Dao
             try
             {
                 var product = db.Products.Find(entity.ID);
-                product.Name = entity.Name;
                 product.Code = entity.Code;
+                product.Name = entity.Name;
                 product.MetaTitle = entity.MetaTitle;
                 product.Description = entity.Description;
                 product.Image = entity.Image;
@@ -67,7 +67,7 @@ namespace Model.Dao
                 product.MetaKeywords = entity.MetaKeywords;
                 product.MetaDescriptions = entity.MetaDescriptions;
                 product.ModifiedDate = DateTime.Now;
-                product.Status = true;
+                product.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }
@@ -78,7 +78,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one Product in the database - Xóa một Product khỏi cơ sở dữ liệu
+        /// Delete one Product in the database
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -98,7 +98,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// List Product into a table with search string - Liệt kê danh sách Product có thể sử dụng tìm kiếm search
+        /// List Product into a table with search string
         /// </summary>
         /// <param name="searchString"></param>
         /// <param name="page"></param>
@@ -132,8 +132,8 @@ namespace Model.Dao
                          where a.ProductCategoryID == productCategoryID
                          select new
                          {
-                             CategoryMetaTitle = b.MetaTitle,
-                             CategoryName = b.Name,
+                             ProductCategoryMetaTitle = b.MetaTitle,
+                             ProductCategoryName = b.Name,
                              CreatedDate = a.CreatedDate,
                              ID = a.ID,
                              Image = a.Image,
@@ -142,8 +142,8 @@ namespace Model.Dao
                              Price = a.Price
                          }).AsEnumerable().Select(x => new ProductViewModel()
                          {
-                             CategoryMetaTitle = x.MetaTitle,
-                             CategoryName = x.Name,
+                             ProductCategoryMetaTitle = x.MetaTitle,
+                             ProductCategoryName = x.Name,
                              CreatedDate = x.CreatedDate,
                              ID = x.ID,
                              Image = x.Image,
@@ -179,8 +179,8 @@ namespace Model.Dao
                          where a.Status == true
                          select new
                          {
-                             CategoryMetaTitle = b.MetaTitle,
-                             CategoryName = b.Name,
+                             ProductCategoryMetaTitle = b.MetaTitle,
+                             ProductCategoryName = b.Name,
                              CreatedDate = a.CreatedDate,
                              ID = a.ID,
                              Image = a.Image,
@@ -189,8 +189,8 @@ namespace Model.Dao
                              Price = a.Price
                          }).AsEnumerable().Select(x => new ProductViewModel()
                          {
-                             CategoryMetaTitle = x.MetaTitle,
-                             CategoryName = x.Name,
+                             ProductCategoryMetaTitle = x.MetaTitle,
+                             ProductCategoryName = x.Name,
                              CreatedDate = x.CreatedDate,
                              ID = x.ID,
                              Image = x.Image,
@@ -227,9 +227,62 @@ namespace Model.Dao
         /// </summary>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        public List<string> ListName(string keyword)
+        public List<Product> ListProduct(string keyword)
         {
-            return db.Products.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();
+            var listProduct = (from a in db.Products
+                               where a.Code.Contains(keyword) || a.Name.Contains(keyword)
+                              select new
+                              {
+                                  ID = a.ID,
+                                  Code = a.Code,
+                                  Name = a.Name,
+                                  MetaTitle = a.MetaTitle,
+                                  Description = a.Description,
+                                  Image = a.Image,
+                                  MoreImages = a.MoreImages,
+                                  Price = a.Price,
+                                  PromotionPrice = a.PromotionPrice,
+                                  IncludedVAT = a.IncludedVAT,
+                                  Quantity = a.Quantity,
+                                  ProductCategoryID = a.ProductCategoryID,
+                                  Detail = a.Detail,
+                                  Warranty = a.Warranty,
+                                  ViewCount = a.ViewCount,
+                                  TopHot = a.TopHot,
+                                  MetaKeywords = a.MetaKeywords,
+                                  MetaDescriptions = a.MetaDescriptions,
+                                  CreatedDate = a.CreatedDate,
+                                  CreatedBy = a.CreatedBy,
+                                  ModifiedDate = a.ModifiedDate,
+                                  ModifiedBy = a.ModifiedBy,
+                                  Status = a.Status
+                              }).AsEnumerable().Select(x => new Product()
+                              {
+                                  ID = x.ID,
+                                  Code = x.Code,
+                                  Name = x.Name,
+                                  MetaTitle = x.MetaTitle,
+                                  Description = x.Description,
+                                  Image = x.Image,
+                                  MoreImages = x.MoreImages,
+                                  Price = x.Price,
+                                  PromotionPrice = x.PromotionPrice,
+                                  IncludedVAT = x.IncludedVAT,
+                                  Quantity = x.Quantity,
+                                  ProductCategoryID = x.ProductCategoryID,
+                                  Detail = x.Detail,
+                                  Warranty = x.Warranty,
+                                  ViewCount = x.ViewCount,
+                                  TopHot = x.TopHot,
+                                  MetaKeywords = x.MetaKeywords,
+                                  MetaDescriptions = x.MetaDescriptions,
+                                  CreatedDate = x.CreatedDate,
+                                  CreatedBy = x.CreatedBy,
+                                  ModifiedDate = x.ModifiedDate,
+                                  ModifiedBy = x.ModifiedBy,
+                                  Status = x.Status
+                              });
+            return listProduct.ToList();
         }
 
         /// <summary>
@@ -249,8 +302,8 @@ namespace Model.Dao
                          where a.Name.Contains(keyword)
                          select new
                          {
-                             CategoryMetaTitle = b.MetaTitle,
-                             CategoryName = b.Name,
+                             ProductCategoryMetaTitle = b.MetaTitle,
+                             ProductCategoryName = b.Name,
                              CreatedDate = a.CreatedDate,
                              ID = a.ID,
                              Image = a.Image,
@@ -259,8 +312,8 @@ namespace Model.Dao
                              Price = a.Price
                          }).AsEnumerable().Select(x => new ProductViewModel()
                          {
-                             CategoryMetaTitle = x.MetaTitle,
-                             CategoryName = x.Name,
+                             ProductCategoryMetaTitle = x.MetaTitle,
+                             ProductCategoryName = x.Name,
                              CreatedDate = x.CreatedDate,
                              ID = x.ID,
                              Image = x.Image,

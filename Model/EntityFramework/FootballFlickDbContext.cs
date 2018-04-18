@@ -4,6 +4,7 @@ namespace Model.EntityFramework
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using ViewModel;
 
     public partial class FootballFlickDbContext : DbContext
     {
@@ -41,12 +42,30 @@ namespace Model.EntityFramework
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
-        public virtual DbSet<Stadium> Stadia { get; set; }
+        public virtual DbSet<Stadium> Stadiums { get; set; }
         public virtual DbSet<StatusCategory> StatusCategories { get; set; }
         public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
+        public virtual DbSet<ClubLevel> ClubLevels { get; set; }
+
+        //ViewModel
+        public virtual DbSet<ClubAreaViewModel> vClubAreas { get; set; }
+        public virtual DbSet<ClubAvailableTimeViewModel> vClubAvailableTimes { get; set; }
+        public virtual DbSet<ClubPlayerViewModel> vClubPlayers { get; set; }
+        public virtual DbSet<ClubStadiumViewModel> vClubStadiums { get; set; }
+        public virtual DbSet<ClubViewModel> vClubs { get; set; }
+        public virtual DbSet<ContentViewModel> vContenst  { get; set; }
+        public virtual DbSet<MatchDetailViewModel> vMatchDetails { get; set; }
+        public virtual DbSet<MatchViewModel> vMatches { get; set; }
+        public virtual DbSet<OrderDetailViewModel> vOrderDetails { get; set; }
+        public virtual DbSet<PlayerPointViewModel> vPlayerPoints { get; set; }
+        public virtual DbSet<ClubPointViewModel> vClubPoints { get; set; }
+        public virtual DbSet<ProductViewModel> vProducts { get; set; }
+        public virtual DbSet<PlayerViewModel> vPlayers { get; set; }
+        public virtual DbSet<ClubLevelViewModel> vClubLevels { get; set; }
+        public virtual DbSet<RankViewModel> vRanks { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -121,6 +140,32 @@ namespace Model.EntityFramework
             modelBuilder.Entity<UserGroup>()
                 .Property(e => e.ID)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<ContentViewModel>()
+                .Property(e => e.Language)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MatchViewModel>()
+                .Property(e => e.Price)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<MatchViewModel>()
+                .Property(e => e.PromotionPrice)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<OrderDetailViewModel>()
+                .Property(e => e.Price)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<ProductViewModel>()
+                .Property(e => e.Price)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<ProductViewModel>()
+                .Property(e => e.PromotionPrice)
+                .HasPrecision(18, 0);
         }
+
+
     }
 }
