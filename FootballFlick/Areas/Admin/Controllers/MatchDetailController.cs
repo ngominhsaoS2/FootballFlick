@@ -21,13 +21,16 @@ namespace FootballFlick.Areas.Admin.Controllers
         /// Display all detail statistic (store in MatchDetail table) of the Match
         /// </summary>
         /// <param name="matchId"></param>
+        /// <param name="clubId"></param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Statistic(long id)
+        public ActionResult Statistic(long matchId, long clubId)
         {
-            var detail = new MatchDetailDao().ListMatchDetailViewModel(id);
-            var match = new MatchDao().GetByID(id); ;
+            var detail = new MatchDetailDao().ListMatchDetailViewModel(clubId, matchId);
+            var match = new MatchDao().GetByID(matchId);
+            var club = new ClubDao().GetViewModelByID(clubId);
             ViewBag.Match = match;
+            ViewBag.Club = club;
             return View(detail);
         }
 
@@ -39,10 +42,12 @@ namespace FootballFlick.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        //Add a new row to MatchDetail table
         public JsonResult AddRow(string row)
         {
             try
             {
+                //Tạo dữ liệu MatchDetail
                 var json = new JavaScriptSerializer().Deserialize<MatchDetail>(row);
                 MatchDetail detail = new MatchDetail();
                 detail.MatchID = json.MatchID;
@@ -54,10 +59,11 @@ namespace FootballFlick.Areas.Admin.Controllers
                 detail.YellowCard = json.YellowCard == null ? 0 : json.YellowCard;
                 detail.Status = true;
 
-                var dao = new MatchDetailDao();
-                if (dao.CheckExistRow(detail.MatchID, detail.ClubID, detail.PlayerID) == false)
+                //Insert vào bảng MatchDetail và bảng PlayerPoint
+                var detailDao = new MatchDetailDao();
+                if (detailDao.CheckExistRow(detail.MatchID, detail.ClubID, detail.PlayerID) == false)
                 {
-                    dao.Insert(detail);
+                    detailDao.Insert(detail);
                     return Json(new
                     {
                         status = true
@@ -70,6 +76,7 @@ namespace FootballFlick.Areas.Admin.Controllers
                         status = false
                     });
                 }
+
             }
             catch (Exception ex)
             {

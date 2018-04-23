@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var listDetail = (List<Model.ViewModel.MatchDetailViewModel>)ViewBag.ListDetail;
+    var homeDetail = (List<Model.ViewModel.MatchDetailViewModel>)ViewBag.HomeDetail;
+    var visitingDetail = (List<Model.ViewModel.MatchDetailViewModel>)ViewBag.VisitingDetail;
     var recentMatches = (List<Model.ViewModel.MatchViewModel>)ViewBag.RecentMatches;
 }
 
@@ -45,7 +46,8 @@
                     <ul id="myTab" class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#infor" id="infor-tab" role="tab" data-toggle="tab" aria-controls="infor" aria-expanded="true">Infor</a></li>
                         <li role="presentation"><a href="#result" role="tab" id="result-tab" data-toggle="tab" aria-controls="result">Result</a></li>
-                        <li role="presentation"><a href="#statistic" role="tab" id="statistic-tab" data-toggle="tab" aria-controls="statistic">Statistic</a></li>
+                        <li role="presentation"><a href="#homeStatistic" role="tab" id="homeStatistic-tab" data-toggle="tab" aria-controls="homeStatistic">HomeStatistic</a></li>
+                        <li role="presentation"><a href="#visitingStatistic" role="tab" id="visitingStatistic-tab" data-toggle="tab" aria-controls="visitingStatistic">VisitingStatistic</a></li>
                         <li role="presentation"><a href="#point" role="tab" id="point-tab" data-toggle="tab" aria-controls="point">Point</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content">
@@ -81,8 +83,9 @@
                             <h2>Played time: @(Model.RealStartTime + " - " + Model.RealEndTime)</h2>
                             <p class="blogpost-p3" data-aos="flip-up">@Html.Raw(Model.Detail)</p>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="statistic" aria-labelledby="statistic-tab">
+                        <div role="tabpanel" class="tab-pane fade" id="homeStatistic" aria-labelledby="homeStatistic-tab">
                             <table class="table">
+                                <caption style="text-align:center; font-weight:bold; font-size:25px; padding-top:15px; color:#1ca0de">@Model.HomeClubName</caption>
                                 <thead>
                                     <tr>
                                         <th>Player</th>
@@ -93,7 +96,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach (var item in listDetail)
+                                @foreach (var item in homeDetail)
                                 {
                                     <tr>
                                         <th>@(item.PlayerID + " - " + item.PlayerName)</th>
@@ -103,6 +106,32 @@
                                         <th>@item.RedCard</th>
                                     </tr>
                                 }    
+                                </tbody>
+                            </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="visitingStatistic" aria-labelledby="visitingStatistic-tab">
+                            <table class="table">
+                                <caption style="text-align:center; font-weight:bold; font-size:25px; padding-top:15px; color:#1ca0de">@Model.VisitingClubName</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Player</th>
+                                        <th>Goal</th>
+                                        <th>Assist</th>
+                                        <th>YellowCard</th>
+                                        <th>RedCard</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in visitingDetail)
+                                    {
+                                        <tr>
+                                            <th>@(item.PlayerID + " - " + item.PlayerName)</th>
+                                            <th>@item.Goal</th>
+                                            <th>@item.Assist</th>
+                                            <th>@item.YellowCard</th>
+                                            <th>@item.RedCard</th>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>

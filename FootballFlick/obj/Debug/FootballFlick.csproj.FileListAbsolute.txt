@@ -90,3 +90,6 @@ E:\WORK\GITHUB\FootballFlick\FootballFlick\bin\CKFinder.dll
 E:\WORK\GITHUB\FootballFlick\FootballFlick\bin\CKFinder.pdb
 E:\WORK\GITHUB\FootballFlick\FootballFlick\bin\BotDetect.dll
 E:\WORK\GITHUB\FootballFlick\FootballFlick\bin\BotDetect.Web.Mvc.dll
+E:\WORK\GITHUB\FootballFlick\FootballFlick\bin\Model.dll.config
+E:\WORK\GITHUB\FootballFlick\FootballFlick\obj\Debug\FootballFlick.csproj.CoreCompileInputs.cache
+E:\WORK\GITHUB\FootballFlick\FootballFlick\obj\Debug\FootballFlick.csproj.CopyComplete

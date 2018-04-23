@@ -20,7 +20,7 @@
                         window.location.reload();
                     }
                     else {
-                        alert("This stadium is already added to the team");
+                        alert("Add a stadium failed. Please try again!");
                     }
                 }
             })

@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var userSession = (UserLogin)Session[FootballFlick.Common.CommonConstants.USER_SESSION];
+    //var userSession = (UserLogin)Session[FootballFlick.Common.CommonConstants.USER_SESSION];
     var selectedLevel = new Model.EntityFramework.Level() { ID = 0, Name = "---Select one---" };
     if (ViewBag.SelectedLevel != null)
     {
@@ -50,6 +50,7 @@
         </div>
     </section>
 }
+
 <section class="news-w3ls">
     @using (Html.BeginForm("Rank", "Club", FormMethod.Get))
     {

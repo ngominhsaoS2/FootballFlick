@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -213,6 +214,7 @@
     <Compile Include="Areas\Admin\Controllers\ClubAvailableTimeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClubController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClubPlayerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClubPointController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClubStadiumController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
@@ -238,6 +240,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClubController.cs" />
     <Compile Include="Controllers\ClubPlayerController.cs" />
+    <Compile Include="Controllers\ClubStadiumController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1448,6 +1451,7 @@
     <Content Include="Assets\Client\js\colorfulTab.min.js" />
     <Content Include="Assets\Client\js\contact_me.js" />
     <Content Include="Assets\Client\js\controller\clubPlayerController.js" />
+    <Content Include="Assets\Client\js\controller\clubStadiumController.js" />
     <Content Include="Assets\Client\js\controller\contactController.js" />
     <Content Include="Assets\Client\js\controller\selectListController.js" />
     <Content Include="Assets\Client\js\index.js" />
@@ -1603,6 +1607,7 @@
     <Content Include="Assets\Client\fonts\thumbgallery.woff" />
     <Content Include="Areas\Admin\Views\Match\Result.cshtml" />
     <Content Include="Areas\Admin\Views\MatchDetail\Statistic.cshtml" />
+    <Content Include="Areas\Admin\Views\ClubPoint\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1661,13 +1666,15 @@
     <Content Include="Views\Club\Rank.cshtml" />
     <Content Include="Views\Club\Detail.cshtml" />
     <Content Include="Views\Match\Create.cshtml" />
+    <Content Include="Views\Player\Index.cshtml" />
+    <Content Include="Views\Player\Detail.cshtml" />
+    <Content Include="Views\ClubStadium\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Data\files\" />
     <Folder Include="Views\Level\" />
-    <Folder Include="Views\Player\" />
     <Folder Include="Views\StatusCategory\" />
   </ItemGroup>
   <ItemGroup>
@@ -1707,10 +1714,11 @@
           <DevelopmentServerPort>62554</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:62554/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:62554/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://localhost:62554/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

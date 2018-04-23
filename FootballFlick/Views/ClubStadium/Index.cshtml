@@ -1,0 +1,194 @@
+﻿@model List<Model.ViewModel.ClubStadiumViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userSession = (UserLogin)Session[FootballFlick.Common.CommonConstants.USER_SESSION];
+    var clubId = ViewBag.ClubID;
+    var clubName = ViewBag.ClubName;
+    var ownerId = ViewBag.OwnerID;
+    var listStadium = (List<Model.EntityFramework.Stadium>)ViewBag.ListStadium;
+}
+
+@section jsFooter{
+    <script src="/Assets/Client/js/controller/clubStadiumController.js"></script>
+}
+
+@section header {
+    <section class="inner-w3ls">
+        <div class="container">
+            <h3 class="text-center" data-aos="zoom-in">@clubName</h3>
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb" data-aos="zoom-in">
+                        <li>
+                            <a href="/Home">Home</a>
+                        </li>
+                        <li class="active">StadiumList</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>
+}
+
+<section class="schedule-w3layouts">
+    <div class="container">
+        <div>
+            <a href="#" class="btn btn-primary" id="btnAddStadium" data-aos="zoom-in">Add stadium</a>
+        </div>
+        <br />
+        @if (userSession != null)
+        {
+            if (userSession.UserID == ownerId)
+            {
+                <div class="table-responsive" data-aos="flip-down">
+                    <table class="table">
+                        <thead>
+                            <tr id="@clubId">
+                                <th><h4>StadiumID</h4></th>
+                                <th><h4>Name</h4></th>
+                                <th><h4>Identification</h4></th>
+                                <th><h4>Action</h4></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.StadiumID">
+                                    <td>@item.StadiumID</td>
+                                    <td>@item.StadiumCode</td>
+                                    <td>@item.StadiumName</td>
+                                    <td>
+                                        <a href="#" data-id="@item.StadiumID" class="btnDelete">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            <!--Phân trang-->
+                if (ViewBag.TotalPage > 0)
+                {
+                    var pageDisplay = (int)ViewBag.MaxPage;
+                    int totalPage = (int)ViewBag.TotalPage;
+                    int currentPage = (int)ViewBag.Page;
+
+                    //Create numeric links
+                    var startPageIndex = 0;
+                    var endPageIndex = 0;
+                    if (totalPage > pageDisplay)
+                    {
+                        startPageIndex = Math.Max(1, currentPage - (pageDisplay / 2));
+                        if (startPageIndex < pageDisplay / 2)
+                        {
+                            endPageIndex = pageDisplay;
+                        }
+                        else
+                        {
+                            endPageIndex = Math.Min(totalPage, currentPage + (pageDisplay / 2));
+                            startPageIndex = endPageIndex - pageDisplay;
+                        }
+
+                    }
+                    else
+                    {
+                        startPageIndex = 1;
+                        endPageIndex = totalPage;
+                    }
+
+                    <nav>
+                        <ul class="pagination">
+                            @if (currentPage > ViewBag.First)
+                            {
+                                <li><a href="/ClubStadium?clubId=@clubId&pageIndex=@ViewBag.First" title="First page" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                                <li>
+                                    <a href="/ClubStadium?clubId=@clubId&pageIndex=@ViewBag.Prev" title="Previous page" class="prev"><i class="fa fa-angle-left"></i></a>
+                                </li>
+
+                            }
+                            @for (int i = startPageIndex; i <= endPageIndex; i++)
+                            {
+                                if (currentPage == i)
+                                {
+                                    <li><a href="/ClubStadium?clubId=@clubId&pageIndex=@i" class="active" title="Page @i">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/ClubStadium?clubId=@clubId&pageIndex=@i" title="Page @i" class="pos">@i</a></li>
+                                }
+                            }
+                            @if (currentPage < totalPage)
+                            {
+                                <li><a href="/ClubStadium?clubId=@clubId&pageIndex=@ViewBag.Next" class="next" title="Next page"><i class="fa fa-angle-right"></i></a></li>
+                                <li> <a href="/ClubStadium?clubId=@clubId&pageIndex=@ViewBag.Last" class="last" title="Last page"><i class="fa fa-angle-double-right"></i></a></li>
+                            }
+                        </ul>
+                    </nav>
+                }
+                else
+                {
+                    <span>No records</span>
+                }
+            }
+            else
+            {
+                <div class="alert alert-danger">You don't have the permission to access</div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-danger">You must login to manage the Club</div>
+        }
+    </div>
+</section>
+
+<!-- Modal -->
+<div id="formAddStadium" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <!-- Model header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add a Stadium</h4>
+            </div>
+            <!-- Model body-->
+            <div class="modal-body">
+                <div id="formAdd" style="margin:5px;">
+                    <div class="form-horizontal">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Select</th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in listStadium)
+                                {
+                                    <tr>
+                                        <td><input type="checkbox" /></td>
+                                        <td>@item.Name</td>
+                                        <td><img src="@item.Image" class="img-responsive" alt="@item.Name" width="100" /></td>
+                                        <td>@item.Address</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!-- Model footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnSaveStadium">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

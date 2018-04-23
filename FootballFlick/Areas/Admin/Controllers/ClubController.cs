@@ -47,6 +47,8 @@ namespace FootballFlick.Areas.Admin.Controllers
                 if (dao.CheckCode(club.Code) == false)
                 {
                     //Insert Club vào database
+                    var userSession = (UserLogin)Session[FootballFlick.Common.CommonConstants.USER_SESSION];
+                    club.OwnerID = userSession.UserID;
                     long id = dao.Insert(club);
                     if (id > 0)
                     {

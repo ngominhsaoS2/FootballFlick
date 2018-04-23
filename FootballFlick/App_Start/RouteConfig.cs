@@ -108,6 +108,27 @@ namespace FootballFlick
             );
 
             routes.MapRoute(
+                name: "Stadiums of the Club",
+                url: "ClubStadium/{MetaTitle}-{clubId}",
+                defaults: new { controller = "ClubStadium", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Rank of all Players",
+                url: "Player",
+                defaults: new { controller = "Player", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Player detail",
+                url: "Player/Detail/{MetaTitle}-{id}",
+                defaults: new { controller = "Player", action = "Detail", id = UrlParameter.Optional },
+                namespaces: new[] { "FootballFlick.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Match",
                 url: "Match",
                 defaults: new { controller = "Match", action = "Index", id = UrlParameter.Optional },

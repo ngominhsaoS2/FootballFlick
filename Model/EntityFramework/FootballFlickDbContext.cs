@@ -37,7 +37,6 @@ namespace Model.EntityFramework
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Player> Players { get; set; }
-        public virtual DbSet<PlayerPoint> PlayerPoints { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
@@ -60,7 +59,6 @@ namespace Model.EntityFramework
         public virtual DbSet<MatchDetailViewModel> vMatchDetails { get; set; }
         public virtual DbSet<MatchViewModel> vMatches { get; set; }
         public virtual DbSet<OrderDetailViewModel> vOrderDetails { get; set; }
-        public virtual DbSet<PlayerPointViewModel> vPlayerPoints { get; set; }
         public virtual DbSet<ClubPointViewModel> vClubPoints { get; set; }
         public virtual DbSet<ProductViewModel> vProducts { get; set; }
         public virtual DbSet<PlayerViewModel> vPlayers { get; set; }

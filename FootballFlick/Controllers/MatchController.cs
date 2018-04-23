@@ -53,9 +53,11 @@ namespace FootballFlick.Controllers
         public ActionResult Detail(long id)
         {
             var match = new MatchDao().GetViewModelByID(id);
-            var listDetail = new MatchDetailDao().ListMatchDetailViewModel(id);
+            var homeDetail = new MatchDetailDao().ListMatchDetailViewModel(match.HomeClubID, id);
+            var visitingDetail = new MatchDetailDao().ListMatchDetailViewModel(match.VisitingClubID, id);
             var recentMatches = new MatchDao().ListRecentMatch(10);
-            ViewBag.ListDetail = listDetail;
+            ViewBag.HomeDetail = homeDetail;
+            ViewBag.VisitingDetail = visitingDetail;
             ViewBag.RecentMatches = recentMatches;
             return View(match);
         }

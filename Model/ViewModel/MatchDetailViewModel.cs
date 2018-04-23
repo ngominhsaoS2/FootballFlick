@@ -16,6 +16,9 @@ namespace Model.ViewModel
         [StringLength(16)]
         public string MatchCode { get; set; }
 
+        [StringLength(250)]
+        public string MatchMetaTitle { get; set; }
+
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

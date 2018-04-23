@@ -11,6 +11,14 @@ namespace FootballFlick.Controllers
     {
         public ActionResult Index()
         {
+            //Lấy ra list Banner
+            var listBanner = new BannerDao().GetListBanner(3);
+            ViewBag.ListBanner = listBanner;
+
+            //Lấy ra top Match
+            var listMatch = new MatchDao().ListRecentMatch(4);
+            ViewBag.ListMatch = listMatch;
+
             return View();
         }
 

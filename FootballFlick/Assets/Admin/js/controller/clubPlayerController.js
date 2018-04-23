@@ -20,7 +20,7 @@
                         window.location.reload();
                     }
                     else {
-                        alert("This player is already added to the team");
+                        alert("Add a player failed. Please try again!");
                     }
                 }
             })

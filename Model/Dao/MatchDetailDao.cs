@@ -32,9 +32,17 @@ namespace Model.Dao
         /// </summary>
         /// <param name="matchId"></param>
         /// <returns></returns>
-        public List<MatchDetailViewModel> ListMatchDetailViewModel (long matchId)
+        public List<MatchDetailViewModel> ListMatchDetailViewModel (long? clubId,long matchId)
         {
-            return db.vMatchDetails.Where(x => x.MatchID == matchId).ToList();
+            IQueryable<MatchDetailViewModel> listDetail = db.vMatchDetails;
+            listDetail = listDetail.Where(x => x.MatchID == matchId);
+            if(clubId != null)
+            {
+                listDetail = listDetail.Where(x => x.ClubID == clubId);
+            }
+            return listDetail.OrderBy(x => x.PlayerID).ToList();
+
+
         }
 
         /// <summary>

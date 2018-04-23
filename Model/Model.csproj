@@ -112,7 +112,6 @@
     <Compile Include="EntityFramework\OrderDetail.cs" />
     <Compile Include="EntityFramework\Permission.cs" />
     <Compile Include="EntityFramework\Player.cs" />
-    <Compile Include="EntityFramework\PlayerPoint.cs" />
     <Compile Include="EntityFramework\Product.cs" />
     <Compile Include="EntityFramework\ProductCategory.cs" />
     <Compile Include="EntityFramework\Role.cs" />
@@ -135,7 +134,6 @@
     <Compile Include="ViewModel\MatchDetailViewModel.cs" />
     <Compile Include="ViewModel\MatchViewModel.cs" />
     <Compile Include="ViewModel\OrderDetailViewModel.cs" />
-    <Compile Include="ViewModel\PlayerPointViewModel.cs" />
     <Compile Include="ViewModel\PlayerViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModel\RankViewModel.cs" />

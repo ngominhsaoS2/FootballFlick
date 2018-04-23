@@ -107,6 +107,37 @@ namespace Model.Dao
 
         }
 
+        /// <summary>
+        /// List all Stadiums of the Club with page list in client side
+        /// </summary>
+        /// <param name="clubId"></param>
+        /// <param name="totalRecord"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public List<ClubStadiumViewModel> ListClubStadiumPageList(long clubId, ref int totalRecord, int pageIndex = 1, int pageSize = 10)
+        {
+            totalRecord = db.vClubStadiums.Count(x => x.ClubID == clubId && x.Status == true);
+            var model = db.vClubStadiums.Where(x => x.ClubID == clubId && x.Status == true).OrderBy(x => x.StadiumID).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return model.ToList();
+        }
+
+        /// <summary>
+        /// List all Stadiums with page list in client side
+        /// </summary>
+        /// <param name="totalRecord"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public List<Stadium> ListAllPageList(ref int totalRecord, int pageIndex = 1, int pageSize = 10)
+        {
+            totalRecord = db.Stadiums.Count(x => x.Status == true);
+            var model = db.Stadiums.Where(x => x.Status == true).OrderBy(x => x.Name).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return model.ToList();
+        }
+
+
+        
 
 
 

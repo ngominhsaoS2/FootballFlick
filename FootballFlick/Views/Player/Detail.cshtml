@@ -1,0 +1,167 @@
+﻿@model Model.ViewModel.PlayerViewModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listMatch = (List<Model.ViewModel.MatchDetailViewModel>)ViewBag.ListMatch;
+}
+
+@section jsFooter{
+    <script src="/Assets/Client/js/toucheffects.js"></script>
+    <script src="/Assets/Client/js/jquery.pogo-slider.min.js"></script>
+    <script src="/Assets/Client/js/main.js"></script>
+}
+
+@section header {
+    <section class="inner-w3ls">
+        <div class="container">
+            <h3 class="text-center" data-aos="zoom-in">@Model.Name</h3>
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb" data-aos="zoom-in">
+                        <li class="active"><a href="/Home">Home</a></li>
+                        <li class="active">PlayerDetail</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>
+}
+
+<section class="news-w3layouts">
+    <div class="container">
+        <div class="news-w3ls">
+            <div class="col-md-1 text-center" data-aos="zoom-in">
+                <p class="news-agileits1"><i class="fa fa-tachometer"></i></p>
+                <p class="news-agileits2">@Model.RankNumber</p>
+            </div>
+            <div class="col-md-3" data-aos="flip-left">
+                <a href="#">
+                    <div class="hover01 column">
+                        <div>
+                            <figure><img class="img-responsive img-hover" src="@Model.Image" alt="@Model.Name"></figure>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6" data-aos="flip-right">
+                <h3><a href="#">@Model.Name</a></h3>
+                <p>Email: @Model.Email</p><br />
+                <p>Address: @Model.Address</p><br />
+                <p>Match @Model.Match - Goal @Model.Goal - Assist @Model.Assist</p><br />
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+
+<section class="schedule-w3layouts" style="padding-top:0px">
+    <div class="container">
+        <h3 class="text-center" data-aos="flip-up">Matches</h3>
+        <div class="table-responsive" data-aos="flip-down">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><h4>ID</h4></th>
+                        <th><h4>Code</h4></th>
+                        <th><h4>Goal</h4></th>
+                        <th><h4>Assist</h4></th>
+                        <th><h4>YC</h4></th>
+                        <th><h4>RC</h4></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in listMatch)
+                    {
+                        var linkMatch = "/Match/Detail/" + item.MatchMetaTitle + "-" + item.MatchID;
+                        <tr>
+                            <td><a href="@linkMatch">@item.MatchID</a></td>
+                            <td><a href="@linkMatch">@item.MatchCode</a></td>
+                            <td><a href="@linkMatch">@item.Goal</a></td>
+                            <td><a href="@linkMatch">@item.Assist</a></td>
+                            <td><a href="@linkMatch">@item.YellowCard</a></td>
+                            <td><a href="@linkMatch">@item.RedCard</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!--Phân trang-->
+        @if (ViewBag.TotalPage > 0)
+        {
+            var pageDisplay = (int)ViewBag.MaxPage;
+            int totalPage = (int)ViewBag.TotalPage;
+            int currentPage = (int)ViewBag.Page;
+
+            //Create numeric links
+            var startPageIndex = 0;
+            var endPageIndex = 0;
+            if (totalPage > pageDisplay)
+            {
+                startPageIndex = Math.Max(1, currentPage - (pageDisplay / 2));
+                if (startPageIndex < pageDisplay / 2)
+                {
+                    endPageIndex = pageDisplay;
+                }
+                else
+                {
+                    endPageIndex = Math.Min(totalPage, currentPage + (pageDisplay / 2));
+                    startPageIndex = endPageIndex - pageDisplay;
+                }
+
+            }
+            else
+            {
+                startPageIndex = 1;
+                endPageIndex = totalPage;
+            }
+
+            <nav>
+                <ul class="pagination">
+                    @if (currentPage > ViewBag.First)
+                    {
+                        var link = "/Club/Detail/" + Model.MetaTitle + "-" + Model.ID;
+                        <li><a href="@link?pageIndex=@ViewBag.First" title="First page" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                        <li>
+                            <a href="@link?pageIndex=@ViewBag.Prev" title="Previous page" class="prev"><i class="fa fa-angle-left"></i></a>
+                        </li>
+
+                    }
+
+                    @for (int i = startPageIndex; i <= endPageIndex; i++)
+                    {
+                        var link = "/Club/Detail/" + Model.MetaTitle + "-" + Model.ID;
+                        if (currentPage == i)
+                        {
+                            <li><a href="@link?pageIndex=@i" class="active" title="Page @i">@i</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@link?pageIndex=@i" title="Page @i" class="pos">@i</a></li>
+                        }
+                    }
+
+                    @if (currentPage < totalPage)
+                    {
+                        var link = "/Club/Detail/" + Model.MetaTitle + "-" + Model.ID;
+                        <li><a href="@link?pageIndex=@ViewBag.Next" class="next" title="Next page"><i class="fa fa-angle-right"></i></a></li>
+                        <li> <a href="@link?pageIndex=@ViewBag.Last" class="last" title="Last page"><i class="fa fa-angle-double-right"></i></a></li>
+                    }
+                </ul>
+            </nav>
+        }
+        else
+        {
+            <span>No records</span>
+        }
+    </div>
+</section>
+<br />
+<br />
+
+
+

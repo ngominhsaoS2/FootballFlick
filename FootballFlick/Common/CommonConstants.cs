@@ -16,5 +16,10 @@ namespace FootballFlick.Common
         public static int WinPoint = 50;
         public static int DrawPoint = 20;
         public static int GoalPoint = 10;
+
+        public static int GoalMultiplier = 2;
+        public static int AssistMultiplier = 1;
+        public static int FairplayMultiplier = 1;
+
     }
 }

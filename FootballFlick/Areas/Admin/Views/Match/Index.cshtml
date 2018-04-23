@@ -42,6 +42,7 @@
                     <th>HomeClubCode</th>
                     <th>VisitingClubCode</th>
                     <th>StadiumName</th>
+                    <th>Result</th>
                     <th>Date</th>
                     <th>StatusCode</th>
                     <th>Action</th>
@@ -55,12 +56,11 @@
                         <td>@item.HomeClubCode</td>
                         <td>@(item.VisitingClubCode == null ? "Waiting..." : item.VisitingClubCode)</td>
                         <td>@item.StadiumName</td>
+                        <td>@(item.HomeClubGoal + " - " + item.VisitingClubGoal)</td>
                         <td>@item.Date</td>
                         <td>@item.StatusCode</td>
                         <td>
                             <a href="/Admin/Match/Result/@item.ID">Result</a>
-                            |
-                            <a href="/Admin/MatchDetail/Statistic/@item.ID">Statistic</a>
                             |
                             <a href="/Admin/Match/Edit/@item.ID">Edit</a>
                             |
@@ -70,6 +70,11 @@
                            OnComplete = "$('#row_" + @item.ID + "').remove()",
                            HttpMethod = "Delete"
                        })
+                            |
+                            <a href="/Admin/MatchDetail/Statistic?matchId=@item.ID&clubId=@item.HomeClubID">HomeClubStat</a>
+                            |
+                            <a href="/Admin/MatchDetail/Statistic?matchId=@item.ID&clubId=@item.VisitingClubID">VisitingClubStat</a>
+                            
                         </td>
                     </tr>
                 }

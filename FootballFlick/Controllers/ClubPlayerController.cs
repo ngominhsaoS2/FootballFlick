@@ -1,4 +1,5 @@
-﻿using Model.Dao;
+﻿using FootballFlick.Common;
+using Model.Dao;
 using Model.EntityFramework;
 using Model.ViewModel;
 using System;
@@ -52,7 +53,17 @@ namespace FootballFlick.Controllers
             var json = new JavaScriptSerializer().Deserialize<ClubPlayerViewModel>(clubPlayerViewModel);
 
             //Insert thêm một Player mới vào bảng Player
-            Player player = new Player() { Name = json.PlayerName, Identification = json.PlayerIdentification, Address = json.PlayerAddress, Email = json.PlayerEmail, Phone = json.PlayerPhone, Image = json.PlayerImage};
+            Player player = new Player();
+            player.Name = json.PlayerName;
+            if (!string.IsNullOrEmpty(player.Name))
+            {
+                player.MetaTitle = StringHelper.ToUnsignString(player.Name);
+            }
+            player.Identification = json.PlayerIdentification;
+            player.Address = json.PlayerAddress;
+            player.Email = json.PlayerEmail;
+            player.Phone = json.PlayerPhone;
+            player.Image = json.PlayerImage;
             long playerId = new PlayerDao().Insert(player);
 
             //Insert thêm một dòng vào bảng ClubPlayer

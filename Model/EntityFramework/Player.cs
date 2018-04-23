@@ -17,6 +17,9 @@ namespace Model.EntityFramework
         [StringLength(50)]
         public string Name { get; set; }
 
+        [StringLength(250)]
+        public string MetaTitle { get; set; }
+
         [StringLength(30)]
         public string Identification { get; set; }
 

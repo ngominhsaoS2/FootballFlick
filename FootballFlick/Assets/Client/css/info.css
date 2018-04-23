@@ -50,6 +50,7 @@
 	-ms-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
 	transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
 	background:url(../images/info-img1-1.jpg);
+    background-position:inherit;
 	opacity: 0;
 }
 .ch-info .ch-info-back2 {

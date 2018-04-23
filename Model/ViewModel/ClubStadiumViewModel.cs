@@ -31,6 +31,12 @@ namespace Model.ViewModel
         [StringLength(50)]
         public string StadiumName { get; set; }
 
+        [StringLength(250)]
+        public string StadiumAddress { get; set; }
+
+        [StringLength(500)]
+        public string StadiumImage { get; set; }
+
         [Key]
         [Column(Order = 2)]
         public bool Status { get; set; }

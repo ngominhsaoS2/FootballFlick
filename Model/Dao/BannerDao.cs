@@ -112,6 +112,20 @@ namespace Model.Dao
             return db.Banners.OrderByDescending(x=>x.CreatedDate).FirstOrDefault(x => x.Status == true);
         }
 
+        /// <summary>
+        /// Get top Banners
+        /// </summary>
+        /// <param name="top"></param>
+        /// <returns></returns>
+        public List<Banner> GetListBanner(int top)
+        {
+            return db.Banners.Where(x => x.Status == true).OrderByDescending(x => x.CreatedDate).Take(top).ToList();
+        }
+
+
+
+
+
 
 
 

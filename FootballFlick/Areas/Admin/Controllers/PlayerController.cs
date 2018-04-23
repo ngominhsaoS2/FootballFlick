@@ -38,6 +38,12 @@ namespace FootballFlick.Areas.Admin.Controllers
                 var dao = new PlayerDao();
                 if(dao.CheckIdentification(player.Identification) == false)
                 {
+                    //Xử lý MetaTitle
+                    if (!string.IsNullOrEmpty(player.Name))
+                    {
+                        player.MetaTitle = StringHelper.ToUnsignString(player.Name);
+                    }
+
                     long id = dao.Insert(player);
                     if (id > 0)
                     {
@@ -72,6 +78,11 @@ namespace FootballFlick.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (!string.IsNullOrEmpty(player.Name))
+                {
+                    player.MetaTitle = StringHelper.ToUnsignString(player.Name);
+                }
+
                 var result = new PlayerDao().Update(player);
                 if (result)
                 {

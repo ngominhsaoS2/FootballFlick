@@ -24,7 +24,11 @@ namespace Model.EntityFramework
         public int? Type { get; set; }
 
         [StringLength(50)]
-        public string ForTable { get; set; }
+        public string ForTable { get; set; }  
+
+        public bool? ShowInAdmin { get; set; }
+
+        public bool? ShowInClient { get; set; }
 
         public bool Status { get; set; }
     }

@@ -1,0 +1,162 @@
+﻿@model List<Model.ViewModel.PlayerViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header {
+    <section class="inner-w3ls" style="padding-bottom:10px">
+        <div class="container">
+            <h3 class="text-center" data-aos="zoom-in">Top Players</h3>
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb" data-aos="zoom-in">
+                        <li>
+                            <a href="/Home">Home</a>
+                        </li>
+                        <li class="active">Player</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>
+}
+
+<section class="news-w3ls">
+    @using (Html.BeginForm("Index", "Player", FormMethod.Get))
+    {
+        <div class="container" data-aos="flip-down">
+            <div class="col-md-2">
+                Search
+                <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" />
+            </div>
+            <div class="col-md-3">
+                <br />
+                <input type="submit" class="btn btn-success" value="Search" />
+                <a type="submit" class="btn btn-success" href="/Player">Clear</a>
+            </div>
+        </div>
+    }
+</section>
+
+<section class="schedule-w3layouts" style="padding-top:10px">
+    <div class="container">
+        <div class="table-responsive" data-aos="flip-down">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><h4>No</h4></th>
+                        <th><h4>Name</h4></th>
+                        <th><h4>Email</h4></th>
+                        <th><h4>Image</h4></th>
+                        <th><h4>Match</h4></th>
+                        <th><h4>Goal</h4></th>
+                        <th><h4>Assist</h4></th>
+                        <th><h4>Y.C</h4></th>
+                        <th><h4>R.C</h4></th>
+                        <th><h4>Total</h4></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var link = "/Player/Detail/" + item.MetaTitle + "-" + item.ID;
+                        <tr>
+                            <td>@item.RankNumber</td>
+                            <td>
+                                <a href="@link">@item.Name</a>
+                            </td>
+                            <td>@item.Email</td>
+                            <td><img src="@item.Image" alt="@item.Name" class="img-responsive" width="80" /></td>
+                            <td>@item.Match</td>
+                            <td>@item.Goal</td>
+                            <td>@item.Assist</td>
+                            <td>@item.YellowCard</td>
+                            <td>@item.RedCard</td>
+                            <td style="font-weight:bold; font-size:25px">@item.TotalPoint</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!--Phân trang-->
+        @if (ViewBag.TotalPage > 0)
+            {
+                var pageDisplay = (int)ViewBag.MaxPage;
+                int totalPage = (int)ViewBag.TotalPage;
+                int currentPage = (int)ViewBag.Page;
+
+                //Create numeric links
+                var startPageIndex = 0;
+                var endPageIndex = 0;
+                if (totalPage > pageDisplay)
+                {
+                    startPageIndex = Math.Max(1, currentPage - (pageDisplay / 2));
+                    if (startPageIndex < pageDisplay / 2)
+                    {
+                        endPageIndex = pageDisplay;
+                    }
+                    else
+                    {
+                        endPageIndex = Math.Min(totalPage, currentPage + (pageDisplay / 2));
+                        startPageIndex = endPageIndex - pageDisplay;
+                    }
+
+                }
+                else
+                {
+                    startPageIndex = 1;
+                    endPageIndex = totalPage;
+                }
+
+                <nav>
+                    <ul class="pagination">
+                        @if (currentPage > ViewBag.First)
+                        {
+                            <li><a href="/Player/Index?pageIndex=@ViewBag.First" title="First page" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li>
+                                <a href="/Player/Index?pageIndex=@ViewBag.Prev" title="Previous page" class="prev"><i class="fa fa-angle-left"></i></a>
+                            </li>
+
+                        }
+
+                        @for (int i = startPageIndex; i <= endPageIndex; i++)
+                        {
+                            if (currentPage == i)
+                            {
+                                <li><a href="/Player/Index?pageIndex=@i" class="active" title="Page @i">@i</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/Player/Index?pageIndex=@i" title="Page @i" class="pos">@i</a></li>
+                            }
+                        }
+
+                        @if (currentPage < totalPage)
+                        {
+                            <li><a href="/Player/Index?pageIndex=@ViewBag.Next" class="next" title="Next page"><i class="fa fa-angle-right"></i></a></li>
+                            <li> <a href="/Player/Index?pageIndex=@ViewBag.Last" class="last" title="Last page"><i class="fa fa-angle-double-right"></i></a></li>
+                        }
+                    </ul>
+                </nav>
+        }
+        else
+        {
+            <span>No records</span>
+        }
+    </div>
+</section>
+<br />
+
+
+
+
+
+
+
+
+
+

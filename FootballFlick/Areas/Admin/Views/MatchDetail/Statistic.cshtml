@@ -4,6 +4,7 @@
     ViewBag.Title = "Statistic";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     var match = (Model.EntityFramework.Match)ViewBag.Match;
+    var club = (Model.ViewModel.ClubViewModel)ViewBag.Club;
 }
 
 @section jsFooter{
@@ -38,10 +39,10 @@
             <label class="control-label">ClubID</label>
         </div>
         <div class="col-md-1">
-            <input type="text" class="form-control" id="txtHomeClubID" placeholder="ID" />
+            <input type="text" class="form-control" id="txtHomeClubID" placeholder="ID" value="@club.ID" readonly />
         </div>
         <div class="col-md-2">
-            <input type="text" class="form-control" id="txtHomeClubCode" placeholder="Code" />
+            <input type="text" class="form-control" id="txtHomeClubCode" placeholder="Code" value="@club.Code" readonly />
         </div>
 
         <div class="col-md-1">

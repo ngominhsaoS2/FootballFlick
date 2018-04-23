@@ -29,6 +29,16 @@ namespace Model.Dao
         }
 
         /// <summary>
+        /// Get PlayerViewModel when having ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public PlayerViewModel GetViewModelByID(long id)
+        {
+            return db.vPlayers.Find(id);
+        }
+
+        /// <summary>
         /// Insert one Player to database
         /// </summary>
         /// <param name="entity"></param>
@@ -62,6 +72,7 @@ namespace Model.Dao
                 }
                 player.UserID = entity.UserID;
                 player.Name = entity.Name;
+                player.MetaTitle = entity.MetaTitle;
                 player.Identification = entity.Identification;
                 player.Address = entity.Address;
                 player.Email = entity.Email;
@@ -175,11 +186,40 @@ namespace Model.Dao
             }
         }
 
+        /// <summary>
+        /// Rank all Players
+        /// </summary>
+        /// <param name="searchString"></param>
+        /// <param name="totalRecord"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public List<PlayerViewModel> DisplayListRankedPlayer(string searchString, ref int totalRecord, int pageIndex = 1, int pageSize = 10)
+        {
+            totalRecord = db.vPlayers.Count();
+            IQueryable<PlayerViewModel> model = db.vPlayers;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Name.Contains(searchString) || x.Identification.Contains(searchString)
+                || x.Email.Contains(searchString) || x.Phone.Contains(searchString)
+                || x.UserName.Contains(searchString) || x.NameOfUser.Contains(searchString)
+                || x.UserEmail.Contains(searchString) || x.UserPhone.Contains(searchString));
+            }
 
+            return model.OrderByDescending(x => x.TotalPoint).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+        }
 
-
-
-
+        /// <summary>
+        /// List all the Matches that the Player has played
+        /// </summary>
+        /// <param name="playerId"></param>
+        /// <returns></returns>
+        public List<MatchDetailViewModel> ListPlayedMatches(long playerId, ref int totalRecord, int pageIndex = 1, int pageSize = 9)
+        {
+            totalRecord = db.vMatchDetails.Count(x => x.PlayerID == playerId);
+            var model = db.vMatchDetails.Where(x => x.PlayerID == playerId).OrderByDescending(x => x.MatchID).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return model.ToList();
+        }
 
 
 

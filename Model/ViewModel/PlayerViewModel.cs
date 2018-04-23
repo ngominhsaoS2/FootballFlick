@@ -36,6 +36,9 @@ namespace Model.ViewModel
         [StringLength(50)]
         public string Name { get; set; }
 
+        [StringLength(250)]
+        public string MetaTitle { get; set; }
+
         [StringLength(30)]
         public string Identification { get; set; }
 
@@ -61,9 +64,30 @@ namespace Model.ViewModel
         [StringLength(50)]
         public string ModifiedBy { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
         public bool Status { get; set; }
+
+        public long RankNumber { get; set; }
+
+        public int Match { get; set; }
+
+        public int Goal { get; set; }
+
+        public int Assist { get; set; }
+
+        public int YellowCard { get; set; }
+
+        public int RedCard { get; set; }
+
+        public int GoalPoint { get; set; }
+
+        public int AssistPoint { get; set; }
+
+        public int YellowPoint { get; set; }
+
+        public int RedPoint { get; set; }
+
+        public int TotalPoint { get; set; }
+
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Model.EntityFramework;
 using Model.ViewModel;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,7 +89,23 @@ namespace Model.Dao
             }
         }
 
-
+        /// <summary>
+        /// List ClubPoint into a table with search string
+        /// </summary>
+        /// <param name="searchString"></param>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public IEnumerable<ClubPointViewModel> ListAllPaging(string searchString, int page, int pageSize)
+        {
+            IQueryable<ClubPointViewModel> model = db.vClubPoints;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.MatchCode.Contains(searchString) || x.ClubCode.Contains(searchString)
+                || x.ClubName.Contains(searchString));
+            }
+            return model.OrderByDescending(x => x.MatchID).ToPagedList(page, pageSize);
+        }
 
 
 

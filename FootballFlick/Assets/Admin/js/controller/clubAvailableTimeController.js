@@ -23,7 +23,7 @@
                         window.location.reload();
                     }
                     else {
-                        alert("This AvailableTime is already added to the team");
+                        alert("Add a AvailableTime failed. Please try again!");
                     }
                 }
             })
