@@ -69,12 +69,12 @@ namespace FootballFlick.Areas.Admin.Controllers
 
                 if (id > 0)
                 {
-                    SetAlert("Create a new content successfully.", "success");
+                    PopupNotification("success", "Create a new Content successfully.", "success");
                     return RedirectToAction("Index", "Content");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Create a new content failed.");
+                    PopupNotification("error", "Create a new Content failed.", "danger");
                     return RedirectToAction("Create", "Content");
                 }
             }
@@ -130,11 +130,11 @@ namespace FootballFlick.Areas.Admin.Controllers
 
                 if (result)
                 {
-                    SetAlert("Edit this content successfully.", "success");
+                    PopupNotification("success", "Edit this Content successfully.", "success");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Edit this content failed.");
+                    PopupNotification("error", "Edit this Content failed.", "danger");
                 }
 
             }

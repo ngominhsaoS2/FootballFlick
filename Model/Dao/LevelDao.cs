@@ -75,7 +75,7 @@ namespace Model.Dao
             try
             {
                 var level = db.Levels.Find(id);
-                db.Levels.Remove(level);
+                level.Status = false;
                 db.SaveChanges();
                 return true;
             }

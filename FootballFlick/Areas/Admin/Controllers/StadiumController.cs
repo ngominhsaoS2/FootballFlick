@@ -46,12 +46,12 @@ namespace FootballFlick.Areas.Admin.Controllers
                 long id = dao.Insert(stadium);
                 if (id > 0)
                 {
-                    SetAlert("Create a new stadium successfully.", "success");
-                    return RedirectToAction("Index", "Stadium");
+                    PopupNotification("success", "Create a new Stadium successfully.", "success");
+                    return RedirectToAction("Create", "Stadium");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Create a new stadium failed.");
+                    PopupNotification("error", "Create a new Stadium failed.", "danger");
                     return RedirectToAction("Create", "Stadium");
                 }
             }
@@ -80,11 +80,11 @@ namespace FootballFlick.Areas.Admin.Controllers
                 var result = new StadiumDao().Update(stadium);
                 if (result)
                 {
-                    SetAlert("Edit this stadium successfully.", "success");
+                    PopupNotification("success", "Edit this Stadium successfully.", "success");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Edit this stadium failed.");
+                    PopupNotification("error", "Edit this Stadium failed.", "danger");
                 }
 
             }

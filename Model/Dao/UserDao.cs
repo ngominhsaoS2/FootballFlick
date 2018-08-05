@@ -85,7 +85,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Delete one User in the database
+        /// Delete one User in the database (change Status to 0)
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -94,7 +94,7 @@ namespace Model.Dao
             try
             {
                 var user = db.Users.Find(id);
-                db.Users.Remove(user);
+                user.Status = false;
                 db.SaveChanges();
                 return true;
             }
@@ -119,7 +119,7 @@ namespace Model.Dao
                 model = model.Where(x => x.UserName.Contains(searchString) || x.Name.Contains(searchString)
                 || x.Email.Contains(searchString) || x.Address.Contains(searchString) || x.Phone.Contains(searchString));
             }
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return model.OrderBy(x => x.Name).ToPagedList(page, pageSize);
         }
 
         /// <summary>
@@ -133,21 +133,22 @@ namespace Model.Dao
         {
             var result = db.Users.SingleOrDefault(x => x.UserName == userName);
             var isLoginAdmin = false;
-            if (result.GroupID == CommonConstants.MEMBER_GROUP)
-            {
-                isLoginAdmin = false;
-            }
-            else
-            {
-                isLoginAdmin = true;
-            }
-
+            
             if (result == null)
             {
                 return 0;
             }
             else
             {
+                if (result.GroupID == CommonConstants.MEMBER_GROUP)
+                {
+                    isLoginAdmin = false;
+                }
+                else
+                {
+                    isLoginAdmin = true;
+                }
+
                 if (isLoginAdmin == true)
                 {
                     if (result.GroupID == CommonConstants.ADMIN_GROUP || result.GroupID == CommonConstants.MOD_GROUP)

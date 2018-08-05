@@ -8,92 +8,57 @@
             $('#formAddStadium').modal('show');
         });
 
-        $('#btnSaveStadium').off('click').on('click', function () {
+        $('.btnModalAdd').off('click').on('click', function (e) {
+            e.preventDefault();
             var clubId = $("tr:first").attr("id");
-            var name = $("#txtName").val();
-            var identification = $("#txtIdentification").val();
-            var address = $("#txtAddress").val();
-            var email = $("#txtEmail").val();
-            var phone = $("#txtPhone").val();
-            var image = $("#txtImage").val();
+            var stadiumId = $(this).data('id');
+            var delBut = '#btn_' + stadiumId;
 
-            if (name == "") {
-                alert("Please enter Name");
-            } else if (email == "") {
-                alert("Please enter Email");
-            } else if (validateEmail(email) == false) {
-                alert("Please enter a real Email");
-            }
-            else {
-                var clubStadiumViewModel = {
-                    "ClubID": clubId,
-                    "PlayerID": 0,
-                    "PlayerName": name,
-                    "PlayerIdentification": identification,
-                    "PlayerAddress": address,
-                    "PlayerEmail": email,
-                    "PlayerPhone": phone,
-                    "PlayerImage": image
-                };
-
-                //Insert một dòng ClubStadium mới vào bảng ClubStadium
-                $.ajax({
-                    url: '/ClubStadium/AddStadium',
-                    data: { clubStadiumViewModel: JSON.stringify(clubStadiumViewModel) },
-                    dataType: 'json',
-                    type: 'POST',
-                    success: function (res) {
-                        if (res.status == true) {
-                            $('#formAddStadium').modal('hide');
-                            alert("Add a Stadium successfully");
-                            window.location.reload();
-                        }
-                        else {
-                            alert("Add a Stadium failed. Please try again!");
-                        }
+            $.ajax({
+                url: '/ClubStadium/AddStadium',
+                data: { clubId: clubId, stadiumId: stadiumId },
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status === true) {
+                        alert("Add the Stadium successfully!!!");
+                        $(delBut).remove();
                     }
-                })
-            }
-
-
-
-
+                    else {
+                        alert("Add the Stadium failed!!!");
+                    }
+                }
+            })
         });
 
         $('.btnDelete').off('click').on('click', function (e) {
             e.preventDefault();
-            var stt = $(this).data('id');
             var clubId = $("tr:first").attr("id");
+            var stadiumId = $(this).data('id');
 
-            var cf = confirm("Do you really want to delete this Player");
-            if (cf == true) {
+            var cf = confirm("Do you really want to delete this Stadium");
+            if (cf === true) {
                 $.ajax({
-                    url: '/ClubPlayer/Delete',
-                    data: { clubId: clubId, stt: stt },
+                    url: '/ClubStadium/Delete',
+                    data: { clubId: clubId, stadiumId: stadiumId },
                     dataType: 'json',
                     type: 'POST',
                     success: function (res) {
-                        if (res.status == true) {
-                            alert("Delete the player successfully");
+                        if (res.status === true) {
+                            alert("Delete the Stadium successfully");
                             window.location.reload();
                         }
                         else {
-                            alert("Delete the player failed");
+                            alert("Delete the Stadium failed");
                         }
                     }
                 })
             }
-
         });
 
-        function validateEmail(email) {
-            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(email);
-        }
-
-
-
+        $('#btnClose').off('click').on('click', function (e) {
+            window.location.reload();
+        });
     }
-
 }
 clubStadium.init();

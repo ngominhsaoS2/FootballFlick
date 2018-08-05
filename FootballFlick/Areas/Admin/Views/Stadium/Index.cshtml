@@ -7,81 +7,93 @@
 }
 
 @section jsFooter{
+    <script src="/Assets/Admin/js/lib/datatables/datatables.min.js"></script>
+    <script src="/Assets/Admin/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="/Assets/Admin/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="/Assets/Admin/js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="/Assets/Admin/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="/Assets/Admin/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="/Assets/Admin/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="/Assets/Admin/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script src="/Assets/Admin/js/lib/datatables/datatables-init.js"></script>
     <script src="/Assets/Admin/js/controller/stadiumController.js"></script>
 }
 
-<div class="tables">
-    @using (Html.BeginForm("Index", "Stadium", FormMethod.Get))
-    {
-        <div class="row form-group">
-            <div class="col-lg-12">
-                <div class="col-md-4">
-                    <h1 class="title1">List of Stadiums</h1>
+@section pageTitle{
+    <div class="row page-titles">
+        <div class="col-md-8 align-self-center ">
+            <h3 class="text-primary"><a href="/Admin/Stadium/Index">Stadium</a></h3>
+        </div>
+        <div class="col-md-4 align-self-center">
+            @using (Html.BeginForm("Index", "Stadium", FormMethod.Get))
+            {
+                <div class="input-group">
+                    <input type="text" value="@ViewBag.SearchString" class="form-control form-control input-sm" name="searchString" />
+                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-search"></i></button>
+                    <a class="btn btn-info btn-sm" href="javascript:history.go(-1)" role="button"><i class="fas fa-eraser"></i></a>
+                    <a class="btn btn-info btn-sm" href="/Admin/Stadium/Create" role="button"><i class="fas fa-plus"></i></a>
                 </div>
-                <div class="col-md-3">
-                    <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" />
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-success">Search</button>
-                    <a type="submit" class="btn btn-success" href="/Admin/Stadium/Index">Clear</a>
-                    <a type="submit" class="btn btn-primary" href="/Admin/Stadium/Create">Create</a>
-                </div>
-                <div class="col-md-1">
-                    <select class="form-control" name="">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
+            }
+        </div>
+    </div>
+}
+
+<div class="container-fluid">
+    <!-- Start Page Content -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="tableStadium" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Code</th>
+                                    <th>Name</th>
+                                    <th style="min-width:200px">Address</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Image</th>
+                                    <th>Status</th>
+                                    <th style="min-width:100px">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr id="row_@item.ID">
+                                        <td>@item.ID</td>
+                                        <td>@item.Code</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Address</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.Phone</td>
+                                        <td><img class="img-responsive" width="150" height="auto" src="@item.Image" alt=""></td>
+                                        <td>@(item.Status ? "Active" : "Not available")</td>
+                                        <td>
+                                            <a href="#" data-id="@item.ID" class="btn-images">More images</a>
+                                            |
+                                            <a href="/Admin/Stadium/Edit/@item.ID">Edit</a>
+                                            |
+                                            @Ajax.ActionLink("Delete", "Delete", new { @id = @item.ID }, new AjaxOptions
+                                            {
+                                                Confirm = "Do you really want to delete this row?",
+                                                OnComplete = "$('#row_" + @item.ID + "').remove()",
+                                                HttpMethod = "Delete"
+                                            })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                    </div>
                 </div>
             </div>
         </div>
-    }
-
-    <div class="table-responsive bs-example widget-shadow">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Image</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr id="row_@item.ID">
-                        <td>@item.Code</td>
-                        <td>@item.Name</td>
-                        <td>@item.Address</td>
-                        <td>@item.Email</td>
-                        <td>@item.Phone</td>
-                        <td><img class="img-responsive" width="150" height="auto" src="@item.Image" alt=""></td>
-                        <td>@(item.Status ? "Active" : "Not available")</td>
-                        <td>
-                            <a href="#" data-id="@item.ID" class="btn-images">More images</a>
-                            |
-                            <a href="/Admin/Stadium/Edit/@item.ID">Edit</a>
-                            |
-                            @Ajax.ActionLink("Delete", "Delete", new { @id = @item.ID }, new AjaxOptions
-                       {
-                           Confirm = "Do you really want to delete this row?",
-                           OnComplete = "$('#row_" + @item.ID + "').remove()",
-                           HttpMethod = "Delete"
-                       })
-                        </td>
-                    </tr>
-                }
-
-            </tbody>
-        </table>
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
     </div>
+    <!-- End Page Content -->
 </div>
 
 <!-- Modal -->

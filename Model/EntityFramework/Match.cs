@@ -29,7 +29,6 @@ namespace Model.EntityFramework
         [Column(TypeName = "xml")]
         public string MoreImages { get; set; }
 
-        [Required(ErrorMessage = "Please enter HomeClubID")]
         public long? HomeClubID { get; set; }
 
         public long? VisitingClubID { get; set; }

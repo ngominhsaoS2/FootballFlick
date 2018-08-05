@@ -78,7 +78,7 @@ namespace Model.Dao
             try
             {
                 var stadium = db.Stadiums.Find(id);
-                db.Stadiums.Remove(stadium);
+                stadium.Status = false;
                 db.SaveChanges();
                 return true;
             }
@@ -163,7 +163,33 @@ namespace Model.Dao
             return listStadium.ToList();
         }
 
+        /// <summary>
+        /// List all active Stadiums
+        /// </summary>
+        /// <returns></returns>
+        public List<Stadium> ListAll()
+        {
+            return db.Stadiums.Where(x => x.Status == true).OrderBy(x => x.Name).ToList();
+        }
 
+        /// <summary>
+        /// List all Stadiums that the Club has not selected yet
+        /// </summary>
+        /// <param name="clubId"></param>
+        /// <returns></returns>
+        public List<Stadium> ListRemain(long clubId)
+        {
+            var listAll = db.Stadiums.Where(x => x.Status == true).ToList();
+            var listSelected = db.ClubStadiums.Where(x => x.ClubID == clubId).ToList();
+
+            foreach (var item in listSelected)
+            {
+                var remove = listAll.Find(x => x.ID == item.StadiumID);
+                listAll.Remove(remove);
+            }
+
+            return listAll;
+        }
 
 
 

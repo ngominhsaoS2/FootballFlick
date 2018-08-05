@@ -4,392 +4,402 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="main-page">
-    <div class="col_3">
-        <div class="col-md-3 widget widget1">
-            <div class="r3_counter_box">
-                <i class="pull-left fa fa-dollar icon-rounded"></i>
-                <div class="stats">
-                    <h5><strong>$452</strong></h5>
-                    <span>Total Revenue</span>
-                </div>
-            </div>
+@section jsAmchart{
+    <script src="/Assets/Admin/js/lib/morris-chart/raphael-min.js"></script>
+    <script src="/Assets/Admin/js/lib/morris-chart/morris.js"></script>
+    <script src="/Assets/Admin/js/lib/morris-chart/dashboard1-init.js"></script>
+}
+
+@section pageTitle{
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-primary">Dashboard</h3>
         </div>
-        <div class="col-md-3 widget widget1">
-            <div class="r3_counter_box">
-                <i class="pull-left fa fa-laptop user1 icon-rounded"></i>
-                <div class="stats">
-                    <h5><strong>$1019</strong></h5>
-                    <span>Online Revenue</span>
-                </div>
-            </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
         </div>
-        <div class="col-md-3 widget widget1">
-            <div class="r3_counter_box">
-                <i class="pull-left fa fa-money user2 icon-rounded"></i>
-                <div class="stats">
-                    <h5><strong>$1012</strong></h5>
-                    <span>Expenses</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 widget widget1">
-            <div class="r3_counter_box">
-                <i class="pull-left fa fa-pie-chart dollar1 icon-rounded"></i>
-                <div class="stats">
-                    <h5><strong>$450</strong></h5>
-                    <span>Expenditure</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 widget">
-            <div class="r3_counter_box">
-                <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
-                <div class="stats">
-                    <h5><strong>1450</strong></h5>
-                    <span>Total Users</span>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix"> </div>
     </div>
+}
 
-    <div class="row-one widgettable">
-        <div class="col-md-7 content-top-2 card">
-            <div class="agileinfo-cdr">
-                <div class="card-header">
-                    <h3>Weekly Sales</h3>
+<div class="container-fluid">
+    <!-- Start Page Content -->
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card p-30">
+                <div class="media">
+                    <div class="media-left meida media-middle">
+                        <span><i class="fa fa-usd f-s-40 color-primary"></i></span>
+                    </div>
+                    <div class="media-body media-text-right">
+                        <h2>568120</h2>
+                        <p class="m-b-0">Total Revenue</p>
+                    </div>
                 </div>
-
-                <div id="Linegraph" style="width: 98%; height: 350px">
-                </div>
-
             </div>
         </div>
-        <div class="col-md-3 stat">
-            <div class="content-top-1">
-                <div class="col-md-6 top-content">
-                    <h5>Sales</h5>
-                    <label>1283+</label>
+        <div class="col-md-3">
+            <div class="card p-30">
+                <div class="media">
+                    <div class="media-left meida media-middle">
+                        <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
+                    </div>
+                    <div class="media-body media-text-right">
+                        <h2>1178</h2>
+                        <p class="m-b-0">Sales</p>
+                    </div>
                 </div>
-                <div class="col-md-6 top-content1">
-                    <div id="demo-pie-1" class="pie-title-center" data-percent="45"> <span class="pie-value"></span> </div>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-            <div class="content-top-1">
-                <div class="col-md-6 top-content">
-                    <h5>Reviews</h5>
-                    <label>2262+</label>
-                </div>
-                <div class="col-md-6 top-content1">
-                    <div id="demo-pie-2" class="pie-title-center" data-percent="75"> <span class="pie-value"></span> </div>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-            <div class="content-top-1">
-                <div class="col-md-6 top-content">
-                    <h5>Visitors</h5>
-                    <label>12589+</label>
-                </div>
-                <div class="col-md-6 top-content1">
-                    <div id="demo-pie-3" class="pie-title-center" data-percent="90"> <span class="pie-value"></span> </div>
-                </div>
-                <div class="clearfix"> </div>
             </div>
         </div>
-        <div class="col-md-2 stat">
-            <div class="content-top">
-                <div class="top-content facebook">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
+        <div class="col-md-3">
+            <div class="card p-30">
+                <div class="media">
+                    <div class="media-left meida media-middle">
+                        <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
+                    </div>
+                    <div class="media-body media-text-right">
+                        <h2>25</h2>
+                        <p class="m-b-0">Stores</p>
+                    </div>
                 </div>
-                <ul class="info">
-                    <li class="col-md-6"><b>1,296</b><p>Friends</p></li>
-                    <li class="col-md-6"><b>647</b><p>Likes</p></li>
-                    <div class="clearfix"></div>
-                </ul>
-            </div>
-            <div class="content-top">
-                <div class="top-content twitter">
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                </div>
-                <ul class="info">
-                    <li class="col-md-6"><b>1,997</b><p>Followers</p></li>
-                    <li class="col-md-6"><b>389</b><p>Tweets</p></li>
-                    <div class="clearfix"></div>
-                </ul>
-            </div>
-            <div class="content-top">
-                <div class="top-content google-plus">
-                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                </div>
-                <ul class="info">
-                    <li class="col-md-6"><b>1,216</b><p>Followers</p></li>
-                    <li class="col-md-6"><b>321</b><p>shares</p></li>
-                    <div class="clearfix"></div>
-                </ul>
             </div>
         </div>
-        <div class="clearfix"> </div>
-    </div>
-
-    <div class="charts">
-        <div class="col-md-4 charts-grids widget">
-            <div class="card-header">
-                <h3>Bar chart</h3>
-            </div>
-
-            <div id="container" style="width: 100%; height:270px;">
-                <canvas id="canvas"></canvas>
-            </div>
-            <button id="randomizeData">Randomize Data</button>
-            <button id="addDataset">Add Dataset</button>
-            <button id="removeDataset">Remove Dataset</button>
-            <button id="addData">Add Data</button>
-            <button id="removeData">Remove Data</button>
-
-        </div>
-
-        <div class="col-md-4 charts-grids widget states-mdl">
-            <div class="card-header">
-                <h3>Column & Line Graph</h3>
-            </div>
-            <div id="chartdiv"></div>
-        </div>
-
-        <div class="clearfix"> </div>
-    </div>
-
-
-    <!-- for amcharts js -->
-    <script src="/Assets/Admin/js/amcharts.js"></script>
-    <script src="/Assets/Admin/js/serial.js"></script>
-    <script src="/Assets/Admin/js/export.min.js"></script>
-    <link rel="stylesheet" href="/Assets/Admin/css/export.css" type="text/css" media="all" />
-    <script src="/Assets/Admin/js/light.js"></script>
-    <!-- for amcharts js -->
-
-    <script src="/Assets/Admin/js/index1.js"></script>
-
-    <div class="charts">
-        <div class="mid-content-top charts-grids">
-            <div class="middle-content">
-                <h4 class="title">Carousel Slider</h4>
-                <!-- start content_slider -->
-                <div id="owl-demo" class="owl-carousel text-center">
-                    <div class="item">
-                        <img class="lazyOwl img-responsive" data-src="/Assets/Admin/images/slider1.jpg" alt="name">
+        <div class="col-md-3">
+            <div class="card p-30">
+                <div class="media">
+                    <div class="media-left meida media-middle">
+                        <span><i class="fa fa-user f-s-40 color-danger"></i></span>
                     </div>
-                    <div class="item">
-                        <img class="lazyOwl img-responsive" data-src="/Assets/Admin/images/slider2.jpg" alt="name">
+                    <div class="media-body media-text-right">
+                        <h2>847</h2>
+                        <p class="m-b-0">Customer</p>
                     </div>
-                    <div class="item">
-                        <img class="lazyOwl img-responsive" data-src="/Assets/Admin/images/slider3.jpg" alt="name">
-                    </div>
-                    <div class="item">
-                        <img class="lazyOwl img-responsive" data-src="/Assets/Admin/images/slider4.jpg" alt="name">
-                    </div>
-                    <div class="item">
-                        <img class="lazyOwl img-responsive" data-src="/Assets/Admin/images/slider5.jpg" alt="name">
-                    </div>
-                    <div class="item">
-                        <img class="lazyOwl img-responsive" data-src="/Assets/Admin/images/slider6.jpg" alt="name">
-                    </div>
-                    <div class="item">
-                        <img class="lazyOwl img-responsive" data-src="/Assets/Admin/images/slider7.jpg" alt="name">
-                    </div>
-
                 </div>
             </div>
-            <!--//sreen-gallery-cursual---->
         </div>
     </div>
 
-    <div class="col_1">
-        <div class="col-md-4 span_8">
-            <div class="activity_box">
-                <h2>Inbox</h2>
-                <div class="scrollbar" id="style-1">
-                    <div class="activity-row">
-                        <div class="col-xs-3 activity-img"><img src='/Assets/Admin/images/1.jpg' class="img-responsive" alt="" /></div>
-                        <div class="col-xs-7 activity-desc">
-                            <h5><a href="#">Michael Chris</a></h5>
-                            <p>Hey ! There I'm available.</p>
-                        </div>
-                        <div class="col-xs-2 activity-desc1"><h6>12:05 PM</h6></div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="activity-row">
-                        <div class="col-xs-3 activity-img"><img src='/Assets/Admin/images/4.jpg' class="img-responsive" alt="" /></div>
-                        <div class="col-xs-7 activity-desc">
-                            <h5><a href="#">Alexander</a></h5>
-                            <p>Hey ! There I'm available.</p>
-                        </div>
-                        <div class="col-xs-2 activity-desc1"><h6>12:06 PM</h6></div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="activity-row">
-                        <div class="col-xs-3 activity-img"><img src='/Assets/Admin/images/3.jpg' class="img-responsive" alt="" /></div>
-                        <div class="col-xs-7 activity-desc">
-                            <h5><a href="#">Daniel Lucas</a></h5>
-                            <p>Hey ! There I'm available.</p>
-                        </div>
-                        <div class="col-xs-2 activity-desc1"><h6>01:30 PM</h6></div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="activity-row">
-                        <div class="col-xs-3 activity-img"><img src='/Assets/Admin/images/2.jpg' class="img-responsive" alt="" /></div>
-                        <div class="col-xs-7 activity-desc">
-                            <h5><a href="#">Jackson Jacob</a></h5>
-                            <p>Hey ! There I'm available.</p>
-                        </div>
-                        <div class="col-xs-2 activity-desc1"><h6>01:50 PM</h6></div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="activity-row">
-                        <div class="col-xs-3 activity-img"><img src='/Assets/Admin/images/1.jpg' class="img-responsive" alt="" /></div>
-                        <div class="col-xs-7 activity-desc">
-                            <h5><a href="#">David Samuel</a></h5>
-                            <p>Hey ! There I'm available.</p>
-                        </div>
-                        <div class="col-xs-2 activity-desc1"><h6>12:20 PM</h6></div>
-                        <div class="clearfix"> </div>
-                    </div>
+    <div class="row bg-white m-l-0 m-r-0 box-shadow ">
 
-                    <div class="activity-row">
-                        <div class="col-xs-3 activity-img"><img src='/Assets/Admin/images/4.jpg' class="img-responsive" alt="" /></div>
-                        <div class="col-xs-7 activity-desc">
-                            <h5><a href="#">laura Smith</a></h5>
-                            <p>Hey ! There I'm available.</p>
-                        </div>
-                        <div class="col-xs-2 activity-desc1"><h6>12:50 PM</h6></div>
-                        <div class="clearfix"> </div>
-                    </div>
+        <!-- column -->
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Extra Area Chart</h4>
+                    <div id="extra-area-chart"></div>
                 </div>
-                <form action="#" method="post">
-                    <input type="text" value="Enter your text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your text';}" required="">
-                    <input type="submit" value="Submit" />
-                </form>
             </div>
         </div>
-        <div class="col-md-4 span_8">
-            <div class="activity_box activity_box1">
-                <h3>chat</h3>
-                <div class="scrollbar" id="style-3">
-                    <div class="activity-row activity-row1">
-                        <div class="col-xs-3 activity-img"><img src='/Assets/Admin/images/1.jpg' class="img-responsive" alt="" /><span>06:01 AM</span></div>
-                        <div class="col-xs-5 activity-img1">
-                            <div class="activity-desc-sub">
-                                <h5>Michael Chris</h5>
-                                <p>Hello ! this is Michael chris</p>
+        <!-- column -->
+        <!-- column -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body browser">
+                    <p class="f-w-600">iMacs <span class="pull-right">85%</span></p>
+                    <div class="progress ">
+                        <div role="progressbar" style="width: 85%; height:8px;" class="progress-bar bg-danger wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                    </div>
+
+                    <p class="m-t-30 f-w-600">iBooks<span class="pull-right">90%</span></p>
+                    <div class="progress">
+                        <div role="progressbar" style="width: 90%; height:8px;" class="progress-bar bg-info wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                    </div>
+
+                    <p class="m-t-30 f-w-600">iPhone<span class="pull-right">65%</span></p>
+                    <div class="progress">
+                        <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                    </div>
+
+                    <p class="m-t-30 f-w-600">Samsung<span class="pull-right">65%</span></p>
+                    <div class="progress">
+                        <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-warning wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                    </div>
+
+                    <p class="m-t-30 f-w-600">android<span class="pull-right">65%</span></p>
+                    <div class="progress m-b-30">
+                        <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- column -->
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card bg-dark">
+                <div class="testimonial-widget-one p-17">
+                    <div class="testimonial-widget-one owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <img class="testimonial-author-img" src="/Assets/Admin/images/avatar/2.jpg" alt="" />
+                                <div class="testimonial-author">John</div>
+                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
+
+                                <div class="testimonial-text">
+                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
+                                    <i class="fa fa-quote-right"></i>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xs-4 activity-desc1"></div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="activity-row activity-row1">
-                        <div class="col-xs-2 activity-desc1"></div>
-                        <div class="col-xs-7 activity-img2">
-                            <div class="activity-desc-sub1">
-                                <h5>Alexander</h5>
-                                <p>Hi,How are you ? What about our next meeting?</p>
-                            </div>
-                        </div>
-                        <div class="col-xs-3 activity-img"><img src='/Assets/Admin/images/3.jpg' class="img-responsive" alt="" /><span>06:02 AM</span></div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="activity-row activity-row1">
-                        <div class="col-xs-3 activity-img"><img src='/Assets/Admin/images/1.jpg' class="img-responsive" alt="" /><span>06:05 AM</span></div>
-                        <div class="col-xs-5 activity-img1">
-                            <div class="activity-desc-sub">
-                                <h5>Michael Chris</h5>
-                                <p>Yeah fine, Hope you the same</p>
-                            </div>
-                        </div>
-                        <div class="col-xs-4 activity-desc1"></div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="activity-row activity-row1">
-                        <div class="col-xs-2 activity-desc1"></div>
-                        <div class="col-xs-7 activity-img2">
-                            <div class="activity-desc-sub1">
-                                <h5>Alexander</h5>
-                                <p>Wow that's great</p>
-                            </div>
-                        </div>
-                        <div class="col-xs-3 activity-img"><img src='/Assets/Admin/images/3.jpg' class="img-responsive" alt="" /><span>06:20 PM</span></div>
-                        <div class="clearfix"> </div>
-                    </div>
-                </div>
-                <form action="#" method="post">
-                    <input type="text" value="Enter your text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your text';}" required="">
-                    <input type="submit" value="Send" />
-                </form>
-            </div>
-        </div>
-        <div class="col-md-4 span_8">
-            <div class="activity_box activity_box2">
-                <h3>todo</h3>
-                <div class="scrollbar" id="style-2">
-                    <div class="activity-row activity-row1">
-                        <div class="single-bottom">
-                            <ul>
-                                <li>
-                                    <input type="checkbox" id="brand" value="">
-                                    <label for="brand"><span></span> Integer sollicitudin lacinia condimentum.</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="brand1" value="">
-                                    <label for="brand1"><span></span> ligula sit amet hendrerit init lorem.</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="brand2" value="">
-                                    <label for="brand2"><span></span>  Donec aliquam dolor eu augue condimentum.</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="brand9" value="">
-                                    <label for="brand9"><span></span>  at tristique Pain that produces no resultant.</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="brand8" value="">
-                                    <label for="brand8"><span></span> Nulla finibus rhoncus turpis quis tristique.</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="brand7" value="">
-                                    <label for="brand7"><span></span> Cupidatat non proident Praising pain.</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="brand3" value="">
-                                    <label for="brand3"><span></span>  libero vel elementum euismod, mauris tellus</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="brand4" value="">
-                                    <label for="brand4"><span></span> Donec aliquam dolor eu augue condimentum.</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="brand5" value="">
-                                    <label for="brand5"><span></span> Orci varius natoque penatibus et magnis dis.</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="brand6" value="">
-                                    <label for="brand6"><span></span> parturient Dolorem ipsum quia.</label>
-                                </li>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <img class="testimonial-author-img" src="/Assets/Admin/images/avatar/3.jpg" alt="" />
+                                <div class="testimonial-author">Abraham</div>
+                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
 
+                                <div class="testimonial-text">
+                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
+                                    <i class="fa fa-quote-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <img class="testimonial-author-img" src="/Assets/Admin/images/avatar/1.jpg" alt="" />
+                                <div class="testimonial-author">Lincoln</div>
+                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
 
-                            </ul>
+                                <div class="testimonial-text">
+                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
+                                    <i class="fa fa-quote-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <img class="testimonial-author-img" src="/Assets/Admin/images/avatar/4.jpg" alt="" />
+                                <div class="testimonial-author">TYRION LANNISTER</div>
+                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
+
+                                <div class="testimonial-text">
+                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
+                                    <i class="fa fa-quote-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <img class="testimonial-author-img" src="/Assets/Admin/images/avatar/5.jpg" alt="" />
+                                <div class="testimonial-author">TYRION LANNISTER</div>
+                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
+
+                                <div class="testimonial-text">
+                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
+                                    <i class="fa fa-quote-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <img class="testimonial-author-img" src="/Assets/Admin/images/avatar/6.jpg" alt="" />
+                                <div class="testimonial-author">TYRION LANNISTER</div>
+                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
+
+                                <div class="testimonial-text">
+                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
+                                    <i class="fa fa-quote-right"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <form action="#" method="post">
-                    <input type="text" value="Enter your text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your text';}" required="">
-                    <input type="submit" value="Submit" />
-                </form>
             </div>
-            <div class="clearfix"> </div>
         </div>
-        <div class="clearfix"> </div>
+        <div class="col-lg-9">
+            <div class="card">
+                <div class="card-title">
+                    <h4>Recent Orders </h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Product</th>
+                                    <th>quantity</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        <div class="round-img">
+                                            <a href=""><img src="/Assets/Admin/images/avatar/4.jpg" alt=""></a>
+                                        </div>
+                                    </td>
+                                    <td>John Abraham</td>
+                                    <td><span>iBook</span></td>
+                                    <td><span>456 pcs</span></td>
+                                    <td><span class="badge badge-success">Done</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="round-img">
+                                            <a href=""><img src="/Assets/Admin/images/avatar/2.jpg" alt=""></a>
+                                        </div>
+                                    </td>
+                                    <td>John Abraham</td>
+                                    <td><span>iPhone</span></td>
+                                    <td><span>456 pcs</span></td>
+                                    <td><span class="badge badge-success">Done</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="round-img">
+                                            <a href=""><img src="/Assets/Admin/images/avatar/3.jpg" alt=""></a>
+                                        </div>
+                                    </td>
+                                    <td>John Abraham</td>
+                                    <td><span>iMac</span></td>
+                                    <td><span>456 pcs</span></td>
+                                    <td><span class="badge badge-warning">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="round-img">
+                                            <a href=""><img src="/Assets/Admin/images/avatar/4.jpg" alt=""></a>
+                                        </div>
+                                    </td>
+                                    <td>John Abraham</td>
+                                    <td><span>iBook</span></td>
+                                    <td><span>456 pcs</span></td>
+                                    <td><span class="badge badge-success">Done</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-title">
+                            <h4>Message </h4>
+                        </div>
+                        <div class="recent-comment">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#"><img alt="..." src="/Assets/Admin/images/avatar/1.jpg" class="media-object"></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">john doe</h4>
+                                    <p>Cras sit amet nibh libero, in gravida nulla. </p>
+                                    <p class="comment-date">October 21, 2018</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#"><img alt="..." src="/Assets/Admin/images/avatar/1.jpg" class="media-object"></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">john doe</h4>
+                                    <p>Cras sit amet nibh libero, in gravida nulla. </p>
+                                    <p class="comment-date">October 21, 2018</p>
+                                </div>
+                            </div>
+
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#"><img alt="..." src="/Assets/Admin/images/avatar/1.jpg" class="media-object"></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">john doe</h4>
+                                    <p>Cras sit amet nibh libero, in gravida nulla. </p>
+                                    <p class="comment-date">October 21, 2018</p>
+                                </div>
+                            </div>
+
+                            <div class="media no-border">
+                                <div class="media-left">
+                                    <a href="#"><img alt="..." src="/Assets/Admin/images/avatar/1.jpg" class="media-object"></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Mr. Michael</h4>
+                                    <p>Cras sit amet nibh libero, in gravida nulla. </p>
+                                    <div class="comment-date">October 21, 2018</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# card -->
+                </div>
+                <!-- /# column -->
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="year-calendar"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Todo</h4>
+                    <div class="card-content">
+                        <div class="todo-list">
+                            <div class="tdl-holder">
+                                <div class="tdl-content">
+                                    <ul>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox"><i class="bg-primary"></i><span>Build an angular app</span>
+                                                <a href='#' class="ti-close"></a>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" checked><i class="bg-success"></i><span>Creating component page</span>
+                                                <a href='#' class="ti-close"></a>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" checked><i class="bg-warning"></i><span>Follow back those who follow you</span>
+                                                <a href='#' class="ti-close"></a>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" checked><i class="bg-danger"></i><span>Design One page theme</span>
+                                                <a href='#' class="ti-close"></a>
+                                            </label>
+                                        </li>
+
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" checked><i class="bg-success"></i><span>Creating component page</span>
+                                                <a href='#' class="ti-close"></a>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <input type="text" class="tdl-new form-control" placeholder="Type here">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
+
+    <!-- End PAge Content -->
 </div>
 

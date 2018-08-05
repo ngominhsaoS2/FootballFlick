@@ -84,7 +84,7 @@ namespace Model.Dao
             try
             {
                 var content = db.Contents.Find(id);
-                db.Contents.Remove(content);
+                content.Status = false;
                 db.SaveChanges();
                 return true;
             }

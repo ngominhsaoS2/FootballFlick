@@ -40,5 +40,31 @@ namespace FootballFlick.Areas.Admin.Controllers
                 TempData["AlertType"] = "alert-danger";
             }
         }
+
+        /// <summary>
+        /// SaoNM 07/06/2018 Popup notification
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="type"></param>
+        protected void PopupNotification(string title, string message, string type)
+        {
+            TempData["NotificationMessage"] = message;
+            if (title == "success")
+            {
+                TempData["NotificationTitle"] = "Success";
+                TempData["NotificationType"] = "success";
+            }
+            else if (title == "warning")
+            {
+                TempData["NotificationTitle"] = "Warning";
+                TempData["NotificationType"] = "warning";
+            }
+            else if (title == "error")
+            {
+                TempData["NotificationTitle"] = "Danger";
+                TempData["NotificationType"] = "danger";
+            }
+        }
+
     }
 }

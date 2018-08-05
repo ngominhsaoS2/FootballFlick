@@ -46,15 +46,16 @@ namespace FootballFlick.Areas.Admin.Controllers
                 long id = dao.Insert(user);
                 if (id > 0)
                 {
-                    SetAlert("Create a new user successfully.", "success");
-                    return RedirectToAction("Index", "User");
+                    PopupNotification("success", "Create a new User successfully.", "success");
+                    return RedirectToAction("Create", "User");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Create a new user failed.");
+                    PopupNotification("error", "Create a new User failed.", "danger");
                     return RedirectToAction("Create", "User");
                 }
             }
+            
             SetGroupIDViewBag();
             return View(user);
 
@@ -65,6 +66,7 @@ namespace FootballFlick.Areas.Admin.Controllers
         public ActionResult Edit(long id)
         {
             var user = new UserDao().GetByID(id);
+            user.Password = "";
             PostGroupIDViewBag(user.GroupID);
             return View(user);
         }
@@ -80,11 +82,11 @@ namespace FootballFlick.Areas.Admin.Controllers
                 var result = new UserDao().Update(user);
                 if (result)
                 {
-                    SetAlert("Edit this user successfully.", "success");
+                    PopupNotification("success", "Edit this User successfully.", "success");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Edit this user failed.");
+                    PopupNotification("error", "Edit this User failed.", "danger");
                 }
 
             }
@@ -96,7 +98,7 @@ namespace FootballFlick.Areas.Admin.Controllers
         [HttpDelete]
         public ActionResult Delete(long id)
         {
-            new UserDao().Delete(id);
+            bool result = new UserDao().Delete(id);
             return RedirectToAction("Index");
         }
 

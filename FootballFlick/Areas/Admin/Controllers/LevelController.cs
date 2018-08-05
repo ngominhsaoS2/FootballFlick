@@ -45,15 +45,16 @@ namespace FootballFlick.Areas.Admin.Controllers
                 long id = dao.Insert(level);
                 if (id > 0)
                 {
-                    SetAlert("Create a new level successfully.", "success");
-                    return RedirectToAction("Index", "Level");
+                    PopupNotification("success", "Create a new Level successfully.", "success");
+                    return RedirectToAction("Create", "Level");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Create a new level failed.");
+                    PopupNotification("error", "Create a new Level failed.", "danger");
                     return RedirectToAction("Create", "Level");
                 }
             }
+
             return View(level);
         }
 
@@ -79,14 +80,14 @@ namespace FootballFlick.Areas.Admin.Controllers
                 var result = new LevelDao().Update(level);
                 if (result)
                 {
-                    SetAlert("Edit this level successfully.", "success");
+                    PopupNotification("success", "Edit this Level successfully.", "success");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Edit this level failed.");
+                    PopupNotification("error", "Edit this Level failed.", "danger");
                 }
-
             }
+
             return View(level);
         }
 

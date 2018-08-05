@@ -6,7 +6,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@section jsFooter{  
+@section jsFooter{
     <script src="/Assets/Admin/js/controller/productController.js"></script>
 }
 
@@ -39,7 +39,7 @@
     }
 
     <div class="table-responsive bs-example widget-shadow">
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="productTable">
             <thead>
                 <tr>
                     <th>Code</th>
@@ -67,11 +67,11 @@
                             <a href="/Admin/Product/Edit/@item.ID">Edit</a>
                             |
                             @Ajax.ActionLink("Delete", "Delete", new { @id = @item.ID }, new AjaxOptions
-                       {
-                           Confirm = "Do you really want to delete this row?",
-                           OnComplete = "$('#row_" + @item.ID + "').remove()",
-                           HttpMethod = "Delete"
-                       })
+                            {
+                                Confirm = "Do you really want to delete this row?",
+                                OnComplete = "$('#row_" + @item.ID + "').remove()",
+                                HttpMethod = "Delete"
+                            })
                         </td>
                     </tr>
                 }

@@ -1,4 +1,5 @@
 ﻿using Model.Dao;
+using Model.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,23 +10,24 @@ namespace FootballFlick.Controllers
 {
     public class ClubStadiumController : Controller
     {
-        // GET: ClubStadium
-        public ActionResult Index(long clubId, int pageIndex = 1, int pageSize = 10, int pageIndexStadium = 1)
+        public ActionResult Index(long clubId, int pageIndex = 1, int pageSize = 10)
         {
             int totalRecord = 0;
-            int totalRecordStadium = 0;
             var dao = new ClubStadiumDao();
             var model = dao.ListClubStadiumPageList(clubId, ref totalRecord, pageIndex, pageSize);
-            var listStadium = dao.ListAllPageList(ref totalRecordStadium, pageIndex, pageSize);
-            ViewBag.ListStadium = listStadium;
 
+            //Thông tin của Club
             var club = new ClubDao().GetByID(clubId);
             ViewBag.OwnerID = club.OwnerID;
             ViewBag.ClubID = club.ID;
             ViewBag.ClubCode = club.Code;
             ViewBag.ClubName = club.Name;
 
-            //Phân trang cho trang chính ClubStadium
+            //Đưa ra list Stadium cho Modal
+            var listStadium = new StadiumDao().ListRemain(clubId);
+            ViewBag.ListStadium = listStadium;
+
+            //Phân trang
             ViewBag.Total = totalRecord;
             ViewBag.Page = pageIndex;
             int maxPage = 5;
@@ -44,30 +46,52 @@ namespace FootballFlick.Controllers
             ViewBag.Last = totalPage;
             ViewBag.Next = pageIndex + 1;
             ViewBag.Prev = pageIndex - 1;
-       
-            ////Phân trang cho trang modal Stadium
-            //ViewBag.TotalStadium = totalRecordStadium;
-            //ViewBag.PageStadium = pageIndexStadium;
-            //int maxPageStadium = 5;
-            //int totalPageStadium = 0;
-            //if (totalRecordStadium % pageSize != 0)
-            //{
-            //    totalPageStadium = (int)(totalRecordStadium / pageSize) + 1;
-            //}
-            //else
-            //{
-            //    totalPageStadium = (int)(totalRecordStadium / pageSize);
-            //}
-            //ViewBag.TotalPageStadium = totalPageStadium;
-            //ViewBag.MaxPageStadium = maxPageStadium;
-            //ViewBag.FirstStadium = 1;
-            //ViewBag.LastStadium = totalPageStadium;
-            //ViewBag.NextStadium = pageIndexStadium + 1;
-            //ViewBag.PrevStadium = pageIndexStadium - 1;
-
-
 
             return View(model);
+        }
+
+        //Add one row to ClubStadium
+        public JsonResult AddStadium(long clubId, long stadiumId)
+        {
+            //Insert thêm một dòng vào bảng ClubStadium
+            ClubStadium clubStadium = new ClubStadium() { ClubID = clubId, StadiumID = stadiumId, Status = true };
+            var dao = new ClubStadiumDao();
+            if (dao.CheckExistRow(clubStadium.ClubID, clubStadium.StadiumID) == false)
+            {
+                dao.Insert(clubStadium);
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                });
+            }
+        }
+
+        //Delete an ClubStadium
+        public JsonResult Delete(long clubId, int stadiumId)
+        {
+            var dao = new ClubStadiumDao();
+            var resDel = dao.Delete(clubId, stadiumId);
+            if (resDel)
+            {
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                });
+            }
         }
 
 
